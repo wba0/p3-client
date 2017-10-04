@@ -50,7 +50,7 @@ export class LoginSignupComponent implements OnInit {
 			);
 	}
 
-	loginSumbit(){
+	loginSubmit(){
 		this.authenticator.postLogin(this.loginUser)
 			.subscribe(
 				(userInfo) => {

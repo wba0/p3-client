@@ -17,6 +17,9 @@
 				<li class="nav-item">
 					<a class="nav-link" routerLink="/profile">Profile</a>
 				</li>
+				<li (click)="logMeOut()" class="nav-item">
+					<button class="btn nav-link">Log Out</button>
+				</li>
 			</div>
 			<div *ngIf="!userInfo">
 				<li class="nav-item">
@@ -24,9 +27,6 @@
 				</li>
 				<li class="nav-item">
 					<a routerLink="/signup" class="nav-link">Sign Up</a>
-				</li>
-				<li (click)="logMeOut()" class="nav-item">
-					<button class="btn nav-link">Log Out</button>
 				</li>
 			</div>
 		</ul>
