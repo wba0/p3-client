@@ -15,11 +15,13 @@ import { HackGuardService } from './guards/hack-guard.service';
 
 import { AppComponent } from './app.component';
 import { LoginSignupComponent } from './pages/login-signup/login-signup.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginSignupComponent
+    LoginSignupComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
