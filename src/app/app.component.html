@@ -1,14 +1,43 @@
-
-  <h1>
+<h1 class="mx-auto text-center">
     Welcome to {{title}}!
-  </h1>
+</h1>
 
 
-<nav>
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<a class="navbar-brand" routerLink="/">Logo</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	<div class="collapse navbar-collapse" id="navbarNavDropdown">
+		<ul class="navbar-nav">
+			<li class="nav-item active">
+				<a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+			</li>
+			<div *ngIf="userInfo">
+				<li class="nav-item">
+					<a class="nav-link" routerLink="/profile">Profile</a>
+				</li>
+			</div>
+			<div *ngIf="!userInfo">
+				<li class="nav-item">
+					<a routerLink="/login" class="nav-link">Log In</a>
+				</li>
+				<li class="nav-item">
+					<a routerLink="/signup" class="nav-link">Sign Up</a>
+				</li>
+				<li (click)="logMeOut()" class="nav-item">
+					<button class="btn nav-link">Log Out</button>
+				</li>
+			</div>
+		</ul>
+	</div>
 </nav>
 
 <alert type="success">hello</alert>
 
 
 <router-outlet></router-outlet>
+
+<footer>
+	<p>Made with meow</p>
+</footer>
