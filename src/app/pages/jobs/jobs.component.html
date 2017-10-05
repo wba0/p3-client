@@ -1,5 +1,15 @@
 <h2>Available Jobs</h2>
 
+<h3>Language selection: </h3>
+<select class="custom-select" [(ngModel)]="selectedLanguage">
+  <option selected>choose a language...</option>
+  <option *ngFor="let lang of languages" [ngValue]="lang.language">{{lang.langDisplay}}</option>>
+</select>
+
+<span>Use this value in search: {{selectedLanguage}}<span>
+
+ <!-- *ngIf="{{job.sourceLanguage}} === {{selectedLanguage}}" -->
+
 <ul>
 	<li *ngFor="let job of jobs">
 		<h3>Source Language: {{job.sourceLanguage}}</h3>
@@ -7,6 +17,6 @@
 		<h3>Target Language: {{job.targetLanguage}}</h3>
 		<h4>Content: </h4>
 		<p>{{job.content}}</p>
-		<h3>Beneficiary: <a href="#">{{job.beneficiary}}</a></h3>
+		<h3>Beneficiary: <a routerLink="/organization/{{job.beneficiary}}">{{job.beneficiaryName}}</a></h3>
 	</li>
 </ul>

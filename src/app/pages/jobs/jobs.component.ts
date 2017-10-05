@@ -10,6 +10,17 @@ import { AuthApiService } from '../../services/auth-api.service';
 export class JobsComponent implements OnInit {
 	jobs: any[] = [];
 	userInfo: any;
+	selectedLanguage: string;
+	languages: Array<Object> =[
+		{language: "english", langDisplay: "English"},
+		{language: "french", langDisplay: "Francais"},
+		{language: "japanese", langDisplay: "日本語"}
+	];
+
+	levels:Array<Object> = [
+		{num: 0, name: "AA"},
+		{num: 1, name: "BB"}
+];
 
   constructor(
 		private jobsApi: JobsApiService,
@@ -33,5 +44,9 @@ export class JobsComponent implements OnInit {
 				}
 			);
   }
+
+	selectLanguage(){
+
+	}
 
 }
