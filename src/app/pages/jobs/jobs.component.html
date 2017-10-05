@@ -1,0 +1,12 @@
+<h2>Available Jobs</h2>
+
+<ul>
+	<li *ngFor="let job of jobs">
+		<h3>Source Language: {{job.sourceLanguage}}</h3>
+		<span>=></span>
+		<h3>Target Language: {{job.targetLanguage}}</h3>
+		<h4>Content: </h4>
+		<p>{{job.content}}</p>
+		<h3>Beneficiary: <a href="#">{{job.beneficiary}}</a></h3>
+	</li>
+</ul>

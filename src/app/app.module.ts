@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthApiService } from './services/auth-api.service';
 import { NeedsLoginGuardService } from './guards/needs-login-guard.service';
 import { HackGuardService } from './guards/hack-guard.service';
+import { JobsApiService } from './services/jobs.service';
 
 
 
@@ -16,12 +17,14 @@ import { HackGuardService } from './guards/hack-guard.service';
 import { AppComponent } from './app.component';
 import { LoginSignupComponent } from './pages/login-signup/login-signup.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { JobsApiComponent } from './pages/jobs/jobs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginSignupComponent,
-    DashboardComponent
+    DashboardComponent,
+    JobsApiComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
   providers: [
 		AuthApiService,
 		NeedsLoginGuardService,
-		HackGuardService
+		HackGuardService,
+		JobsApiService
 	],
   bootstrap: [AppComponent]
 })

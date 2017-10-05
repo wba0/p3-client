@@ -15,6 +15,9 @@
 			</li>
 			<div *ngIf="userInfo">
 				<li class="nav-item">
+					<a class="nav-link" routerLink="/jobs">Available Jobs</a>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link" routerLink="/dashboard">Dashboard</a>
 				</li>
 				<li (click)="logMeOut()" class="nav-item">

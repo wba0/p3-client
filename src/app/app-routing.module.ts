@@ -11,7 +11,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 const routes: Routes = [
 	{path: "login", component: LoginSignupComponent},
 	{path: "signup", component: LoginSignupComponent},
-	{path: "dashboard", component: DashboardComponent}
+	{path: "dashboard", component: DashboardComponent},
+	{path: "jobs", component: JobsComponent}
 ];
 
 @NgModule({
