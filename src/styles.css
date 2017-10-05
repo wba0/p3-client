@@ -9,15 +9,13 @@ html, body {
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6, nav {
-  font-family: 'Open Sans', sans-serif;
-}
-
-p, span, a {
+h1, h2, h3, h4, h5, h6, nav, nav li a {
   font-family: 'Raleway', sans-serif;
 }
 
-
+p, span, a {
+  font-family: 'Open Sans', sans-serif;
+}
 
 footer {
 	position: absolute;
@@ -30,7 +28,7 @@ footer {
 
 nav{
 	padding-bottom: 50px;
-	font-size: 1.2em;
+	font-size: 1.3em;
 }
 
 nav li{

@@ -20,7 +20,9 @@
 		<h3>Target Language: {{job.targetLanguage}}</h3>
 		<h4>Content: </h4>
 		<p>{{job.content}}</p>
-		<h3>Beneficiary: <a routerLink="/organization/{{job.beneficiary}}">{{job.beneficiaryName}}</a></h3>
+		<br>
+		<span></span>
+		<button (click)="applyClick(job._id)" class="btn btn-large btn-primary">Apply</button>
 	</div>
 	</li>
 </ul>

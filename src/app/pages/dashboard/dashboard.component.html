@@ -1,8 +1,18 @@
-<h2>Welcome, {{userInfo.username}}</h2>
+<div class="container mx-auto">
+
+
+<h2 class="text-center">Welcome, {{userInfo.username}}</h2>
 <img src="{{userInfo.avatarUrl}}" alt="">
 
 <h3>Jobs you have created:</h3>
+<div class="row">
 
+<ul>
+	<li *ngFor="let job of ownedJobs">
+		{{job._id}}
+	</li>
+</ul>
+</div>
 
 <h3>Jobs you are working on:</h3>
 
@@ -11,3 +21,6 @@
 
 
 <h3>Your contributions:</h3>
+
+
+</div>

@@ -29,6 +29,7 @@ export class JobsComponent implements OnInit {
 			.subscribe(
 				(jobsFromApi: any[]) => {
 					this.jobs = jobsFromApi;
+					console.log(this.jobs)
 				}
 			);
 
@@ -47,6 +48,12 @@ export class JobsComponent implements OnInit {
 		const filtered = this.jobs.filter(job => job.sourceLanguage === this.selectedLanguage || job.targetLanguage === this.selectedLanguage);
 		this.filteredJobs = filtered;
 		console.log(this.filteredJobs)
+	}
+
+	applyClick(jobId: string){
+		console.log(jobId)
+
+
 	}
 
 }
