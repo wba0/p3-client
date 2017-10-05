@@ -17,10 +17,6 @@ export class JobsComponent implements OnInit {
 		{language: "japanese", langDisplay: "日本語"}
 	];
 
-	levels:Array<Object> = [
-		{num: 0, name: "AA"},
-		{num: 1, name: "BB"}
-];
 
   constructor(
 		private jobsApi: JobsApiService,

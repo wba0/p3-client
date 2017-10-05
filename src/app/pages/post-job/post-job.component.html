@@ -1,0 +1,18 @@
+<h2>Create a Job</h2>
+
+<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+
+
+<form (ngSubmit)="saveNewJob()">
+
+	<label for="source-language">Origin Language</label>
+	<select id="source-language" class="custom-select" [(ngModel)]="newJob.sourceLanguage">
+	  <option selected>choose a language...</option>
+  <option *ngFor="let lang of languages" [ngValue]="lang.language">{{lang.langDisplay}}</option>>
+	</select>
+
+	<label for="target-language">Translated Language</label>
+	<select id="target-language" class="custom-select" [(ngModel)]="newJob.sourceLanguage">
+	  <option selected>choose a language...</option>
+  <option *ngFor="let lang of languages" [ngValue]="lang.language">{{lang.langDisplay}}</option>>
+	</select>

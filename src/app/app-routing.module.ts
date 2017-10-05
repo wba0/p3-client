@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { LoginSignupComponent } from './pages/login-signup/login-signup.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
+import { PostJobComponent } from './pages/post-job/post-job.component';
 
 const routes: Routes = [
 	{path: "login", component: LoginSignupComponent},
 	{path: "signup", component: LoginSignupComponent},
 	{path: "dashboard", component: DashboardComponent},
-	{path: "jobs", component: JobsComponent}
+	{path: "jobs", component: JobsComponent},
+	{path: "post-job", component: PostJobComponent}
 ];
 
 @NgModule({

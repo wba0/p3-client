@@ -14,13 +14,15 @@ import { AppComponent } from './app.component';
 import { LoginSignupComponent } from './pages/login-signup/login-signup.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
+import { PostJobComponent } from './pages/post-job/post-job.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginSignupComponent,
     DashboardComponent,
-    JobsComponent
+    JobsComponent,
+    PostJobComponent
   ],
   imports: [
     BrowserModule,
