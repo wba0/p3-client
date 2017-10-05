@@ -8,7 +8,8 @@ import { AuthApiService } from '../../services/auth-api.service';
   styleUrls: ['./post-job.component.css']
 })
 export class PostJobComponent implements OnInit {
-	languages: String[];
+	languages: string[];
+	newJob: any;
   constructor(
 		private authenticator: AuthApiService,
 		private jobsApi: JobsApiService

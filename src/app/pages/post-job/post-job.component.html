@@ -1,18 +1,32 @@
-<h2>Create a Job</h2>
+<h2 class="text-center">Create a Job</h2>
 
 <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
 
+<div class="row">
 
-<form (ngSubmit)="saveNewJob()">
-
-	<label for="source-language">Origin Language</label>
-	<select id="source-language" class="custom-select" [(ngModel)]="newJob.sourceLanguage">
+	<form (ngSubmit)="saveNewJob()" class="mx-auto text-center	">
+		<div class="form-group">
+			<label for="source-language">Origin Language</label>
+			<select id="source-language" class="form-control form-control-lg" [(ngModel)]="newJob.sourceLanguage">
 	  <option selected>choose a language...</option>
   <option *ngFor="let lang of languages" [ngValue]="lang.language">{{lang.langDisplay}}</option>>
 	</select>
+		</div>
 
-	<label for="target-language">Translated Language</label>
-	<select id="target-language" class="custom-select" [(ngModel)]="newJob.sourceLanguage">
+		<div class="form-group">
+			<label for="target-language">Translated Language</label>
+			<select id="target-language" class="form-control form-control-lg" [(ngModel)]="newJob.sourceLanguage">
 	  <option selected>choose a language...</option>
   <option *ngFor="let lang of languages" [ngValue]="lang.language">{{lang.langDisplay}}</option>>
 	</select>
+		</div>
+
+		<div class="form-group">
+			<label for="content-textarea">Content</label>
+			<textarea id="content-textarea" name="name" rows="8" cols="80" [(ngModel)]="newJob.content"></textarea>
+		</div>
+
+		<button class="btn btn-large btn-primary">Submit</button>
+	</form>
+
+</div>

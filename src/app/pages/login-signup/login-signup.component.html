@@ -1,31 +1,31 @@
 <div class="container">
 	<div class="row justify-content-md">
-		<form (ngSubmit)="loginSubmit()">
-			<h3>Log In</h3>
+		<form (ngSubmit)="loginSubmit()" class="form-signin">
+			<h3 class="form-signin-heading">Log In</h3>
 			<p class="error" *ngIf="loginError">{{loginError}}</p>
 			<div class="form-group" id="signup-form">
-				<label for="login-email-input">Email address</label>
+				<label class="sr-only" for="login-email-input">Email address</label>
 				<input type="email" class="form-control" id="login-email-input" aria-describedby="emailHelp" placeholder="Enter email" name="emailInput" [(ngModel)]="loginUser.loginUsername">
 			</div>
 			<div class="form-group">
-				<label for="login-password-input">Password</label>
+				<label class="sr-only" for="login-password-input">Password</label>
 				<input type="password" class="form-control" id="login-password-input" placeholder="Password" name="passwordInput" [(ngModel)]="loginUser.loginPassword">
 			</div>
-			<button class="btn btn-primary">Submit</button>
+			<button class="btn btn-primary btn-primary btn-block">Log In</button>
 		</form>
 		<h4>Or...</h4>
-		<form (ngSubmit)="signupSubmit()">
-			<h3>Sign Up</h3>
+		<form (ngSubmit)="signupSubmit()" class="form-signin">
+			<h3 class="form-signin-heading">Sign Up</h3>
 			<p class="error" *ngIf="signupError">{{signupError}}</p>
 			<div class="form-group" id="signup-form">
-				<label for="signup-email-input">Email address</label>
+				<label class="sr-only" for="signup-email-input">Email address</label>
 				<input type="email" class="form-control" id="signup-email-input" aria-describedby="emailHelp" placeholder="Enter email" name="emailInput" [(ngModel)]="newUser.signupUsername">
 			</div>
 			<div class="form-group">
-				<label for="signup-password-input">Password</label>
+				<label class="sr-only" for="signup-password-input">Password</label>
 				<input type="password" class="form-control" id="signup-password-input" placeholder="Password" name="passwordInput" [(ngModel)]="newUser.signupPassword">
 			</div>
-			<button class="btn btn-primary">Submit</button>
+			<button class="btn btn-primary btn-primary btn-block">Sign In</button>
 		</form>
 
 
