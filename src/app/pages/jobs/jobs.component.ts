@@ -9,10 +9,11 @@ import { AuthApiService } from '../../services/auth-api.service';
 })
 export class JobsComponent implements OnInit {
 	jobs: any[] = [];
+	filteredJobs: any[] = [];
 	userInfo: any;
 	selectedLanguage: string;
 	languages: Array<Object> =[
-		{language: "english", langDisplay: "English"},
+		{language: "english", langDisplay: "English", isoCode: "en"},
 		{language: "french", langDisplay: "Francais"},
 		{language: "japanese", langDisplay: "日本語"}
 	];
@@ -41,8 +42,11 @@ export class JobsComponent implements OnInit {
 			);
   }
 
-	selectLanguage(){
-
+	updateJobList(){
+		this.filteredJobs = [];
+		const filtered = this.jobs.filter(job => job.sourceLanguage === this.selectedLanguage || job.targetLanguage === this.selectedLanguage);
+		this.filteredJobs = filtered;
+		console.log(this.filteredJobs)
 	}
 
 }

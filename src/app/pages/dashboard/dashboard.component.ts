@@ -8,13 +8,21 @@ import { AuthApiService } from '../../services/auth-api.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-	loggedInUser: any;
+	userInfo: any;
 	getUserError: string;
   constructor(
 		private authenticator: AuthApiService
 	) { }
 
   ngOnInit() {
-
+		this.authenticator.getLoginStatus()
+			.subscribe(
+				(loggedInInfo: any) => {
+					if(loggedInInfo.isLoggedIn) {
+						console.log(loggedInInfo)
+						this.userInfo = loggedInInfo.userInfo;
+					}
+				}
+			);
   }
 }
