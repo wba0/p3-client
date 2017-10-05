@@ -10,21 +10,17 @@ import { NeedsLoginGuardService } from './guards/needs-login-guard.service';
 import { HackGuardService } from './guards/hack-guard.service';
 import { JobsApiService } from './services/jobs.service';
 
-
-
-
-
 import { AppComponent } from './app.component';
 import { LoginSignupComponent } from './pages/login-signup/login-signup.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { JobsApiComponent } from './pages/jobs/jobs.component';
+import { JobsComponent } from './pages/jobs/jobs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginSignupComponent,
     DashboardComponent,
-    JobsApiComponent
+    JobsComponent
   ],
   imports: [
     BrowserModule,

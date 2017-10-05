@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { JobsService } from './jobs.service';
+import { JobsApiService } from './jobs.service';
 
 describe('JobsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [JobsService]
+      providers: [JobsApiService]
     });
   });
 
-  it('should be created', inject([JobsService], (service: JobsService) => {
+  it('should be created', inject([JobsApiService], (service: JobsApiService) => {
     expect(service).toBeTruthy();
   }));
 });

@@ -7,7 +7,7 @@ import { AuthApiService } from '../../services/auth-api.service';
   templateUrl: './jobs.component.html',
   styleUrls: ['./jobs.component.css']
 })
-export class JobsApiComponent implements OnInit {
+export class JobsComponent implements OnInit {
 	jobs: any[] = [];
 	userInfo: any;
 
