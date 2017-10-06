@@ -51,9 +51,11 @@ export class JobsComponent implements OnInit {
 	}
 
 	applyClick(jobId: string){
-		console.log(jobId)
-
-
+		this.jobsApi.applyToJob(jobId	)
+			.subscribe(
+				(data) => {
+					console.log(data);
+				}
+			);
 	}
-
 }

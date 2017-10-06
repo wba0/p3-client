@@ -40,8 +40,9 @@ export class JobsApiService {
 		return this.http.put(`${this.baseUrl}/api/jobs/jobId`,
 		{withCredentials: true});
 };
+
 	applyToJob(jobId: string){
-		return this.http.patch(`${this.baseUrl}/api/jobs/jobId`,
+		return this.http.post(`${this.baseUrl}/api/jobs/apply/${jobId}`,
 		{withCredentials: true});
 	};
 }

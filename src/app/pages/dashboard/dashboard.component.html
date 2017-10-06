@@ -1,26 +1,35 @@
 <div class="container mx-auto">
 
 
-<h2 class="text-center">Welcome, {{userInfo.username}}</h2>
-<img src="{{userInfo.avatarUrl}}" alt="">
+	<h2 class="text-center">Welcome, {{userInfo.username}}</h2>
+	<img src="{{userInfo.avatarUrl}}" alt="">
 
-<h3>Jobs you have created:</h3>
-<div class="row">
+	<h3>Jobs you have created:</h3>
+	<div class="row">
 
-<ul>
-	<li *ngFor="let job of ownedJobs">
-		{{job._id}}
-	</li>
-</ul>
-</div>
+		<ol class="dashboard-job-list">
+			<li *ngFor="let job of ownedJobs">
+				<ul class="dashboard-single-job">
+					<li> {{job._id}}
+					</li>
+					<li> {{job.sourceLanguage}}
+					</li>
+					<li> {{job.targetLanguage}}
+					</li>
+					<li> {{job.content}}
+					</li>
+				</ul>
+			</li>
+		</ol>
+	</div>
 
-<h3>Jobs you are working on:</h3>
+	<h3>Jobs you are working on:</h3>
 
 
-<h3>Jobs you have completed:</h3>
+	<h3>Jobs you have completed:</h3>
 
 
-<h3>Your contributions:</h3>
+	<h3>Your contributions:</h3>
 
 
 </div>

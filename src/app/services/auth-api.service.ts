@@ -41,6 +41,7 @@ export class AuthApiService {
 		loginStatusRequest.subscribe((loggedInInfo) => {
 			this.loginStatusSubject.next(loggedInInfo);
 		});
+
 		return loginStatusRequest;
 	}
 

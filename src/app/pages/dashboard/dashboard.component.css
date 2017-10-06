@@ -1,3 +1,22 @@
-.input-group-lg>.input-group-btn>select.btn:not([size]):not([multiple]), .input-group-lg>select.form-control:not([size]):not([multiple]), .input-group-lg>select.input-group-addon:not([size]):not([multiple]), select.form-control-lg:not([size]):not([multiple]) {
-    height: calc(2.3125rem + 20px);
+
+
+li{
+
+}
+.dashboard-job-list{
+	list-style: decimal;
+}
+
+.dashboard-job-list li{
+	display: block;
+	border: 1px solid #ddd;
+	padding: 5px 15px;
+}
+
+.dashboard-single-job{
+	
+}
+
+.dashboard-single-job li{
+	display: inline-block;
 }
