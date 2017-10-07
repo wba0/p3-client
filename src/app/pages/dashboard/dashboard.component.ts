@@ -13,7 +13,10 @@ export class DashboardComponent implements OnInit {
 	userInfo: any = {};
 	getUserError: string;
 	ownedJobs: any;
+	ownedActiveJobs: any;
 	workingJobs: any;
+	awaitingPaymentJobs: any;
+	finishedJobs: any;
   constructor(
 		private authenticator: AuthApiService,
 		private jobsApi: JobsApiService
@@ -30,12 +33,38 @@ export class DashboardComponent implements OnInit {
 				}
 			);
 
-			this.jobsApi.getMyJobs()
+			this.jobsApi.getMyOwnedJobs()
 				.subscribe(
 					(ownedJobs: any) => {
 						this.ownedJobs = ownedJobs;
             console.log("owned jobs", this.ownedJobs)
             console.log("owned jobs applicants", this.ownedJobs.applicants)
+					}
+				);
+
+			this.jobsApi.getMyOwnedActiveJobs()
+				.subscribe(
+					(ownedActiveJobs: any) => {
+						this.ownedActiveJobs = ownedActiveJobs;
+					}
+				);
+
+			this.jobsApi.getMyWorkingJobs()
+				.subscribe(
+					(workingJobs: any) => {
+						this.workingJobs = workingJobs;
+					}
+				);
+			this.jobsApi.getMyAwaitingPaymentJobs()
+				.subscribe(
+					(awaitingPaymentJobs: any) => {
+						this.awaitingPaymentJobs = awaitingPaymentJobs;
+					}
+				);
+			this.jobsApi.getMyFinishedJobs()
+				.subscribe(
+					(finishedJobs: any) => {
+						this.finishedJobs = finishedJobs;
 					}
 				);
   }

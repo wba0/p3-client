@@ -6,43 +6,62 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class JobsApiService {
 
-	baseUrl: string = environment.apiUrl;
+  baseUrl: string = environment.apiUrl;
 
   constructor(
-		private http: HttpClient
-	) { }
+    private http: HttpClient
+  ) { }
 
-	getJobs(){
-		return this.http.get(`${this.baseUrl}/api/jobs`);
-	};
+  getJobs() {
+    return this.http.get(`${this.baseUrl}/api/jobs`);
+  };
 
-	getJobDetails(jobId: string){
-		return this.http.get(`${this.baseUrl}/api/jobs/jobId`);
-	};
+  getJobDetails(jobId: string) {
+    return this.http.get(`${this.baseUrl}/api/jobs/jobId`);
+  };
 
-	postJob(jobFields){
-		return this.http.post(`${this.baseUrl}/api/jobs`,
-			jobFields,
-			{withCredentials: true});
-	};
+  postJob(jobFields) {
+    return this.http.post(`${this.baseUrl}/api/jobs`,
+      jobFields,
+      { withCredentials: true });
+  };
 
-	deleteJob(jobId: string){
-		return this.http.delete(`${this.baseUrl}/api/jobs/jobId`,
-		{withCredentials: true});
-	};
+  deleteJob(jobId: string) {
+    return this.http.delete(`${this.baseUrl}/api/jobs/jobId`,
+      { withCredentials: true });
+  };
 
-	getMyJobs(){
-		return this.http.get(`${this.baseUrl}/api/myownedjobs`,
-		{withCredentials: true});
-	};
+  getMyOwnedJobs() {
+    return this.http.get(`${this.baseUrl}/api/myownedjobs`,
+      { withCredentials: true });
+  };
 
-	updateJob(jobId: string){
-		return this.http.put(`${this.baseUrl}/api/jobs/jobId`,
-		{withCredentials: true});
-};
+  getMyOwnedActiveJobs() {
+    return this.http.get(`${this.baseUrl}/api/myownedactivejobs`,
+      { withCredentials: true });
+  };
 
-	applyToJob(jobId: string){
-		return this.http.post(`${this.baseUrl}/api/jobs/apply/${jobId}`,
-		{withCredentials: true});
-	};
+  getMyWorkingJobs() {
+    return this.http.get(`${this.baseUrl}/api/myworkingjobs`,
+      { withCredentials: true });
+  };
+
+  getMyAwaitingPaymentJobs() {
+    return this.http.get(`${this.baseUrl}/api/myawaitingpaymentjobs`,
+      { withCredentials: true });
+  };
+  getMyFinishedJobs() {
+    return this.http.get(`${this.baseUrl}/api/myfinishedandpaidjobs`,
+      { withCredentials: true });
+  };
+
+  updateJob(jobId: string) {
+    return this.http.put(`${this.baseUrl}/api/jobs/jobId`,
+      { withCredentials: true });
+  };
+
+  applyToJob(jobId: string) {
+    return this.http.post(`${this.baseUrl}/api/jobs/apply/${jobId}`,
+      { withCredentials: true });
+  };
 }

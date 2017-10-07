@@ -3,21 +3,11 @@
 li{
 
 }
-.dashboard-job-list{
-	list-style: decimal;
-	border: 1px solid #eee;
-}
 
 .dashboard-job-list li{
 	display: inline-block;
-	border-left: 1px solid #ddd;
-	padding: 5px 15px;
-}
+	border: 1px solid #ddd;
+	padding: 30px;
+	margin: 15px;
 
-.dashboard-single-job{
-
-}
-
-.dashboard-single-job li{
-	display: block;
 }
