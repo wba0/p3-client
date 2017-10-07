@@ -5,18 +5,19 @@ li{
 }
 .dashboard-job-list{
 	list-style: decimal;
+	border: 1px solid #eee;
 }
 
 .dashboard-job-list li{
-	display: block;
-	border: 1px solid #ddd;
+	display: inline-block;
+	border-left: 1px solid #ddd;
 	padding: 5px 15px;
 }
 
 .dashboard-single-job{
-	
+
 }
 
 .dashboard-single-job li{
-	display: inline-block;
+	display: block;
 }

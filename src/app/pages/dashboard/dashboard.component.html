@@ -4,32 +4,52 @@
 	<h2 class="text-center">Welcome, {{userInfo.username}}</h2>
 	<img src="{{userInfo.avatarUrl}}" alt="">
 
-	<h3>Jobs you have created:</h3>
+	<h4>Jobs you have created:</h4>
 	<div class="row">
 
 		<ol class="dashboard-job-list">
 			<li *ngFor="let job of ownedJobs">
 				<ul class="dashboard-single-job">
-					<li> {{job._id}}
+					<li> Job ID: {{job._id}}
 					</li>
-					<li> {{job.sourceLanguage}}
+					<li>{{job.sourceLanguage}}
 					</li>
+					<li><i class="fa fa-arrow-down" aria-hidden="true"></i>
+</li>
 					<li> {{job.targetLanguage}}
 					</li>
-					<li> {{job.content}}
+					<li> Content: {{job.content}}
+					</li>
+					<hr>
+					<li>
+						Applicants:
+
+						<!-- NEED CUSTOM PIPE HERE? -->
+						<ul>
+							<li *ngFor="let applicant of job.applicants">
+									<p>{{applicant._id}}</p>
+									<ul>
+										<li *ngFor="let oneApplicant of applicant">
+											<p>{{oneApplicant._id}}</p>
+										</li>
+									</ul>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</li>
 		</ol>
 	</div>
 
-	<h3>Jobs you are working on:</h3>
+	<h4>Jobs undergoing work:</h4>
+
+	<h4>Jobs you are working on:</h4>
 
 
-	<h3>Jobs you have completed:</h3>
+	<h4>Jobs you have completed:</h4>
 
 
-	<h3>Your contributions:</h3>
+	<h4>Your contributions:</h4>
 
 
 </div>

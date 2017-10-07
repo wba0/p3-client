@@ -34,7 +34,8 @@ export class DashboardComponent implements OnInit {
 				.subscribe(
 					(ownedJobs: any) => {
 						this.ownedJobs = ownedJobs;
-						console.log("myJobs info: ", ownedJobs);
+            console.log("owned jobs", this.ownedJobs)
+            console.log("owned jobs applicants", this.ownedJobs.applicants)
 					}
 				);
   }

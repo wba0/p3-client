@@ -32,7 +32,7 @@ export class JobsApiService {
 	};
 
 	getMyJobs(){
-		return this.http.get(`${this.baseUrl}/api/myjobs`,
+		return this.http.get(`${this.baseUrl}/api/myownedjobs`,
 		{withCredentials: true});
 	};
 
