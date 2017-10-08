@@ -8,30 +8,28 @@
 		<div class="form-group col-md-6">
 			<label for="source-language">Origin Language</label>
 			<select id="source-language" class="form-control form-control-lg" [(ngModel)]="newJob.sourceLanguage" name="sourceLanguageInput">
-	  <option selected>choose a language...</option>
-  <option *ngFor="let lang of languages" [ngValue]="lang.language">{{lang.langDisplay}}</option>
+  <option *ngFor="let lang of langArr" [ngValue]="lang.language">{{lang.langDisplay}}</option>
 	</select>
 		</div>
 
 		<div class="form-group col-md-6">
 			<label for="target-language">Translated Language</label>
-			<select id="target-language" class="form-control form-control-lg" [(ngModel)]="newJob.sourceLanguage" name="targetLanguageInput">
-	  <option selected>choose a language...</option>
-  <option *ngFor="let lang of languages" [ngValue]="lang.language">{{lang.langDisplay}}</option>>
+			<select id="target-language" class="form-control form-control-lg" [(ngModel)]="newJob.targetLanguage" name="targetLanguageInput">
+  <option *ngFor="let lang of langArr" [ngValue]="lang.language">{{lang.langDisplay}}</option>>
 	</select>
 		</div>
 
 		<div class="form-group col-md-12">
 			<label for="content-textarea">Content</label>
-			<textarea class="form-control" id="content-textarea" name="name" rows="8" cols="75" [(ngModel)]="newJob.content" (keyup)="countWords()"></textarea>
+			<textarea class="form-control" id="content-textarea" name="name" rows="8" cols="75" [(ngModel)]="newJob.content" (keyup)="countWords()" placeholder="Paste content to be translated here..."></textarea>
 		</div>
 	</div>
 
 	<div class="row" id="form-calculation-fields">
 
 		<div class="form-group col-md-4">
-			<label for="price-select">Price per word</label>
-			<select id="price-select" class="form-control form-control-lg" [(ngModel)]="pricePerWord" name="priceInput">
+			<h4>{{pricePer}}</h4>
+			<select id="price-select" class="form-control form-control-lg" [(ngModel)]="pricePerWord" name="priceInput" (change)="countWords()">
 	  <option selected>choose a price per word...</option>
 		  <option value="0.06">$0.06</option>
 		  <option value="0.08">$0.08</option>
@@ -39,14 +37,16 @@
 			</select>
 		</div>
 		<div class="form-group col-md-4">
-			<h4>Word Count: </h4>
+			<h4>{{countType}}</h4>
 
 			<h4><input class="form-control form-control-lg" [(ngModel)]="newJob.wordCount" name="wordCount"></h4>
 		</div>
 		<div class="form-group col-md-4">
 
 			<h4>Total Price: </h4>
-			<h4><input class="form-control form-control-lg" name="wordCount" [(ngModel)]="newJob.price" name="price"></h4>
+			<h4><input class="form-control form-control-lg" name="wordCount" [(ngModel)]="newJob.priceWithSymbol" name="price"></h4>
+
+			<h4>{{newJob.price}}</h4>
 
 
 

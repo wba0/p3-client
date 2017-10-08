@@ -9,6 +9,7 @@ import { AuthApiService } from './services/auth-api.service';
 import { NeedsLoginGuardService } from './guards/needs-login-guard.service';
 import { HackGuardService } from './guards/hack-guard.service';
 import { JobsApiService } from './services/jobs.service';
+import { LanguageService } from './services/language.service';
 
 import { AppComponent } from './app.component';
 import { LoginSignupComponent } from './pages/login-signup/login-signup.component';
@@ -35,7 +36,8 @@ import { PostJobComponent } from './pages/post-job/post-job.component';
 		AuthApiService,
 		NeedsLoginGuardService,
 		HackGuardService,
-		JobsApiService
+		JobsApiService,
+		LanguageService
 	],
   bootstrap: [AppComponent]
 })

@@ -4,7 +4,7 @@
 
 <select (change)="updateJobList()" class="custom-select" [(ngModel)]="selectedLanguage">
   <option selected>choose a language...</option>
-  <option *ngFor="let lang of languages" [ngValue]="lang.language">
+  <option *ngFor="let lang of langArr" [ngValue]="lang.language">
 		<span class="flag-icon flag-icon-{{lang.isoCode}}">a</span>
 		{{lang.langDisplay}}
 	</option>

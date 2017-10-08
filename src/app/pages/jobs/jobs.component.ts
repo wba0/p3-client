@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JobsApiService } from '../../services/jobs.service';
 import { AuthApiService } from '../../services/auth-api.service';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-jobs',
@@ -12,17 +13,15 @@ export class JobsComponent implements OnInit {
 	filteredJobs: any[] = [];
 	userInfo: any;
 	selectedLanguage: string;
-	languages: Array<Object> =[
-		{language: "english", langDisplay: "English", isoCode: "en"},
-		{language: "french", langDisplay: "Francais"},
-		{language: "japanese", langDisplay: "日本語"}
-	];
-
+	langArr: any = this.languageService.languages;
 
   constructor(
 		private jobsApi: JobsApiService,
-		private authenticator: AuthApiService
+		private authenticator: AuthApiService,
+		private languageService: LanguageService
 	) { }
+
+
 
   ngOnInit() {
 		this.jobsApi.getJobs()
