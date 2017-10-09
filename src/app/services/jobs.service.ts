@@ -55,9 +55,9 @@ export class JobsApiService {
       { withCredentials: true });
   };
 
-  updateJob(jobId: string, jobFields) {
-    return this.http.put(`${this.baseUrl}/api/jobs/${jobId}`,
-			{jobFields},
+  submitJob(jobId: string, jobFields) {
+    return this.http.patch(`${this.baseUrl}/api/submitJob/${jobId}`,
+			jobFields,
       { withCredentials: true });
   };
 

@@ -32,7 +32,7 @@ export class PostJobComponent implements OnInit {
   }
 
 	saveNewJob(){
-		this.newJob.sourceLanguageIsoCode = "yes"
+		// this.newJob.sourceLanguageIsoCode = "yes"
 		console.log(this.newJob);
 		this.jobsApi.postJob(this.newJob)
 			.subscribe(

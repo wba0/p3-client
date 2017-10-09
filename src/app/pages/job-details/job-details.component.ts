@@ -14,6 +14,8 @@ export class JobDetailsComponent implements OnInit {
   userInfo: any;
 	benefs: any = [];
 	chosenBenef: any = {};
+	errorMessage: string;
+
 
   constructor(
     private authenticator: AuthApiService,
@@ -49,16 +51,26 @@ export class JobDetailsComponent implements OnInit {
       });
   }
 
-	handleBenef(arg){
-		console.log(arg)
+	handleBenef(benefId){
+			this.chosenBenef = this.benefs.find(o => {
+				return o._id === benefId;
+			});
+
 	}
 
   translateJob() {
 		this.oneJob.undergoingWork = false;
-		this.jobsApi.updateJob(this.oneJob._id, this.oneJob)
+		this.oneJob.beneficiaryId = this.chosenBenef._id;
+		this.jobsApi.submitJob(this.oneJob._id, this.oneJob)
       .subscribe(
-      (data) => {
-        console.log(data)
-      });
+      (translatedJob: any) => {
+        console.log("Post successful: ", translatedJob);
+				this.errorMessage = ""
+      },
+			(errorInfo) => {
+				console.log("Post unsuccessful: ", errorInfo);
+				if(errorInfo.status === 400){this.errorMessage = "Validation Error"} else{ this.errorMessage = "Unknown error. Please try again later."}
+			}
+		);
   }
 }
