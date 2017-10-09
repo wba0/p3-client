@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthApiService } from '../../services/auth-api.service';
 import { JobsApiService } from '../../services/jobs.service';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,17 +13,28 @@ import { JobsApiService } from '../../services/jobs.service';
 export class DashboardComponent implements OnInit {
 	userInfo: any = {};
 	getUserError: string;
-	ownedJobs: any;
+	ownedJobs: any = [];
 	ownedActiveJobs: any;
 	workingJobs: any;
 	awaitingPaymentJobs: any;
 	finishedJobs: any;
+	langArr: any[] = this.languageService.languages;
   constructor(
 		private authenticator: AuthApiService,
-		private jobsApi: JobsApiService
+		private jobsApi: JobsApiService,
+		private languageService: LanguageService
 	) { }
 
+
   ngOnInit() {
+		// const firstPart = this.langArr.filter(item => item.language === this.ownedJobs.sourceLanguage)
+		// console.log("first part" , firstPart );
+		//
+		//
+		// 	this.languageService.addIsoCode(this.ownedJobs, this.langArr);
+		// 	console.log(this.ownedJobs)
+
+
 		this.authenticator.getLoginStatus()
 			.subscribe(
 				(loggedInInfo: any) => {

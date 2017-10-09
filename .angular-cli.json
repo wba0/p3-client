@@ -20,6 +20,7 @@
       "prefix": "app",
       "styles": [
 				"../node_modules/bootstrap/dist/css/bootstrap.min.css",
+				"../node_modules/flag-icon-css/css/flag-icon.min.css",
         "styles.css"
       ],
       "scripts": [],

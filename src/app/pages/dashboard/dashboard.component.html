@@ -2,16 +2,8 @@
 
 	<div id="user-info" class="text-center mx-auto">
 		<img src="{{userInfo.avatarUrl}}" alt="">
-	<h2 class="text-center">Welcome, {{userInfo.username}}</h2>
-</div>
-
-
-
-
-
-
-
-
+		<h2 class="text-center">Welcome, {{userInfo.username}}</h2>
+	</div>
 
 
 	<div class="row">
@@ -19,19 +11,18 @@
 			<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
 				<h4>Jobs you have created</h4>
 				<a class="nav-link active" id="v-pills-created-posted-jobs-tab" data-toggle="pill" href="#v-pills-created-posted-jobs" role="tab" aria-controls="v-pills-created-posted-jobs" aria-expanded="true">Posted Jobs</a>
-				<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="true">Active Jobs</a>
-				<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="true">Translated Jobs</a>
-				<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="true">Finished Jobs</a>
+				<a class="nav-link" id="v-pills-created-active-jobs" data-toggle="pill" href="#v-pills-created-active-jobs" role="tab" aria-controls="v-pills-created-active-jobs" aria-expanded="true">Active Jobs</a>
+				<a class="nav-link" id="v-pills-created-translated-jobs" data-toggle="pill" href="#v-pills-created-translated-jobs" role="tab" aria-controls="-pills-created-translated-jobs" aria-expanded="true">Translated Jobs</a>
+				<a class="nav-link" id="v-pills-created-finished-jobs" data-toggle="pill" href="#v-pills-created-finished-jobs" role="tab" aria-controls="v-pills-created-finished-jobs" aria-expanded="true">Finished Jobs</a>
 				<hr>
 				<h4>Jobs you are translating</h4>
 
-				<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="true">Active Jobs</a>
-				<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="true">Translated Jobs</a>
-				<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="true">Finished Jobs</a>
+				<a class="nav-link" id="v-pills-worked-active-jobs" data-toggle="pill" href="#v-pills-worked-active-jobs" role="tab" aria-controls="v-pills-worked-active-jobs" aria-expanded="true">Active Jobs</a>
+				<a class="nav-link" id="v-pills-worked-translated-jobs" data-toggle="pill" href="#v-pills-worked-translated-jobs" role="tab" aria-controls="-pills-worked-translated-jobs" aria-expanded="true">Translated Jobs</a>
+				<a class="nav-link" id="v-pills-worked-finished-jobs" data-toggle="pill" href="#v-pills-worked-finished-jobs" role="tab" aria-controls="v-pills-worked-finished-jobs" aria-expanded="true">Finished Jobs</a>
 			</div>
 		</div>
 		<div class="col-9">
-
 			<div class="tab-content" id="v-pills-tabContent">
 				<div class="tab-pane fade show active" id="v-pills-created-posted-jobs" role="tabpanel" aria-labelledby="v-pills-created-posted-jobs-tab">
 					<div class="row">
@@ -40,21 +31,17 @@
 								<div> Job ID: <a [routerLink]="['/jobs', job._id]">{{job._id}}</a>
 								</div>
 								<div>
-									<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>
+									<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
 
-Translation</h4>
-
-									<p>{{job.sourceLanguage}}
-									<i class="fa fa-arrow-right" aria-hidden="true"></i>
-						{{job.targetLanguage}}
+									<p>	<span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>{{job.sourceLanguage}}
+										<i class="fa fa-arrow-right" aria-hidden="true"></i> {{job.targetLanguage}}
 									</p>
 
 									<p> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
 									</p>
 								</div>
 								<div>
-									<h4><i class="fa fa-info" aria-hidden="true" title="Information"></i>Information
-</h4>
+									<h4><i class="fa fa-info" aria-hidden="true" title="Information"></i>Information</h4>
 
 									<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Worker"></i> {{job.worker}}
 									</p>
@@ -66,8 +53,8 @@ Translation</h4>
 									</p>
 								</div>
 								<div>
-									<h4><i class="fa fa-retweet" aria-hidden="true" title="Flow"></i>
-Flow</h4>
+									<h4>
+										<i class="fa fa-retweet" aria-hidden="true" title="Flow"></i>Flow</h4>
 									<p>Undergoing work:
 										<span *ngIf="job.undergoingWork" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
 										<span *ngIf="!job.undergoingWork" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
@@ -84,27 +71,22 @@ Flow</h4>
 								</div>
 
 								<div>
-									<h4><i class="fa fa-users" aria-hidden="true"></i>
-Applicants:</h4>
+									<h4><i class="fa fa-users" aria-hidden="true"></i>Applicants:</h4>
 
 									<!-- NEED CUSTOM PIPE HERE? -->
-									<!-- <ul>
+									<ul>
 											<li *ngFor="let applicant of job.applicants">
 													<p>{{applicant._id}}</p>
-													<ul>
-														<li *ngFor="let oneApplicant of applicant">
-															<p>{{oneApplicant._id}}</p>
-														</li>
-													</ul>
+
 											</li>
-										</ul> -->
+										</ul>
 								</div>
 							</li>
 						</ul>
 					</div>
 				</div>
-				<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">Two</div>
-				<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+				<div class="tab-pane fade" id="v-pills-created-active-jobs" role="tabpanel" aria-labelledby="v-pills-created-active-jobs-tab">Two</div>
+				<div class="tab-pane fade" id="v-pills-created-translated-jobs" role="tabpanel" aria-labelledby="v-pills-created-translated-jobs-tab">...</div>
 				<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
 				<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">One</div>
 				<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">Two</div>
