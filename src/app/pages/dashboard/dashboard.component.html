@@ -37,7 +37,7 @@
 					<div class="row">
 						<ul class="dashboard-job-list">
 							<li *ngFor="let job of ownedJobs">
-								<div> Job ID: {{job._id}}
+								<div> Job ID: <a [routerLink]="['/jobs', job._id]">{{job._id}}</a>
 								</div>
 								<div>
 									<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>

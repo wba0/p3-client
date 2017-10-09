@@ -1,0 +1,14 @@
+.benef-card{
+	margin-top: 20px;
+	padding: 50px;
+	border: 2px solid #bbb;
+	border-radius: 8px;
+}
+
+.benef-card img{
+	max-width: 300px;
+}
+
+ul{
+	list-style: none;
+}

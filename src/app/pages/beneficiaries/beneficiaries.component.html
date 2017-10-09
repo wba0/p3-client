@@ -1,3 +1,29 @@
-<p>
-  beneficiaries works!
-</p>
+<div class="container">
+<h2 class="text-center">Beneficiaries</h2>
+
+<!-- <div class="mx-auto text-center">
+<h3>Country</h3> -->
+
+<!-- <select (change)="updateJobList()" class="custom-select" [(ngModel)]="selectedLanguage">
+  <option selected>choose a language...</option>
+  <option *ngFor="let lang of langArr" [ngValue]="lang.language">
+		<span class="flag-icon flag-icon-{{lang.isoCode}}">a</span>
+		{{lang.langDisplay}}
+	</option>
+</select> -->
+ <!-- *ngIf="{{benef.sourceLanguage}} === {{selectedLanguage}}" -->
+ <!-- </div> -->
+<ul>
+
+	<li *ngFor="let benef of benefs">
+		<div class="benef-card col-md-4">
+			<img src="{{benef.logoUrl}}" alt="">
+		<h3>Name: {{benef.name}}</h3>
+		<h3>Type: {{benef.type}}</h3>
+		<h3><a href="{{benef.website}}" target="_blank">Website</a> </h3>
+		<h4>City: {{benef.city}}</h4>
+		<h4>Country: {{benef.country}}</h4>
+	</div>
+	</li>
+</ul>
+</div>

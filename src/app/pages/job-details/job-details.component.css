@@ -1,0 +1,10 @@
+.container{
+	width: 600px;
+}
+
+
+#original-content-text p{
+	border: 1px dashed #bbb;
+border-radius: 8px;
+padding: 30px;
+}

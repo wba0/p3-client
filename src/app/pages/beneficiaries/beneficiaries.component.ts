@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BeneficiaryService } from '../../services/beneficiary.service';
 
 @Component({
   selector: 'app-beneficiaries',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./beneficiaries.component.css']
 })
 export class BeneficiariesComponent implements OnInit {
-
-  constructor() { }
+	benefs: any = {};
+  constructor(
+		private benefApi: BeneficiaryService
+	) { }
 
   ngOnInit() {
+		this.benefApi.getBenefs()
+			.subscribe(
+				(benesFromApi: any[]) => {
+					this.benefs = benesFromApi;
+				}
+			);
   }
 
 }

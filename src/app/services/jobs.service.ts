@@ -17,7 +17,7 @@ export class JobsApiService {
   };
 
   getJobDetails(jobId: string) {
-    return this.http.get(`${this.baseUrl}/api/jobs/jobId`);
+    return this.http.get(`${this.baseUrl}/api/jobs/${jobId}`);
   };
 
   postJob(jobFields) {
@@ -27,7 +27,7 @@ export class JobsApiService {
   };
 
   deleteJob(jobId: string) {
-    return this.http.delete(`${this.baseUrl}/api/jobs/jobId`,
+    return this.http.delete(`${this.baseUrl}/api/jobs/${jobId}`,
       { withCredentials: true });
   };
 
@@ -56,7 +56,7 @@ export class JobsApiService {
   };
 
   updateJob(jobId: string) {
-    return this.http.put(`${this.baseUrl}/api/jobs/jobId`,
+    return this.http.put(`${this.baseUrl}/api/jobs/${jobId}`,
       { withCredentials: true });
   };
 
