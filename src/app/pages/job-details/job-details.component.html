@@ -1,4 +1,7 @@
 <div class="container">
+	<div class="row">
+	<div class="col-8">
+
 	<h3>{{oneJob._id}}</h3>
 	<div>{{oneJob.sourceLanguage}}</div>
 	<div>{{oneJob.targetLanguage}}</div>
@@ -15,7 +18,20 @@
 		<h3>Translated Content</h3>
 		<textarea class="form-control" id="translated-content-textarea" name="name" rows="8" cols="75" [(ngModel)]="oneJob.translatedContent" placeholder="Paste translated content here..."></textarea>
 	</div>
+	<h4>Which charity would you like the proceeds to be donated to?</h4>
+	<select id="beneficiary-select" #selectedBenef class="form-control form-control-lg" name="sourceLanguageInput" (change)="handleBenef(selectedBenef.value)" [(ngModel)]="selectedBenefName">
+		<option selected>choose a language...</option>
+		<option *ngFor="let benef of benefs" [value]="benef._id">{{benef.name}}</option></select>
+
 
 	<button class="btn btn-large btn-primary">Submit Translation for Review</button>
 </form>
+</div>
+
+<div class="col-4">
+	<img src="{{selectedBenef.logoUrl}}" alt="">
+	<h3>{{selectedBenef.name}}</h3>
+
+</div>
+</div>
 </div>

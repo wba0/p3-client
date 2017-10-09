@@ -17,7 +17,7 @@
 				<hr>
 				<h4>Jobs you are translating</h4>
 
-				<a class="nav-link" id="working-active-jobs-tab" data-toggle="pill" href="#working-active-jobs" role="tab" aria-controls="working-active-jobs">Active Jobs</a>
+				<a class="nav-link" id="working-active-jobs-tab" data-toggle="pill" href="#working-active-jobs" role="tab" aria-controls="working-active-jobs">Active Jobs<span class="job-count">{{jobCounts.workingJobs}}</span></a>
 				<a class="nav-link" id="working-translated-jobs-tab" data-toggle="pill" href="#working-translated-jobs" role="tab" aria-controls="-pills-working-translated-jobs">Translated Jobs</a>
 				<a class="nav-link" id="working-finished-jobs-tab" data-toggle="pill" href="#working-finished-jobs" role="tab" aria-controls="working-finished-jobs">Finished Jobs</a>
 			</div>
@@ -109,12 +109,11 @@
 				</div>
 				<div class="tab-pane fade" id="working-active-jobs" role="tabpanel" aria-labelledby="working-active-jobs-tab">
 
-						adoibawidubwaidbiawubdiwabud
-
 						<ul>
-
 							<li *ngFor="let job of workingJobs">
-							{{job_id}}</li>
+								<div> Job ID: <a [routerLink]="['/jobs', job._id]">{{job._id}}</a>
+								</div>
+						</li>
 						</ul>
 
 

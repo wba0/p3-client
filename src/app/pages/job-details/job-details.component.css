@@ -8,3 +8,11 @@
 border-radius: 8px;
 padding: 30px;
 }
+
+/*bootstrap select height issue fix*/
+.input-group-lg>.input-group-btn>select.btn:not([size]):not([multiple]), .input-group-lg>select.form-control:not([size]):not([multiple]), .input-group-lg>select.input-group-addon:not([size]):not([multiple]), select.form-control-lg:not([size]):not([multiple]) {
+    height: calc(2.3125rem + 20px);
+}
+#form-calculation-fields input{
+	text-align: center;
+}

@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
 	awaitingPaymentJobs: any;
 	finishedJobs: any;
 	langArr: any[] = this.languageService.languages;
+	jobCounts: any =[];
   constructor(
 		private authenticator: AuthApiService,
 		private jobsApi: JobsApiService,
@@ -63,6 +64,8 @@ export class DashboardComponent implements OnInit {
 				.subscribe(
 					(workingJobs: any) => {
 						this.workingJobs = workingJobs;
+						this.jobCounts.workingJobs = this.workingJobs.length;
+						console.log(this.jobCounts.workingJobs)
 					}
 				);
 			this.jobsApi.getMyAwaitingPaymentJobs()

@@ -44,3 +44,13 @@ li{
 	cursor: pointer;
 	font-size: 1.2em;
 }
+
+
+.job-count{
+	color: #fff;
+	background-color: blue;
+	padding: 5px;
+	margin-left: 10px;
+	border-radius: 1000px;
+	font-size: 0.8em;
+}
