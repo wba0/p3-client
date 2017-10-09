@@ -1,5 +1,7 @@
-<h2>Available Jobs</h2>
+<div class="container">
+<h2 class="text-center">Available Jobs</h2>
 
+<div class="mx-auto text-center">
 <h3>Language selection: </h3>
 
 <select (change)="updateJobList()" class="custom-select" [(ngModel)]="selectedLanguage">
@@ -10,7 +12,7 @@
 	</option>
 </select>
  <!-- *ngIf="{{job.sourceLanguage}} === {{selectedLanguage}}" -->
-
+</div>
 <ul>
 
 	<li *ngFor="let job of filteredJobs">
@@ -26,3 +28,4 @@
 	</div>
 	</li>
 </ul>
+</div>

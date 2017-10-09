@@ -16,6 +16,7 @@ import { LoginSignupComponent } from './pages/login-signup/login-signup.componen
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { PostJobComponent } from './pages/post-job/post-job.component';
+import { BeneficiariesComponent } from './pages/beneficiaries/beneficiaries.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PostJobComponent } from './pages/post-job/post-job.component';
     LoginSignupComponent,
     DashboardComponent,
     JobsComponent,
-    PostJobComponent
+    PostJobComponent,
+    BeneficiariesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,8 @@
 
-
+i{
+	font-size: 1.3em;
+	margin-right: 10px;
+}
 li{
 
 }
@@ -7,7 +10,26 @@ li{
 .dashboard-job-list li{
 	display: inline-block;
 	border: 1px solid #ddd;
-	padding: 30px;
+	border-radius: 8px;
+	padding: 15px;
 	margin: 15px;
+
+}
+
+.dashboard-job-list li div{
+	border-bottom: 1px dashed #bbb;
+	padding: 15px;
+}
+.dashboard-job-list li div p,
+.dashboard-job-list li div span{
+	margin-left: 20px;
+}
+
+.dashboard-job-list li h4{
+	margin-bottom: 15px;
+}
+
+#user-info img{
+	max-width: 125px;
 
 }

@@ -9,13 +9,15 @@ import { LoginSignupComponent } from './pages/login-signup/login-signup.componen
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { PostJobComponent } from './pages/post-job/post-job.component';
+import { BeneficiariesComponent } from './pages/beneficiaries/beneficiaries.component';
 
 const routes: Routes = [
 	{path: "login", component: LoginSignupComponent},
 	{path: "signup", component: LoginSignupComponent},
 	{path: "dashboard", component: DashboardComponent},
 	{path: "jobs", component: JobsComponent},
-	{path: "post-job", component: PostJobComponent}
+	{path: "post-job", component: PostJobComponent},
+	{path: "beneficiaries", component: BeneficiariesComponent}
 ];
 
 @NgModule({

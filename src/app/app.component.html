@@ -17,13 +17,16 @@
 					<a class="nav-link" routerLink="/post-job">Create a Job</a>
 				</li>
 				<li class="nav-item" *ngIf="userInfo">
-					<a class="nav-link" routerLink="/dashboard">Dashboard</a>
+					<a class="nav-link" routerLink="/beneficiaries">Beneficiaries</a>
 				</li>
 
 			</ul>
 
 
 			<ul class="navbar-nav ml-auto navbar-right">
+				<li class="nav-item" *ngIf="userInfo">
+					<a class="nav-link" routerLink="/dashboard">Dashboard</a>
+				</li>
 				<li class="nav-item" *ngIf="!userInfo">
 					<a routerLink="/login" class="nav-link">Log In</a>
 				</li>
@@ -45,8 +48,10 @@
 <router-outlet></router-outlet>
 
 <footer class="footer">
-	<div class="container">
 
-		<p>Made with meow</p>
-	</div>
+	<span class="float-left"><p>Made with meow</p></span>
+	<span class="float-right"><a target="_blank" href="https://github.com/wba0/"><i title="Github" class="fa fa-github" aria-hidden="true"></i>
+</a></span>
+
+
 </footer>
