@@ -13,6 +13,7 @@ export class JobsComponent implements OnInit {
 	filteredJobs: any[] = [];
 	userInfo: any;
 	selectedLanguage: string;
+	selectedIsoCode: any;
 	langArr: any = this.languageService.languages;
 
   constructor(
@@ -24,11 +25,21 @@ export class JobsComponent implements OnInit {
 
 
   ngOnInit() {
+		// this.languageService.addIsoCode(this.jobs);
+		// console.log(this.jobs)
+		this.jobs.forEach((job)=>{
+			job.sourceLanguage = "spanish";
+			console.log(job.sourceLanguage)
+		})
+
+
 		this.jobsApi.getJobs()
 			.subscribe(
 				(jobsFromApi: any[]) => {
 					this.jobs = jobsFromApi;
-					console.log(this.jobs)
+					//add language isocodes to jobs
+					this.languageService.addIsoCode(this.jobs);
+
 				}
 			);
 
@@ -43,14 +54,15 @@ export class JobsComponent implements OnInit {
   }
 
 	updateJobList(){
+		this.selectedIsoCode = this.languageService.findIsoCode(this.selectedLanguage);
+		console.log(this.selectedIsoCode)
 		this.filteredJobs = [];
 		const filtered = this.jobs.filter(job => job.sourceLanguage === this.selectedLanguage || job.targetLanguage === this.selectedLanguage);
 		this.filteredJobs = filtered;
-		console.log(this.filteredJobs)
 	}
 
 	applyClick(jobId: string){
-		this.jobsApi.applyToJob(jobId	)
+		this.jobsApi.applyToJob(jobId)
 			.subscribe(
 				(data) => {
 					console.log(data);

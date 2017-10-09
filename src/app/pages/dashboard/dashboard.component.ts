@@ -31,8 +31,6 @@ export class DashboardComponent implements OnInit {
 		// console.log("first part" , firstPart );
 		//
 		//
-		// 	this.languageService.addIsoCode(this.ownedJobs, this.langArr);
-		// 	console.log(this.ownedJobs)
 
 
 		this.authenticator.getLoginStatus()
@@ -49,8 +47,8 @@ export class DashboardComponent implements OnInit {
 				.subscribe(
 					(ownedJobs: any) => {
 						this.ownedJobs = ownedJobs;
-            console.log("owned jobs", this.ownedJobs)
-            console.log("owned jobs applicants", this.ownedJobs.applicants)
+							this.languageService.addIsoCode(this.ownedJobs);
+							console.log(this.ownedJobs)
 					}
 				);
 
@@ -80,4 +78,14 @@ export class DashboardComponent implements OnInit {
 					}
 				);
   }
+
+
+		acceptOrReject(jobId: string, applicantId: string, decision: string){
+			this.jobsApi.acceptOrRejectApplicant(jobId, applicantId, decision)
+				.subscribe(
+					(data) => {
+						console.log(data);
+					}
+				);
+		}
 }

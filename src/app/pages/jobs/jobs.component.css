@@ -4,3 +4,10 @@
 	border: 2px solid #bbb;
 	border-radius: 8px;
 }
+
+
+.big-flag{
+	font-size: 24px;
+	margin-right: 5px;
+	top: 5px;
+}

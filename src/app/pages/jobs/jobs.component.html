@@ -3,13 +3,11 @@
 
 <div class="mx-auto text-center">
 <h3>Language selection: </h3>
+<span class="big-flag flag-icon flag-icon-{{selectedIsoCode}}"></span>
 
 <select (change)="updateJobList()" class="custom-select" [(ngModel)]="selectedLanguage">
   <option selected>choose a language...</option>
-  <option *ngFor="let lang of langArr" [ngValue]="lang.language">
-		<span class="flag-icon flag-icon-{{lang.isoCode}}">a</span>
-		{{lang.langDisplay}}
-	</option>
+  <option *ngFor="let lang of langArr" [ngValue]="lang.language">{{lang.langDisplay}}</option>
 </select>
  <!-- *ngIf="{{job.sourceLanguage}} === {{selectedLanguage}}" -->
 </div>
@@ -17,7 +15,7 @@
 
 	<li *ngFor="let job of filteredJobs">
 		<div class="job-card col-md-4">
-		<h3>Source Language: {{job.sourceLanguage}}</h3>
+		<h3>Source Language:{{job.sourceLanguage}}</h3>
 		<span>=></span>
 		<h3>Target Language: {{job.targetLanguage}}</h3>
 		<h4>Content: </h4>

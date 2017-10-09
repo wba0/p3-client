@@ -66,4 +66,10 @@ export class JobsApiService {
 			{},
       { withCredentials: true });
   };
+
+	acceptOrRejectApplicant(jobId: string, applicantId: string, decision: string){
+		return this.http.patch(` ${this.baseUrl}/api/jobs/${jobId}/${applicantId}/${decision}`,
+		{},
+		{ withCredentials: true });
+	};
 }

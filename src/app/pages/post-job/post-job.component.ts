@@ -28,9 +28,11 @@ export class PostJobComponent implements OnInit {
 
 
   ngOnInit() {
+
   }
 
 	saveNewJob(){
+		this.newJob.sourceLanguageIsoCode = "yes"
 		console.log(this.newJob);
 		this.jobsApi.postJob(this.newJob)
 			.subscribe(

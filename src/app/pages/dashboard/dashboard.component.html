@@ -8,23 +8,23 @@
 
 	<div class="row">
 		<div class="col-3">
-			<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
+			<div class="nav flex-column nav-pills" id="tab" role="tablist">
 				<h4>Jobs you have created</h4>
-				<a class="nav-link active" id="v-pills-created-posted-jobs-tab" data-toggle="pill" href="#v-pills-created-posted-jobs" role="tab" aria-controls="v-pills-created-posted-jobs" aria-expanded="true">Posted Jobs</a>
-				<a class="nav-link" id="v-pills-created-active-jobs" data-toggle="pill" href="#v-pills-created-active-jobs" role="tab" aria-controls="v-pills-created-active-jobs" aria-expanded="true">Active Jobs</a>
-				<a class="nav-link" id="v-pills-created-translated-jobs" data-toggle="pill" href="#v-pills-created-translated-jobs" role="tab" aria-controls="-pills-created-translated-jobs" aria-expanded="true">Translated Jobs</a>
-				<a class="nav-link" id="v-pills-created-finished-jobs" data-toggle="pill" href="#v-pills-created-finished-jobs" role="tab" aria-controls="v-pills-created-finished-jobs" aria-expanded="true">Finished Jobs</a>
+				<a class="nav-link active" id="created-posted-jobs-tab" data-toggle="pill" href="#created-posted-jobs" role="tab" aria-controls="created-posted-jobs" aria-expanded="true">Posted Jobs</a>
+				<a class="nav-link" id="created-active-jobs-tab" data-toggle="pill" href="#created-active-jobs" role="tab" aria-controls="created-active-jobs">Active Jobs</a>
+				<a class="nav-link" id="created-translated-jobs-tab" data-toggle="pill" href="#created-translated-jobs" role="tab" aria-controls="-pills-created-translated-jobs">Translated Jobs</a>
+				<a class="nav-link" id="created-finished-jobs-tab" data-toggle="pill" href="#created-finished-jobs" role="tab" aria-controls="created-finished-jobs">Finished Jobs</a>
 				<hr>
 				<h4>Jobs you are translating</h4>
 
-				<a class="nav-link" id="v-pills-worked-active-jobs" data-toggle="pill" href="#v-pills-worked-active-jobs" role="tab" aria-controls="v-pills-worked-active-jobs" aria-expanded="true">Active Jobs</a>
-				<a class="nav-link" id="v-pills-worked-translated-jobs" data-toggle="pill" href="#v-pills-worked-translated-jobs" role="tab" aria-controls="-pills-worked-translated-jobs" aria-expanded="true">Translated Jobs</a>
-				<a class="nav-link" id="v-pills-worked-finished-jobs" data-toggle="pill" href="#v-pills-worked-finished-jobs" role="tab" aria-controls="v-pills-worked-finished-jobs" aria-expanded="true">Finished Jobs</a>
+				<a class="nav-link" id="working-active-jobs-tab" data-toggle="pill" href="#working-active-jobs" role="tab" aria-controls="working-active-jobs">Active Jobs</a>
+				<a class="nav-link" id="working-translated-jobs-tab" data-toggle="pill" href="#working-translated-jobs" role="tab" aria-controls="-pills-working-translated-jobs">Translated Jobs</a>
+				<a class="nav-link" id="working-finished-jobs-tab" data-toggle="pill" href="#working-finished-jobs" role="tab" aria-controls="working-finished-jobs">Finished Jobs</a>
 			</div>
 		</div>
 		<div class="col-9">
-			<div class="tab-content" id="v-pills-tabContent">
-				<div class="tab-pane fade show active" id="v-pills-created-posted-jobs" role="tabpanel" aria-labelledby="v-pills-created-posted-jobs-tab">
+			<div class="tab-content" id="tabContent">
+				<div class="tab-pane fade show active" id="created-posted-jobs" role="tabpanel" aria-labelledby="created-posted-jobs-tab">
 					<div class="row">
 						<ul class="dashboard-job-list">
 							<li *ngFor="let job of ownedJobs">
@@ -43,7 +43,7 @@
 								<div>
 									<h4><i class="fa fa-info" aria-hidden="true" title="Information"></i>Information</h4>
 
-									<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Worker"></i> {{job.worker}}
+									<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Worker"></i> {{job.worker.username}}
 									</p>
 									<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId}}
 									</p>
@@ -73,10 +73,13 @@
 								<div>
 									<h4><i class="fa fa-users" aria-hidden="true"></i>Applicants:</h4>
 
-									<!-- NEED CUSTOM PIPE HERE? -->
-									<ul>
+									<!-- NG IF APPLICANTS LENGTH-->
+									<ul *ngIf="job.applicants?.length > 0">
 											<li *ngFor="let applicant of job.applicants">
-													<p>{{applicant._id}}</p>
+													<h4><a [routerLink]="['/users', applicant._id]">{{applicant.username}}</a></h4>
+													<i class="fa fa-check accept-icon" aria-hidden="true" title="Accept Applicant" (click)="acceptOrReject(job._id, applicant._id, 'accept')"></i>
+													<h4>{{applicant.username}}</h4><i class="fa fa-times reject-icon" aria-hidden="true" title="Reject Applicant" (click)="acceptOrReject(job._id, applicant._id, 'reject')"></i>
+
 
 											</li>
 										</ul>
@@ -85,13 +88,50 @@
 						</ul>
 					</div>
 				</div>
-				<div class="tab-pane fade" id="v-pills-created-active-jobs" role="tabpanel" aria-labelledby="v-pills-created-active-jobs-tab">Two</div>
-				<div class="tab-pane fade" id="v-pills-created-translated-jobs" role="tabpanel" aria-labelledby="v-pills-created-translated-jobs-tab">...</div>
-				<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
-				<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">One</div>
-				<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">Two</div>
-				<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-				<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">Eight</div>
+				<div class="tab-pane fade" id="created-active-jobs" role="tabpanel" aria-labelledby="created-active-jobs-tab">
+
+
+
+
+
+				</div>
+				<div class="tab-pane fade" id="created-translated-jobs" role="tabpanel" aria-labelledby="created-translated-jobs-tab">
+
+
+
+
+				</div>
+				<div class="tab-pane fade" id="created-finished-jobs" role="tabpanel" aria-labelledby="created-finished-jobs-tab">.
+
+
+
+
+				</div>
+				<div class="tab-pane fade" id="working-active-jobs" role="tabpanel" aria-labelledby="working-active-jobs-tab">
+
+						adoibawidubwaidbiawubdiwabud
+
+						<ul>
+
+							<li *ngFor="let job of workingJobs">
+							{{job_id}}</li>
+						</ul>
+
+
+
+
+
+				</div>
+				<div class="tab-pane fade" id="working-translated-jobs" role="tabpanel" aria-labelledby="working-translated-jobs-tab">
+
+
+
+
+
+
+				</div>
+				<div class="tab-pane fade" id="working-finished-jobs" role="tabpanel" aria-labelledby="vworking-finished-jobs-tab">...</div>
+				<div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">Eight</div>
 			</div>
 
 
