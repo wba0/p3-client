@@ -21,6 +21,7 @@ import { PostJobComponent } from './pages/post-job/post-job.component';
 import { BeneficiariesComponent } from './pages/beneficiaries/beneficiaries.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { JobDetailsComponent } from './pages/job-details/job-details.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { JobDetailsComponent } from './pages/job-details/job-details.component';
     PostJobComponent,
     BeneficiariesComponent,
     UserProfileComponent,
-    JobDetailsComponent
+    JobDetailsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

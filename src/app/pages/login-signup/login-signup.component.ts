@@ -37,7 +37,7 @@ export class LoginSignupComponent implements OnInit {
 		this.authenticator.postSignup(this.newUser)
 			.subscribe(
 				(userInfo) => {
-					this.router.navigate(['']);
+					this.router.navigate(['/dashboard']);
 				},
 				(errorInfo) => {
 					console.log("Sign up error: ", errorInfo);
@@ -54,7 +54,7 @@ export class LoginSignupComponent implements OnInit {
 		this.authenticator.postLogin(this.loginUser)
 			.subscribe(
 				(userInfo) => {
-					this.router.navigate(['']);
+					this.router.navigate(['/dashboard']);
 				},
 				(errorInfo) => {
 					console.log("Log in error: ", errorInfo);
@@ -65,5 +65,6 @@ export class LoginSignupComponent implements OnInit {
 					}
 				}
 			);
+
 		}
 	}

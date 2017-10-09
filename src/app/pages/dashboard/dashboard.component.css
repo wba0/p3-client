@@ -6,8 +6,10 @@ i{
 li{
 
 }
-
-.dashboard-job-list li{
+.dashboard-job-list{
+	max-width: 370px;
+}
+.dashboard-job-list{
 	display: inline-block;
 	border: 1px solid #ddd;
 	border-radius: 8px;
@@ -15,17 +17,27 @@ li{
 	margin: 15px;
 
 }
+.dashboard-job-list .applicant-list{
+	display: block;
+border: none;
 
-.dashboard-job-list li div{
+}
+.dashboard-job-list .applicant-list h4{
+display: inline-block;
+}
+
+.dashboard-job-list div:last-child{
+	border-bottom: none;
+}
+.dashboard-job-list div{
 	border-bottom: 1px dashed #bbb;
 	padding: 15px;
 }
-.dashboard-job-list li div p,
-.dashboard-job-list li div span{
-	margin-left: 20px;
+.dashboard-job-list div p{
+margin: 20px;
 }
 
-.dashboard-job-list li h4{
+.dashboard-job-list h4{
 	margin-bottom: 15px;
 }
 
@@ -54,3 +66,14 @@ li{
 	border-radius: 1000px;
 	font-size: 0.8em;
 }
+
+.flag-icon{
+	font-size: 1.2em;
+	margin-right: 10px;
+}
+
+.fa-arrow-right{
+	margin-left: 15px;
+}
+
+p{font-size: 16px;}

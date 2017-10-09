@@ -1,6 +1,32 @@
+/*.container{
+	box-sizing: content-box;
+}*/
+
+form{
+	width: 600px;
+}
+
+.form-control{
+	width: 30%;
+	margin: 0 auto;
+}
+button{
+	display: block;
+	margin: 0 auto;
+}
+
+/*bootstrap select height issue fix*/
+.input-group-lg>.input-group-btn>select.btn:not([size]):not([multiple]), .input-group-lg>select.form-control:not([size]):not([multiple]), .input-group-lg>select.input-group-addon:not([size]):not([multiple]), select.form-control-lg:not([size]):not([multiple]) {
+    height: calc(2.3125rem + 20px);
+}
+#form-calculation-fields input{
+	text-align: center;
+}
+
 .job-card{
-	margin-top: 20px;
-	padding: 50px;
+	margin: 20px 10px 20px 10px;
+	max-width: 350px;
+	padding: 25px;
 	border: 2px solid #bbb;
 	border-radius: 8px;
 }
@@ -10,4 +36,34 @@
 	font-size: 24px;
 	margin-right: 5px;
 	top: 5px;
+}
+
+h3{
+	display: inline-block;
+	margin-bottom: 15px;
+}
+
+.job-card span,
+.job-card i{
+	font-size: 1.5em;
+	margin-left: 10px;
+}
+
+ul{
+	list-style: none;
+}
+
+button{
+	margin-top: 25px;
+}
+
+
+.fa-quote-right{
+	float:right;
+}
+
+.divider{
+	border-bottom: 1px dashed #eee;
+	padding-top: 25px;
+	padding-bottom: 20px;
 }

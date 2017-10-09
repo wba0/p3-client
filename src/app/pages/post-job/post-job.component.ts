@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JobsApiService } from '../../services/jobs.service';
 import { AuthApiService } from '../../services/auth-api.service';
 import { LanguageService } from '../../services/language.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-job',
@@ -23,7 +24,8 @@ export class PostJobComponent implements OnInit {
   constructor(
     private authenticator: AuthApiService,
     private jobsApi: JobsApiService,
-		private languageService: LanguageService
+		private languageService: LanguageService,
+		private router: Router
   ) { }
 
 
@@ -40,6 +42,8 @@ export class PostJobComponent implements OnInit {
 					console.log("Post successful: ",postedJob);
 					this.errorMessage = "",
 					this.newJob = {};
+					this.router.navigate(['/dashboard']);
+
 				},
 				(errorInfo) => {
 					console.log("Post unsuccessful: ", errorInfo);

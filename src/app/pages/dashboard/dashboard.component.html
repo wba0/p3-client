@@ -1,4 +1,4 @@
-<div class="container mx-auto">
+<div class="container-fluid mx-auto">
 
 	<div id="user-info" class="text-center mx-auto">
 		<img src="{{userInfo.avatarUrl}}" alt="">
@@ -6,8 +6,8 @@
 	</div>
 
 
-	<div class="row">
-		<div class="col-3">
+	<div class="row justify-content-center">
+		<div class="col-2">
 			<div class="nav flex-column nav-pills" id="tab" role="tablist">
 				<h4>Jobs you have created</h4>
 				<a class="nav-link active" id="created-posted-jobs-tab" data-toggle="pill" href="#created-posted-jobs" role="tab" aria-controls="created-posted-jobs" aria-expanded="true">Posted Jobs</a>
@@ -22,19 +22,18 @@
 				<a class="nav-link" id="working-finished-jobs-tab" data-toggle="pill" href="#working-finished-jobs" role="tab" aria-controls="working-finished-jobs">Finished Jobs</a>
 			</div>
 		</div>
-		<div class="col-9">
+		<div class="col-8">
 			<div class="tab-content" id="tabContent">
 				<div class="tab-pane fade show active" id="created-posted-jobs" role="tabpanel" aria-labelledby="created-posted-jobs-tab">
 					<div class="row">
-						<ul class="dashboard-job-list">
-							<li *ngFor="let job of ownedJobs">
+						<div *ngFor="let job of ownedJobs" class="dashboard-job-list col-4">
 								<div> Job ID: <a [routerLink]="['/jobs', job._id]">{{job._id}}</a>
 								</div>
 								<div>
 									<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
 
 									<p>	<span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>{{job.sourceLanguage}}
-										<i class="fa fa-arrow-right" aria-hidden="true"></i> {{job.targetLanguage}}
+										<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}"></span> {{job.targetLanguage}}
 									</p>
 
 									<p> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
@@ -59,7 +58,7 @@
 										<span *ngIf="job.undergoingWork" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
 										<span *ngIf="!job.undergoingWork" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
 									</p>
-									<p>Finished and awaiting payment:
+									<p>Awaiting payment:
 										<span *ngIf="job.finishedNotPaid" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
 										<span *ngIf="!job.finishedNotPaid" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
 									</p>
@@ -75,17 +74,14 @@
 
 									<!-- NG IF APPLICANTS LENGTH-->
 									<ul *ngIf="job.applicants?.length > 0">
-											<li *ngFor="let applicant of job.applicants">
+											<li class="applicant-list" *ngFor="let applicant of job.applicants">
 													<h4><a [routerLink]="['/users', applicant._id]">{{applicant.username}}</a></h4>
-													<i class="fa fa-check accept-icon" aria-hidden="true" title="Accept Applicant" (click)="acceptOrReject(job._id, applicant._id, 'accept')"></i>
-													<h4>{{applicant.username}}</h4><i class="fa fa-times reject-icon" aria-hidden="true" title="Reject Applicant" (click)="acceptOrReject(job._id, applicant._id, 'reject')"></i>
+													<i class="fa fa-check accept-icon" aria-hidden="true" title="Accept Applicant" (click)="acceptOrReject(job._id, applicant._id, 'accept')"></i><i class="fa fa-times reject-icon" aria-hidden="true" title="Reject Applicant" (click)="acceptOrReject(job._id, applicant._id, 'reject')"></i>
 
 
 											</li>
 										</ul>
 								</div>
-							</li>
-						</ul>
 					</div>
 				</div>
 				<div class="tab-pane fade" id="created-active-jobs" role="tabpanel" aria-labelledby="created-active-jobs-tab">
