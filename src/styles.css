@@ -27,3 +27,16 @@ h2{
   .container {width: 1600px;
 	max-width: 1920px;}
 }
+
+
+.success{
+	background-color: #DEEFD8;
+	padding: 15px 30px;
+	border-radius: 8px;
+}
+
+.error{
+	background-color: crimson;
+	padding: 15px 30px;
+	border-radius: 8px;
+}

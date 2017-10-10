@@ -7,7 +7,7 @@ li{
 
 }
 .dashboard-job-list{
-	max-width: 370px;
+	max-width: 350px;
 }
 .dashboard-job-list{
 	display: inline-block;
@@ -38,7 +38,10 @@ margin: 20px;
 }
 
 .dashboard-job-list h4{
-	margin-bottom: 15px;
+	margin-bottom: 35px;
+}
+.dashboard-job-list h4 i{
+	font-size: 1.5em;
 }
 
 #user-info img{
@@ -77,3 +80,10 @@ margin: 20px;
 }
 
 p{font-size: 16px;}
+
+.fa-check, .fa-times{
+	margin-left: 5px;
+}
+.fa-check-square-o, .fa-times-circle-o{
+	margin-left: 10px;
+}

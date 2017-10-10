@@ -28,12 +28,6 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit() {
-		// const firstPart = this.langArr.filter(item => item.language === this.ownedJobs.sourceLanguage)
-		// console.log("first part" , firstPart );
-		//
-		//
-
-
 		this.authenticator.getLoginStatus()
 			.subscribe(
 				(loggedInInfo: any) => {
@@ -57,6 +51,7 @@ export class DashboardComponent implements OnInit {
 				.subscribe(
 					(ownedActiveJobs: any) => {
 						this.ownedActiveJobs = ownedActiveJobs;
+						console.log("owned and active: ", this.ownedActiveJobs)
 					}
 				);
 

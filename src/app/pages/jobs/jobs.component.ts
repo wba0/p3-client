@@ -15,6 +15,8 @@ export class JobsComponent implements OnInit {
 	selectedLanguage: string;
 	selectedIsoCode: any;
 	langArr: any = this.languageService.languages;
+	applicationFeedback: string = null;
+	errorMessage: string = null;
 
   constructor(
 		private jobsApi: JobsApiService,
@@ -25,14 +27,6 @@ export class JobsComponent implements OnInit {
 
 
   ngOnInit() {
-		// this.languageService.addIsoCode(this.jobs);
-		// console.log(this.jobs)
-		this.jobs.forEach((job)=>{
-			job.sourceLanguage = "spanish";
-			console.log(job.sourceLanguage)
-		})
-
-
 		this.jobsApi.getJobs()
 			.subscribe(
 				(jobsFromApi: any[]) => {
@@ -55,17 +49,37 @@ export class JobsComponent implements OnInit {
 
 	updateJobList(){
 		this.selectedIsoCode = this.languageService.findIsoCode(this.selectedLanguage);
-		console.log(this.selectedIsoCode)
 		this.filteredJobs = [];
 		const filtered = this.jobs.filter(job => job.sourceLanguage === this.selectedLanguage || job.targetLanguage === this.selectedLanguage);
 		this.filteredJobs = filtered;
+		//remove jobs that have already been applied to 
+		this.filteredJobs.forEach((job, jobIndex)=>{
+			job.applicants.some((el)=>{
+				if(el._id === this.userInfo._id){
+					this.filteredJobs.splice(jobIndex, 1);
+				}
+			});
+
+
+
+		});
+
 	}
 
 	applyClick(jobId: string){
+		// if(this.userInfo._id.toString() === )
 		this.jobsApi.applyToJob(jobId)
 			.subscribe(
 				(data) => {
 					console.log(data);
+					this.applicationFeedback = "Thank you for applying! Please wait to hear back from job owner.";
+
+				},
+				(errorInfo) => {
+					console.log(errorInfo);
+					if(errorInfo.status === 403){
+						this.errorMessage = "You cannot apply to your own jobs. Please try again."
+					}
 				}
 			);
 	}
