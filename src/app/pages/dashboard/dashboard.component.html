@@ -10,16 +10,16 @@
 		<div class="col-2">
 			<div class="nav flex-column nav-pills" id="tabs" role="tablist">
 				<h4>Jobs you have created</h4>
-				<a class="nav-link active" id="created-posted-jobs-tab" data-toggle="pill" href="#created-posted-jobs" role="tab" aria-controls="created-posted-jobs" aria-expanded="true">Posted Jobs<span class="job-count">{{jobCounts.ownedJobs}}</span></a>
-				<a class="nav-link" id="created-active-jobs-tab" data-toggle="pill" href="#created-active-jobs" role="tab" aria-controls="created-active-jobs">Active Jobs<span class="job-count">{{jobCounts.ownedActiveJobs}}</span></a>
-				<a class="nav-link" id="created-translated-jobs-tab" data-toggle="pill" href="#created-translated-jobs" role="tab" aria-controls="created-translated-jobs">Translated Jobs<span class="job-count">{{jobCounts.ownedTranslatedJobs}}</span></a>
-				<a class="nav-link" id="created-finished-jobs-tab" data-toggle="pill" href="#created-finished-jobs" role="tab" aria-controls="created-finished-jobs">Finished Jobs<span class="job-count">{{jobCounts.ownedFinishedJobs}}</span></a>
+				<a class="nav-link active" id="created-posted-jobs-tab" data-toggle="pill" href="#created-posted-jobs" role="tab" aria-controls="created-posted-jobs" aria-expanded="true">Posted Jobs<div class="job-count"*ngIf="jobCounts.ownedJobs"><span>{{jobCounts.ownedJobs}}</span></div></a>
+				<a class="nav-link" id="created-active-jobs-tab" data-toggle="pill" href="#created-active-jobs" role="tab" aria-controls="created-active-jobs">Active Jobs<div class="job-count"*ngIf="jobCounts.ownedActiveJobs"><span>{{jobCounts.ownedActiveJobs}}</span></div></a>
+				<a class="nav-link" id="created-translated-jobs-tab" data-toggle="pill" href="#created-translated-jobs" role="tab" aria-controls="created-translated-jobs">Translated Jobs<div class="job-count"*ngIf="jobCounts.ownedTranslatedJobs"><span>{{jobCounts.ownedTranslatedJobs}}</span></div></a>
+				<a class="nav-link" id="created-finished-jobs-tab" data-toggle="pill" href="#created-finished-jobs" role="tab" aria-controls="created-finished-jobs">Finished Jobs<div class="job-count" *ngIf="jobCounts.ownedFinishedJobs"><span>{{jobCounts.ownedFinishedJobs}}</span></div></a>
 				<hr>
 				<h4>Jobs you are translating</h4>
 
-				<a class="nav-link" id="working-active-jobs-tab" data-toggle="pill" href="#working-active-jobs" role="tab" aria-controls="working-active-jobs">Active Jobs<span class="job-count">{{jobCounts.workingJobs}}</span></a>
-				<a class="nav-link" id="working-translated-jobs-tab" data-toggle="pill" href="#working-translated-jobs" role="tab" aria-controls="working-translated-jobs">Translated Jobs<span class="job-count">{{jobCounts.workingTranslatedJobs}}</span></a>
-				<a class="nav-link" id="working-finished-jobs-tab" data-toggle="pill" href="#working-finished-jobs" role="tab" aria-controls="working-finished-jobs">Finished Jobs<span class="job-count">{{jobCounts.workingFinishedJobs}}</span></a>
+				<a class="nav-link" id="working-active-jobs-tab" data-toggle="pill" href="#working-active-jobs" role="tab" aria-controls="working-active-jobs">Active Jobs<div class="job-count"*ngIf="jobCounts.workingJobs"><span>{{jobCounts.workingJobs}}</span></div></a>
+				<a class="nav-link" id="working-translated-jobs-tab" data-toggle="pill" href="#working-translated-jobs" role="tab" aria-controls="working-translated-jobs">Translated Jobs<div class="job-count"*ngIf="jobCounts.workingTranslatedJobs"><span>{{jobCounts.workingTranslatedJobs}}</span></div></a>
+				<a class="nav-link" id="working-finished-jobs-tab" data-toggle="pill" href="#working-finished-jobs" role="tab" aria-controls="working-finished-jobs">Finished Jobs<div class="job-count"*ngIf="jobCounts.workingFinishedJobs"><span>{{jobCounts.workingFinishedJobs}}</span></div></a>
 			</div>
 		</div>
 		<div class="col-8">
@@ -44,7 +44,7 @@
 
 								<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Worker"></i> {{job.worker.username}}
 								</p>
-								<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId}}
+								<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId.name}}
 								</p>
 								<p> <i class="fa fa-calculator" aria-hidden="true" Title="Word/Character Count"></i> {{job.wordCount}} words/characters
 								</p>
@@ -106,7 +106,7 @@
 
 								<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Worker"></i> {{job.worker.username}}
 								</p>
-								<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId}}
+								<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId.name}}
 								</p>
 								<p> <i class="fa fa-calculator" aria-hidden="true" Title="Word/Character Count"></i> {{job.wordCount}} words/characters
 								</p>
@@ -157,7 +157,7 @@
 
 								<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Worker"></i> {{job.worker.username}}
 								</p>
-								<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId}}
+								<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId.name}}
 								</p>
 								<p> <i class="fa fa-calculator" aria-hidden="true" Title="Word/Character Count"></i> {{job.wordCount}} words/characters
 								</p>
@@ -229,7 +229,7 @@
 
 									<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Worker"></i> {{job.worker.username}}
 									</p>
-									<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId}}
+									<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId.name}}
 									</p>
 									<p> <i class="fa fa-calculator" aria-hidden="true" Title="Word/Character Count"></i> {{job.wordCount}} words/characters
 									</p>
@@ -276,9 +276,9 @@
 								<div>
 									<h4><i class="fa fa-pencil-square-o" aria-hidden="true" title="Details"></i>Details</h4>
 
-									<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Worker"></i> {{job.worker.username}}
+									<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Owner"></i> {{job.owner.username}}
 									</p>
-									<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId}}
+									<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId.name}}
 									</p>
 									<p> <i class="fa fa-calculator" aria-hidden="true" Title="Word/Character Count"></i> {{job.wordCount}} words/characters
 									</p>
@@ -324,9 +324,9 @@
 									<div>
 										<h4><i class="fa fa-pencil-square-o" aria-hidden="true" title="Details"></i>Details</h4>
 
-										<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Worker"></i> {{job.worker.username}}
+										<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Owner"></i> {{job.owner.username}}
 										</p>
-										<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId}}
+										<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId.name}}
 										</p>
 										<p> <i class="fa fa-calculator" aria-hidden="true" Title="Word/Character Count"></i> {{job.wordCount}} words/characters
 										</p>
@@ -352,6 +352,7 @@
 								</div>
 						</div>
 					</div>
+				</div>
 
 					<div class="tab-pane fade" id="working-finished-jobs" role="tabpanel" aria-labelledby="working-finished-jobs-tab">
 						<div class="row">
@@ -372,9 +373,9 @@
 									<div>
 										<h4><i class="fa fa-pencil-square-o" aria-hidden="true" title="Details"></i>Details</h4>
 
-										<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Worker"></i> {{job.worker.username}}
+										<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Owner"></i> {{job.owner.username}}
 										</p>
-										<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId}}
+										<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId.name}}
 										</p>
 										<p> <i class="fa fa-calculator" aria-hidden="true" Title="Word/Character Count"></i> {{job.wordCount}} words/characters
 										</p>
@@ -404,6 +405,10 @@
 				</div>
 			</div>
 		</div>
+
+
+<div class="row buffer-div"></div>
+
 	</div>
 
 

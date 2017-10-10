@@ -1,5 +1,10 @@
 body{
-	height:100%;
+	/*ugly hack*/
+	min-height: 100% !important;
+	position: relative !important;
+}
+.buffer-div{
+	height: 200px;
 }
 i{
 	font-size: 1.3em;
@@ -9,13 +14,13 @@ li{
 
 }
 .dashboard-job-list{
-	max-width: 350px;
+	max-width: 30%;
 }
 .dashboard-job-list{
 	display: inline-block;
 	border: 1px solid #ddd;
 	border-radius: 8px;
-	padding: 15px;
+	padding: 10px;
 	margin: 15px;
 
 }
@@ -33,10 +38,10 @@ display: inline-block;
 }
 .dashboard-job-list div{
 	border-bottom: 1px dashed #bbb;
-	padding: 15px;
+	padding: 10px;
 }
 .dashboard-job-list div p{
-margin: 20px;
+margin: 10px;
 }
 
 .dashboard-job-list h4{
@@ -68,10 +73,17 @@ margin: 20px;
 	background-color: blue;
 	padding: 5px;
 	margin-left: 10px;
-	border-radius: 20%;
-	font-size: 0.8em;
+	border-radius: 50%;
+	/* font-size: 0.8em; */
 	width: 22px;
 	height: 22px;
+	display: inline-block;
+}
+
+.job-count span{
+		position: relative;
+    bottom: 4px;
+    left: 2px;
 }
 
 .flag-icon{
@@ -109,10 +121,10 @@ p{font-size: 16px;}
 	text-align: center;
 	background: #eee;
 position: absolute;
-bottom: 50%;
+bottom: 30%;
 left: 20%;
 border-radius: 8px;
-padding: 35px;
+padding: 50px;
 }
 .translated-content-modal h4{
 	display: inline-block;

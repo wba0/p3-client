@@ -16,3 +16,12 @@ padding: 30px;
 #form-calculation-fields input{
 	text-align: center;
 }
+
+
+#beneficiary-pane img{
+	width:300px;
+}
+
+button{
+	margin-top: 30px;
+}

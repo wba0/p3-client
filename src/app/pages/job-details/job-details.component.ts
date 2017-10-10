@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthApiService } from '../../services/auth-api.service';
 import { JobsApiService } from '../../services/jobs.service';
 import { BeneficiaryService } from '../../services/beneficiary.service';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-job-details',
@@ -15,6 +16,7 @@ export class JobDetailsComponent implements OnInit {
 	benefs: any = [];
 	chosenBenef: any = {};
 	errorMessage: string;
+	workerHere: boolean = false;
 
 
   constructor(
@@ -22,7 +24,8 @@ export class JobDetailsComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private jobsApi: JobsApiService,
-		private benefApi: BeneficiaryService
+		private benefApi: BeneficiaryService,
+		private languageService: LanguageService
   ) { }
 
   ngOnInit() {
@@ -30,9 +33,12 @@ export class JobDetailsComponent implements OnInit {
       this.jobsApi.getJobDetails(params.jobId)
         .subscribe(
         (oneJobDetails: any) => {
-          console.log("job details info : ", oneJobDetails)
           this.oneJob = oneJobDetails;
-        }
+					this.languageService.addIsoCode(this.oneJob);
+        },
+				(errorMessage) => {
+					console.log("Error getting job details: ", errorMessage);
+				}
         );
     });
 
@@ -46,14 +52,17 @@ export class JobDetailsComponent implements OnInit {
     this.authenticator.getLoginStatus()
       .subscribe(
       (loggedInInfo: any) => {
-				console.log("logged in info", loggedInInfo);
         this.userInfo = loggedInInfo.userInfo;
+				console.log("logged in info", this.userInfo._id);
+				if(this.userInfo._id === this.oneJob.worker._id){
+					this.workerHere = true;
+				}
       },
 			(errorInfo) => {
 				console.log("Get Login Status Error: ", errorInfo)
 			});
 
-
+		;
 
 
   }

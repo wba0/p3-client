@@ -1,23 +1,19 @@
-<div class="container">
-	<div class="row">
-	<div class="col-8">
-
-	<h3>{{oneJob._id}}</h3>
-	<div>{{oneJob.sourceLanguage}}</div>
-	<div>{{oneJob.targetLanguage}}</div>
-
-
+<div class="container-fluid">
+	<div class="row justify-content-center">
+	<div class="col-6">
+		<h2 class="text-center">Translate Job</h2>
 	<div class="form-group col-md-12" id="original-content-text">
-		<h3>Original Content</h3>
+		<h3 class="text-center">Original Content in <span class="flag-icon flag-icon-{{oneJob.sourceLanguageIsoCode}}"></span></h3>
 		<p>{{oneJob.content}}</p>
 	</div>
 
 
-<div *ngIf="userInfo._id === oneJob.worker._id">
+<!-- <div *ngIf="userInfo._id === oneJob.worker._id"> -->
+<div *ngIf="workerHere">
 
 	<form (ngSubmit)="translateJob()" class="mx-auto text-center">
 	<div class="form-group col-md-12">
-		<h3>Translated Content</h3>
+		<h3>Translate Content to <span class="flag-icon flag-icon-{{oneJob.targetLanguageIsoCode}}"></span></h3>
 		<textarea class="form-control" id="translated-content-textarea" name="name" rows="8" cols="75" [(ngModel)]="oneJob.translatedContent" placeholder="Paste translated content here..."></textarea>
 	</div>
 	<h4>Which charity would you like the proceeds to be donated to?</h4>
@@ -26,17 +22,19 @@
 		<option *ngFor="let benef of benefs" [value]="benef._id">{{benef.name}}</option></select>
 
 
-	<button class="btn btn-large btn-primary">Submit Translation for Review</button>
+	<button class="btn btn-large btn-success">Submit Translation for Review</button>
 </form>
 </div>
 
 
-<div *ngIf="userInfo._id === oneJob.owner._id">
+<!-- <div *ngIf="userInfo._id === oneJob.owner._id"> -->
+<div *ngIf="!workerHere">
 
 	<h3>This job is currently being translated by {{oneJob.worker.username}}</h3>
 </div>
+</div>
 
-<div class="col-4">
+<div class="col-4" id="beneficiary-pane">
 	<img src="{{chosenBenef.logoUrl}}" alt="">
 	<h3>{{chosenBenef.name}}</h3>
 

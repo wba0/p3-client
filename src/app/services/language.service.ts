@@ -9,7 +9,7 @@ export class LanguageService {
     { language: "french", langDisplay: "Français", isoCode: "fr" },
     { language: "spanish", langDisplay: "Español", isoCode: "es" },
     { language: "chinese", langDisplay: "中文", isoCode: "cn" },
-    { language: "portugese", langDisplay: "Francais", isoCode: "pt" },
+    { language: "portugese", langDisplay: "Português", isoCode: "pt" },
     { language: "japanese", langDisplay: "日本語", isoCode: "jp" },
     { language: "italian", langDisplay: "Italiano", isoCode: "it" },
     { language: "german", langDisplay: "Deutsch", isoCode: "de" },
@@ -21,7 +21,11 @@ export class LanguageService {
 
   addIsoCode(jobArray) {
 		if(jobArray === undefined){
-			return;
+				return;
+		}
+
+		if(typeof jobArray === "object"){
+			jobArray = [].concat(jobArray);
 		}
     jobArray.forEach((job) => {
       const matchedSource = this.languages.find(o => {

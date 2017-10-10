@@ -23,7 +23,8 @@ export class DashboardComponent implements OnInit {
   constructor(
 		private authenticator: AuthApiService,
 		private jobsApi: JobsApiService,
-		private languageService: LanguageService
+		private languageService: LanguageService,
+		private router: Router
 	) { }
 
 
@@ -102,6 +103,7 @@ export class DashboardComponent implements OnInit {
 				.subscribe(
 					(data) => {
 						console.log(data);
+						this.router.navigate(['/dashboard']);
 					}
 				);
 		}
