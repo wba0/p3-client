@@ -52,7 +52,7 @@ export class JobsComponent implements OnInit {
 		this.filteredJobs = [];
 		const filtered = this.jobs.filter(job => job.sourceLanguage === this.selectedLanguage || job.targetLanguage === this.selectedLanguage);
 		this.filteredJobs = filtered;
-		//remove jobs that have already been applied to 
+		//remove jobs that have already been applied to
 		this.filteredJobs.forEach((job, jobIndex)=>{
 			job.applicants.some((el)=>{
 				if(el._id === this.userInfo._id){
@@ -60,10 +60,7 @@ export class JobsComponent implements OnInit {
 				}
 			});
 
-
-
 		});
-
 	}
 
 	applyClick(jobId: string){

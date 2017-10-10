@@ -36,7 +36,10 @@ export class LanguageService {
 		}
 
 	findIsoCode(languageParam){
-			return this.languages.find(o => o.language = languageParam).isoCode;
+			// return this.languages.find(o => o.language = languageParam).isoCode;
+			console.log(languageParam);
+			console.log(this.languages.find(o => o.language = languageParam));
+			const foundLangObj = this.languages.find(o => o.language = languageParam);
   }
 
 }

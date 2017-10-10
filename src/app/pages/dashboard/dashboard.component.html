@@ -10,16 +10,16 @@
 		<div class="col-2">
 			<div class="nav flex-column nav-pills" id="tabs" role="tablist">
 				<h4>Jobs you have created</h4>
-				<a class="nav-link active" id="created-posted-jobs-tab" data-toggle="pill" href="#created-posted-jobs" role="tab" aria-controls="created-posted-jobs" aria-expanded="true">Posted Jobs</a>
-				<a class="nav-link" id="created-active-jobs-tab" data-toggle="pill" href="#created-active-jobs" role="tab" aria-controls="created-active-jobs">Active Jobs</a>
-				<a class="nav-link" id="created-translated-jobs-tab" data-toggle="pill" href="#created-translated-jobs" role="tab" aria-controls="created-translated-jobs">Translated Jobs</a>
-				<a class="nav-link" id="created-finished-jobs-tab" data-toggle="pill" href="#created-finished-jobs" role="tab" aria-controls="created-finished-jobs">Finished Jobs</a>
+				<a class="nav-link active" id="created-posted-jobs-tab" data-toggle="pill" href="#created-posted-jobs" role="tab" aria-controls="created-posted-jobs" aria-expanded="true">Posted Jobs<span class="job-count">{{jobCounts.ownedJobs}}</span></a>
+				<a class="nav-link" id="created-active-jobs-tab" data-toggle="pill" href="#created-active-jobs" role="tab" aria-controls="created-active-jobs">Active Jobs<span class="job-count">{{jobCounts.ownedActiveJobs}}</span></a>
+				<a class="nav-link" id="created-translated-jobs-tab" data-toggle="pill" href="#created-translated-jobs" role="tab" aria-controls="created-translated-jobs">Translated Jobs<span class="job-count">{{jobCounts.ownedTranslatedJobs}}</span></a>
+				<a class="nav-link" id="created-finished-jobs-tab" data-toggle="pill" href="#created-finished-jobs" role="tab" aria-controls="created-finished-jobs">Finished Jobs<span class="job-count">{{jobCounts.ownedFinishedJobs}}</span></a>
 				<hr>
 				<h4>Jobs you are translating</h4>
 
 				<a class="nav-link" id="working-active-jobs-tab" data-toggle="pill" href="#working-active-jobs" role="tab" aria-controls="working-active-jobs">Active Jobs<span class="job-count">{{jobCounts.workingJobs}}</span></a>
-				<a class="nav-link" id="working-translated-jobs-tab" data-toggle="pill" href="#working-translated-jobs" role="tab" aria-controls="working-translated-jobs">Translated Jobs</a>
-				<a class="nav-link" id="working-finished-jobs-tab" data-toggle="pill" href="#working-finished-jobs" role="tab" aria-controls="working-finished-jobs">Finished Jobs</a>
+				<a class="nav-link" id="working-translated-jobs-tab" data-toggle="pill" href="#working-translated-jobs" role="tab" aria-controls="working-translated-jobs">Translated Jobs<span class="job-count">{{jobCounts.workingTranslatedJobs}}</span></a>
+				<a class="nav-link" id="working-finished-jobs-tab" data-toggle="pill" href="#working-finished-jobs" role="tab" aria-controls="working-finished-jobs">Finished Jobs<span class="job-count">{{jobCounts.workingFinishedJobs}}</span></a>
 			</div>
 		</div>
 		<div class="col-8">
@@ -86,7 +86,6 @@
 					</div>
 				</div>
 
-
 				<div class="tab-pane fade" id="created-active-jobs" role="tabpanel" aria-labelledby="created-active-jobs-tab">
 					<div class="row">
 						<div *ngFor="let job of ownedActiveJobs" class="dashboard-job-list col-4">
@@ -133,13 +132,16 @@
 						</div>
 					</div>
 				</div>
-				<div class="tab-pane fade" id="created-translated-jobs" role="tabpanel" aria-labelledby="created-translated-jobs-tab">
 
+				<div class="tab-pane fade" id="created-translated-jobs" role="tabpanel" aria-labelledby="created-translated-jobs-tab">
 					<div class="row">
 						<div *ngFor="let job of awaitingPaymentJobs" class="dashboard-job-list col-4">
 							<!-- <div> Job ID: <a [routerLink]="['/jobs', job._id]">{{job._id}}</a>
 							</div> -->
-							<h4 class="text-center job-card-button"  data-toggle="modal" data-target=".view-translation-modal">See Translation</h4>
+							<div *ngIf="userInfo._id === job.owner._id">
+
+
+							<h4 class="text-center job-card-button" data-toggle="modal" data-target=".view-translation-modal">See Translation</h4>
 							<div>
 								<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
 
@@ -180,104 +182,229 @@
 							</div>
 
 
-<!-- momdal for translated content -->
+							<!-- momdal for translated content -->
 
 							<div class="modal fade view-translation-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-							  <div class="modal-dialog modal-lg translated-content-modal">
+								<div class="modal-dialog modal-lg translated-content-modal">
 									<h3 class="text-center">Submitted Translation:</h3>
 
-									<span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span><h4>{{job.sourceLanguage}}</h4>
-										<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}"></span> <h4>{{job.targetLanguage}}</h4>
+									<span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>
+									<h4>{{job.sourceLanguage}}</h4>
+									<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}"></span>
+									<h4>{{job.targetLanguage}}</h4>
 
-							    <div class="modal-content">
-							      {{job.translatedContent}}
-							    </div>
+									<div class="modal-content">
+										{{job.translatedContent}}
+									</div>
 									<button class="btn btn-large btn-success" (click)="acceptOrRejectTranslation('accept')">Accept Translation and Pay</button>
 									<button class="btn btn-large btn-danger" (click)="acceptOrRejectTranslation('reject')">Reject Translation</button>
-							  </div>
+								</div>
 							</div>
 
 							<!-- end modal html -->
-
+						</div>
 						</div>
 					</div>
 
-
 				</div>
+
 				<div class="tab-pane fade" id="created-finished-jobs" role="tabpanel" aria-labelledby="created-finished-jobs-tab">.
-
-
-
-
-				</div>
-				<div class="tab-pane fade" id="working-active-jobs" role="tabpanel" aria-labelledby="working-active-jobs-tab">
-
 					<div class="row">
-						<div *ngFor="let job of ownedActiveJobs" class="dashboard-job-list col-4">
-							<div> Job ID: <a [routerLink]="['/jobs', job._id]">{{job._id}}</a>
-							</div>
-							<div>
-								<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
+						<div *ngFor="let job of finishedJobs" class="dashboard-job-list col-4">
+							<div *ngIf="userInfo._id === job.owner._id">
+								<div> Job ID: <a [routerLink]="['/jobs', job._id]">{{job._id}}</a>
+								</div>
+								<div>
+									<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
 
-								<p> <span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>{{job.sourceLanguage}}
-									<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}"></span> {{job.targetLanguage}}
-								</p>
+									<p> <span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>{{job.sourceLanguage}}
+										<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}"></span> {{job.targetLanguage}}
+									</p>
 
-								<p> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
-								</p>
-							</div>
-							<div>
-								<h4><i class="fa fa-pencil-square-o" aria-hidden="true" title="Details"></i>Details</h4>
+									<p> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
+									</p>
+								</div>
+								<div>
+									<h4><i class="fa fa-pencil-square-o" aria-hidden="true" title="Details"></i>Details</h4>
 
-								<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Worker"></i> {{job.worker.username}}
-								</p>
-								<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId}}
-								</p>
-								<p> <i class="fa fa-calculator" aria-hidden="true" Title="Word/Character Count"></i> {{job.wordCount}} words/characters
-								</p>
-								<p> <i class="fa fa-usd" aria-hidden="true" title="Price"></i> {{job.price}}
-								</p>
-							</div>
-							<div>
-								<h4>
+									<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Worker"></i> {{job.worker.username}}
+									</p>
+									<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId}}
+									</p>
+									<p> <i class="fa fa-calculator" aria-hidden="true" Title="Word/Character Count"></i> {{job.wordCount}} words/characters
+									</p>
+									<p> <i class="fa fa-usd" aria-hidden="true" title="Price"></i> {{job.price}}
+									</p>
+								</div>
+								<div>
+									<h4>
 										<i class="fa fa-retweet" aria-hidden="true" title="Flow"></i>Flow</h4>
-								<p>Undergoing work:
-									<span *ngIf="job.undergoingWork" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
-									<span *ngIf="!job.undergoingWork" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
-								</p>
-								<p>Awaiting payment:
-									<span *ngIf="job.finishedNotPaid" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
-									<span *ngIf="!job.finishedNotPaid" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
-								</p>
-								<p>Finished and Paid:
-									<span *ngIf="job.finishedAndPaid" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
-									<span *ngIf="!job.finishedAndPaid" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
-								</p>
+									<p>Undergoing work:
+										<span *ngIf="job.undergoingWork" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+										<span *ngIf="!job.undergoingWork" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+									</p>
+									<p>Awaiting payment:
+										<span *ngIf="job.finishedNotPaid" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+										<span *ngIf="!job.finishedNotPaid" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+									</p>
+									<p>Finished and Paid:
+										<span *ngIf="job.finishedAndPaid" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+										<span *ngIf="!job.finishedAndPaid" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+					<div class="tab-pane fade" id="working-active-jobs" role="tabpanel" aria-labelledby="working-active-jobs-tab">
+
+						<div class="row">
+							<div *ngFor="let job of workingJobs" class="dashboard-job-list col-4">
+								<div> Job ID: <a [routerLink]="['/jobs', job._id]">{{job._id}}</a>
+								</div>
+								<div>
+									<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
+
+									<p> <span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>{{job.sourceLanguage}}
+										<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}"></span> {{job.targetLanguage}}
+									</p>
+
+									<p> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
+									</p>
+								</div>
+								<div>
+									<h4><i class="fa fa-pencil-square-o" aria-hidden="true" title="Details"></i>Details</h4>
+
+									<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Worker"></i> {{job.worker.username}}
+									</p>
+									<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId}}
+									</p>
+									<p> <i class="fa fa-calculator" aria-hidden="true" Title="Word/Character Count"></i> {{job.wordCount}} words/characters
+									</p>
+									<p> <i class="fa fa-usd" aria-hidden="true" title="Price"></i> {{job.price}}
+									</p>
+								</div>
+								<div>
+									<h4>
+										<i class="fa fa-retweet" aria-hidden="true" title="Flow"></i>Flow</h4>
+									<p>Undergoing work:
+										<span *ngIf="job.undergoingWork" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+										<span *ngIf="!job.undergoingWork" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+									</p>
+									<p>Awaiting payment:
+										<span *ngIf="job.finishedNotPaid" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+										<span *ngIf="!job.finishedNotPaid" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+									</p>
+									<p>Finished and Paid:
+										<span *ngIf="job.finishedAndPaid" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+										<span *ngIf="!job.finishedAndPaid" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
 
+					<div class="tab-pane fade" id="working-translated-jobs" role="tabpanel" aria-labelledby="working-translated-jobs-tab">
+						<div class="row">
+							<div *ngFor="let job of awaitingPaymentJobs" class="dashboard-job-list col-4">
+								<div *ngIf="job.worker._id === userInfo._id">
+									<div> Job ID: <a [routerLink]="['/jobs', job._id]">{{job._id}}</a>
+									</div>
+									<div>
+										<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
 
+										<p> <span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>{{job.sourceLanguage}}
+											<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}"></span> {{job.targetLanguage}}
+										</p>
 
+										<p> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
+										</p>
+									</div>
+									<div>
+										<h4><i class="fa fa-pencil-square-o" aria-hidden="true" title="Details"></i>Details</h4>
 
+										<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Worker"></i> {{job.worker.username}}
+										</p>
+										<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId}}
+										</p>
+										<p> <i class="fa fa-calculator" aria-hidden="true" Title="Word/Character Count"></i> {{job.wordCount}} words/characters
+										</p>
+										<p> <i class="fa fa-usd" aria-hidden="true" title="Price"></i> {{job.price}}
+										</p>
+									</div>
+									<div>
+										<h4>
+										<i class="fa fa-retweet" aria-hidden="true" title="Flow"></i>Flow</h4>
+										<p>Undergoing work:
+											<span *ngIf="job.undergoingWork" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+											<span *ngIf="!job.undergoingWork" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+										</p>
+										<p>Awaiting payment:
+											<span *ngIf="job.finishedNotPaid" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+											<span *ngIf="!job.finishedNotPaid" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+										</p>
+										<p>Finished and Paid:
+											<span *ngIf="job.finishedAndPaid" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+											<span *ngIf="!job.finishedAndPaid" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+										</p>
+									</div>
+								</div>
+						</div>
+					</div>
+
+					<div class="tab-pane fade" id="working-finished-jobs" role="tabpanel" aria-labelledby="working-finished-jobs-tab">
+						<div class="row">
+							<div *ngFor="let job of finishedJobs" class="dashboard-job-list col-4">
+								<div *ngIf="userInfo._id === job.worker._id">
+									<div> Job ID: <a [routerLink]="['/jobs', job._id]">{{job._id}}</a>
+									</div>
+									<div>
+										<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
+
+										<p> <span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>{{job.sourceLanguage}}
+											<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}"></span> {{job.targetLanguage}}
+										</p>
+
+										<p> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
+										</p>
+									</div>
+									<div>
+										<h4><i class="fa fa-pencil-square-o" aria-hidden="true" title="Details"></i>Details</h4>
+
+										<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Worker"></i> {{job.worker.username}}
+										</p>
+										<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId}}
+										</p>
+										<p> <i class="fa fa-calculator" aria-hidden="true" Title="Word/Character Count"></i> {{job.wordCount}} words/characters
+										</p>
+										<p> <i class="fa fa-usd" aria-hidden="true" title="Price"></i> {{job.price}}
+										</p>
+									</div>
+									<div>
+										<h4>
+										<i class="fa fa-retweet" aria-hidden="true" title="Flow"></i>Flow</h4>
+										<p>Undergoing work:
+											<span *ngIf="job.undergoingWork" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+											<span *ngIf="!job.undergoingWork" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+										</p>
+										<p>Awaiting payment:
+											<span *ngIf="job.finishedNotPaid" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+											<span *ngIf="!job.finishedNotPaid" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+										</p>
+										<p>Finished and Paid:
+											<span *ngIf="job.finishedAndPaid" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+											<span *ngIf="!job.finishedAndPaid" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="tab-pane fade" id="working-translated-jobs" role="tabpanel" aria-labelledby="working-translated-jobs-tab">
-
-
-
-
-
-
-				</div>
-				<div class="tab-pane fade" id="working-finished-jobs" role="tabpanel" aria-labelledby="working-finished-jobs-tab">...</div>
 			</div>
-
-
 		</div>
-
 	</div>
-
-</div>
 
 
 <!-- Modal for view translation -->

@@ -43,7 +43,8 @@ export class DashboardComponent implements OnInit {
 					(ownedJobs: any) => {
 						this.ownedJobs = ownedJobs;
 							this.languageService.addIsoCode(this.ownedJobs);
-							console.log(this.ownedJobs)
+							this.jobCounts.ownedJobs = this.ownedJobs.length;
+
 					}
 				);
 
@@ -52,16 +53,17 @@ export class DashboardComponent implements OnInit {
 					(ownedActiveJobs: any) => {
 						this.ownedActiveJobs = ownedActiveJobs;
 						this.languageService.addIsoCode(this.ownedActiveJobs);
+						this.jobCounts.ownedActiveJobs = this.ownedActiveJobs.length;
 
 					}
 				);
+
 
 			this.jobsApi.getMyWorkingJobs()
 				.subscribe(
 					(workingJobs: any) => {
 						this.workingJobs = workingJobs;
 						this.languageService.addIsoCode(this.workingJobs);
-
 						this.jobCounts.workingJobs = this.workingJobs.length;
 						console.log(this.jobCounts.workingJobs)
 					}
@@ -71,6 +73,10 @@ export class DashboardComponent implements OnInit {
 					(awaitingPaymentJobs: any) => {
 						this.awaitingPaymentJobs = awaitingPaymentJobs;
 						this.languageService.addIsoCode(this.awaitingPaymentJobs);
+
+						this.jobCounts.workingTranslatedJobs = awaitingPaymentJobs.filter(o => o.worker._id === this.userInfo._id).length;
+						this.jobCounts.ownedTranslatedJobs = (awaitingPaymentJobs.filter(o => o.owner._id === this.userInfo._id)).length;
+
 					},
 					(errorInfo) => {
 						console.log("Error getting awaiting payment jobs: ", errorInfo)
@@ -79,9 +85,13 @@ export class DashboardComponent implements OnInit {
 			this.jobsApi.getMyFinishedJobs()
 				.subscribe(
 					(finishedJobs: any) => {
-						this.languageService.addIsoCode(this.finishedJobs);
-
 						this.finishedJobs = finishedJobs;
+						this.languageService.addIsoCode(this.finishedJobs);
+						this.jobCounts.workingFinishedJobs = finishedJobs.filter(o => o.worker._id === this.userInfo._id).length;
+						this.jobCounts.ownedFinishedJobs = (finishedJobs.filter(o => o.owner._id === this.userInfo._id)).length;
+					},
+					(errorInfo) => {
+						console.log("Error getting finished jobs: ", errorInfo);
 					}
 				);
   }
