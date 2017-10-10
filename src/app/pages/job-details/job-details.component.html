@@ -13,6 +13,8 @@
 	</div>
 
 
+<div *ngIf="userInfo._id === oneJob.worker._id">
+
 	<form (ngSubmit)="translateJob()" class="mx-auto text-center">
 	<div class="form-group col-md-12">
 		<h3>Translated Content</h3>
@@ -26,6 +28,12 @@
 
 	<button class="btn btn-large btn-primary">Submit Translation for Review</button>
 </form>
+</div>
+
+
+<div *ngIf="userInfo._id === oneJob.owner._id">
+
+	<h3>This job is currently being translated by {{oneJob.worker.username}}</h3>
 </div>
 
 <div class="col-4">

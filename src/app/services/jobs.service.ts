@@ -72,4 +72,10 @@ export class JobsApiService {
 		{},
 		{ withCredentials: true });
 	};
+
+	acceptOrRejectTranslation(jobId: string, decision: string){
+		return this.http.patch(`${this.baseUrl}/api/submittedJob/${jobId}/${decision}`,
+		{},
+		{ withCredentials: true });
+	}
 }

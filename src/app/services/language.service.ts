@@ -20,6 +20,9 @@ export class LanguageService {
   constructor() { }
 
   addIsoCode(jobArray) {
+		if(jobArray === undefined){
+			return;
+		}
     jobArray.forEach((job) => {
       const matchedSource = this.languages.find(o => {
         return o.language === job.sourceLanguage;

@@ -87,3 +87,29 @@ p{font-size: 16px;}
 .fa-check-square-o, .fa-times-circle-o{
 	margin-left: 10px;
 }
+
+.job-card-button{
+	background-color: indigo;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 8px;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+.translated-content-modal div,
+.translated-content-modal h3{
+	margin: 30px 0;
+}
+.translated-content-modal{
+	text-align: center;
+	background: #eee;
+position: absolute;
+bottom: 50%;
+left: 20%;
+border-radius: 8px;
+padding: 35px;
+}
+.translated-content-modal h4{
+	display: inline-block;
+}

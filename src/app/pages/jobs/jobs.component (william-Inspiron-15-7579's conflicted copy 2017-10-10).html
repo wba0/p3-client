@@ -1,0 +1,40 @@
+<div class="container">
+	<h2 class="text-center">Available Jobs</h2>
+
+<div *ngIf="applicationFeedback">
+	<h4 class="success text-center" >{{applicationFeedback}}</h4>
+</div>
+
+<div *ngIf="errorMessage">
+	<h4 class="error text-center" >{{errorMessage}}</h4>
+</div>
+	<div class="mx-auto text-center">
+		<h3 class="text-center">Select a language below: </h3>
+		<span class="big-flag flag-icon flag-icon-{{selectedIsoCode}}"></span>
+		<select (change)="updateJobList()" class="form-control form-control-lg" [(ngModel)]="selectedLanguage">
+		  <option selected>choose a language...</option>
+		  <option *ngFor="let lang of langArr" [ngValue]="lang.language">{{lang.langDisplay}}</option>
+		</select>
+		<!-- *ngIf="{{job.sourceLanguage}} === {{selectedLanguage}}" -->
+	</div>
+
+
+		<div *ngFor="let job of filteredJobs">
+			<div class="job-card col-md-4">
+				<span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>
+				<h3>{{job.sourceLanguage}}</h3>
+
+				<i class="fa fa-arrow-right" aria-hidden="true"></i>
+				<span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>
+				<h3>{{job.targetLanguage}}</h3>
+				<div class="divider"></div>
+<i class="fa fa-quote-left" aria-hidden="true" title="Content"></i>
+				<h5 class="text-center">{{job.content}}</h5>
+				<i class="fa fa-quote-right" aria-hidden="true" title="Content"></i>
+
+				<div class="divider"></div>
+				<button (click)="applyClick(job._id)" class="btn btn-large btn-primary text-center mx-auto">Apply</button>
+			</div>
+		</div>
+
+</div>

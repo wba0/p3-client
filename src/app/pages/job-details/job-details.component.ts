@@ -27,7 +27,6 @@ export class JobDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
-      console.log(params)
       this.jobsApi.getJobDetails(params.jobId)
         .subscribe(
         (oneJobDetails: any) => {
@@ -47,8 +46,16 @@ export class JobDetailsComponent implements OnInit {
     this.authenticator.getLoginStatus()
       .subscribe(
       (loggedInInfo: any) => {
+				console.log("logged in info", loggedInInfo);
         this.userInfo = loggedInInfo.userInfo;
-      });
+      },
+			(errorInfo) => {
+				console.log("Get Login Status Error: ", errorInfo)
+			});
+
+
+
+
   }
 
 	handleBenef(benefId){
@@ -59,13 +66,13 @@ export class JobDetailsComponent implements OnInit {
 	}
 
   translateJob() {
-		this.oneJob.undergoingWork = false;
 		this.oneJob.beneficiaryId = this.chosenBenef._id;
 		this.jobsApi.submitJob(this.oneJob._id, this.oneJob)
       .subscribe(
       (translatedJob: any) => {
         console.log("Post successful: ", translatedJob);
-				this.errorMessage = ""
+				this.errorMessage = "";
+				this.router.navigate(["/dashboard"]);
       },
 			(errorInfo) => {
 				console.log("Post unsuccessful: ", errorInfo);

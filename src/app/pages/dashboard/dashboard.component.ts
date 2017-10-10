@@ -51,7 +51,8 @@ export class DashboardComponent implements OnInit {
 				.subscribe(
 					(ownedActiveJobs: any) => {
 						this.ownedActiveJobs = ownedActiveJobs;
-						console.log("owned and active: ", this.ownedActiveJobs)
+						this.languageService.addIsoCode(this.ownedActiveJobs);
+
 					}
 				);
 
@@ -59,6 +60,8 @@ export class DashboardComponent implements OnInit {
 				.subscribe(
 					(workingJobs: any) => {
 						this.workingJobs = workingJobs;
+						this.languageService.addIsoCode(this.workingJobs);
+
 						this.jobCounts.workingJobs = this.workingJobs.length;
 						console.log(this.jobCounts.workingJobs)
 					}
@@ -67,23 +70,41 @@ export class DashboardComponent implements OnInit {
 				.subscribe(
 					(awaitingPaymentJobs: any) => {
 						this.awaitingPaymentJobs = awaitingPaymentJobs;
+						this.languageService.addIsoCode(this.awaitingPaymentJobs);
+					},
+					(errorInfo) => {
+						console.log("Error getting awaiting payment jobs: ", errorInfo)
 					}
 				);
 			this.jobsApi.getMyFinishedJobs()
 				.subscribe(
 					(finishedJobs: any) => {
+						this.languageService.addIsoCode(this.finishedJobs);
+
 						this.finishedJobs = finishedJobs;
 					}
 				);
   }
 
 
-		acceptOrReject(jobId: string, applicantId: string, decision: string){
+		acceptOrRejectApplicant(jobId: string, applicantId: string, decision: string){
 			this.jobsApi.acceptOrRejectApplicant(jobId, applicantId, decision)
 				.subscribe(
 					(data) => {
 						console.log(data);
 					}
 				);
+		}
+
+		acceptOrRejectTranslation(jobId: string, decision: string){
+				this.jobsApi.acceptOrRejectTranslation(jobId, decision)
+					.subscribe(
+						(data) => {
+							console.log(data);
+						},
+						(errorInfo) => {
+							console.log("Error accepting or rejecting translation: ", errorInfo)
+						}
+					);
 		}
 }
