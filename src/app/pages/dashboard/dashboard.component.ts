@@ -29,7 +29,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngAfterViewInit() {
-    setTimeout(() => { payPalCheckout(); }, 500);
+    setTimeout(() => {
+			payPalCheckout((finishedJob)=> {
+				//whatever to update the ui
+				this.finishedJobs.push(finishedJob);
+				//remove finishedjob from awaitingPaymentJobs
+				// this.awaitingPaymentJobs
+			});
+		}, 500);
   }
   ngOnInit() {
 

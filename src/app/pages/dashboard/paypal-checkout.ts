@@ -8,7 +8,7 @@ export function sendJobInfo (jobInfo){
 	selectedJob = jobInfo;
 }
 
-export function payPalCheckout() {
+export function payPalCheckout(finishedTasks) {
   paypal.Button.render({
 
     env: 'sandbox', // sandbox | production
@@ -31,7 +31,6 @@ export function payPalCheckout() {
 
     // onAuthorize() is called when the buyer approves the payment
     onAuthorize: function(data, actions) {
-
       // Set up a url on your server to execute the payment
       var EXECUTE_URL = `${environment.apiUrl}/api/paypal/executepayment`;
 
@@ -43,9 +42,7 @@ export function payPalCheckout() {
 
       // Make a call to your server to execute the payment
       return paypal.request.post(EXECUTE_URL, data)
-        .then(function(res) {
-          window.alert('Payment Complete!');
-        });
+        .then(finishedTasks);
     }
 
   }, '#paypal-button-container');
