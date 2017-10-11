@@ -4,19 +4,39 @@
 	<img src="{{userDetails.avatarUrl}}" alt="">
 	<h4>{{userDetails.username}}</h4>
 	<h4>{{userDetails.rating}}</h4>
-	<h4>Mother Tongues:</h4>
+<div *ngIf="userInfo._id === userDetails._id">
+	<form id="updateForm" (ngSubmit)="addLanguageSkill()">
+		<h4>Credentials: </h4>
+<!-- <div *ngFor={} -->
+		<h5>Language:</h5>
+		<select class="form-control form-control-lg" [(ngModel)]="newLanguageSkill.language" name="languageSkillsInput">
+			<option *ngFor="let lang of langArr"><span class="flag-icon flag-icon-{{lang.isoCode}}"></span>{{lang.language}}</option>
+		</select>
+		<h5>Skill:</h5>
+		<select class="form-control form-control-lg" [(ngModel)]="newLanguageSkill.proficiency" name="languageSkillsInput">
+			<option>Elementary</option>
+			<option>Intermediate</option>
+			<option>Professional</option>
+			<option>Native</option>
+		</select>
+
+		<button>Add</button>
+	</form>
+</div>
 	<ul>
-		<li *ngFor="let tongue of userDetails.languageSkills">
-			{{tongue.language}} : {{tongue.proficiency}}
-		</li>
-	</ul>
-	<h4>Certifications:</h4>
-	<ul>
-		<li *ngFor="let cert of userDetails.certifications">
-			{{cert.name}}
-			{{cert.year}}
-		</li>
-	</ul>
+<li *ngFor="let tongue of userDetails.languageSkills">
+<span class="flag-icon flag-icon-{{tongue.isoCode}}"></span> {{tongue.language}} : {{tongue.proficiency}} X
+</li>
+</ul>
+
+	<!-- <h4>Certifications:</h4>
+<ul>
+	<li *ngFor="let cert of userDetails.certifications">
+		{{cert.name}}
+		{{cert.year}}
+	</li>
+</ul> -->
+
 	<h4>Posted Jobs:</h4>
 	<ul>
 		<li *ngFor="let job of userDetails.postedJobs">

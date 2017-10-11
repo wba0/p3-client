@@ -12,9 +12,14 @@ import { LanguageService } from '../../services/language.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-	userDetails: any = {};
+	userDetails: any = {
+		languageSkills : [],
+		certifications: []
+	};
 	baseUrl: string = environment.apiUrl;
 	langArr: any = this.languageService.languages;
+	errorMessage: string;
+	newLanguageSkill: any = {};
 
   constructor(
 		private router: Router,
@@ -31,14 +36,15 @@ export class UserProfileComponent implements OnInit {
 			.subscribe(
 				(userDetailsFromApi) => {
 					this.userDetails = userDetailsFromApi;
-					console.log(userDetailsFromApi)
+
+
 					this.userDetails.languageSkills.forEach((lang) => {
 						lang.isoCode = this.langArr.find((o) => {
-							return o.language = lang.language;
+							return o.language === lang.language;
 						}).isoCode;
-						console.log(lang.isoCode)
+						lang.language = lang.language.charAt(0).toUpperCase() + lang.language.substring(1);
 					});
-					console.log(this.userDetails.languageSkills);
+					console.log(this.userDetails)
 				},
 				(errorMessage) => {
 					console.log("Error getting user details: ", errorMessage)
@@ -47,8 +53,26 @@ export class UserProfileComponent implements OnInit {
 
 		});
 
-		console.log(this.langArr)
 
 
   }
+
+	addLanguageSkill(){
+		this.userApi.addLanguageSkill(this.newLanguageSkill)
+			.subscribe(
+				(updatedLanguageSkills: any) => {
+					console.log("Post successful: ", updatedLanguageSkills);
+					this.errorMessage = "",
+					this.userDetails.languageSkills = updatedLanguageSkills;
+				},
+				(errorInfo) => {
+					console.log("Post unsuccessful: ", errorInfo);
+					if(errorInfo.status === 400){
+						this.errorMessage = "Validation Error"
+					} else {
+						this.errorMessage = "Unknown error. Please try again later."
+					}
+				}
+			);
+	}
 }

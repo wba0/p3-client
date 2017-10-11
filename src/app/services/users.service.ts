@@ -15,4 +15,10 @@ export class UsersService {
   getUserDetails(userId) {
     return this.http.get(`${this.baseUrl}/api/users/${userId}`);
   };
+
+	addLanguageSkill(newLanguageSkill: any){
+		return this.http.patch(`${this.baseUrl}/api/users/addLanguageSkill`,
+		newLanguageSkill,
+	{ withCredentials: true }
+)};
 }

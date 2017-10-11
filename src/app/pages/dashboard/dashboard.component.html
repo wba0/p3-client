@@ -3,6 +3,7 @@
 	<div id="user-info" class="text-center mx-auto">
 		<img src="{{userInfo.avatarUrl}}" alt="">
 		<h2 class="text-center">Welcome, {{userInfo.username}}</h2>
+		<a [routerLink]="['/users', userInfo._id]">My Profile</a>
 	</div>
 
 
@@ -141,7 +142,7 @@
 							<div *ngIf="userInfo._id === job.owner._id">
 
 
-							<h4 class="text-center job-card-button" data-toggle="modal" data-target=".view-translation-modal">See Translation</h4>
+							<h4 class="text-center job-card-button" data-toggle="modal" data-target=".view-translation-modal" (click)="setUpPaypal(job)">See Translation</h4>
 							<div>
 								<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
 
@@ -200,6 +201,8 @@
 										{{job.translatedContent}}
 									</div>
 									<button class="btn btn-large btn-success" (click)="acceptOrRejectTranslation(job._id, 'accept')">Accept Translation and Pay</button>
+									<div id="paypal-button-container"></div>
+
 									<button type="button"  data-dismiss="modal" class="btn btn-large btn-danger" (click)="acceptOrRejectTranslation(job._id, 'reject')">Reject Translation</button>
 								</div>
 							</div>
