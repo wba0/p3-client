@@ -7,7 +7,7 @@ import { BeneficiaryService } from '../../services/beneficiary.service';
   styleUrls: ['./beneficiaries.component.css']
 })
 export class BeneficiariesComponent implements OnInit {
-	benefs: any = {};
+	benefs: any[] = [];
   constructor(
 		private benefApi: BeneficiaryService
 	) { }

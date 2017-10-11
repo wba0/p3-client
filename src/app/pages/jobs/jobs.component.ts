@@ -48,9 +48,9 @@ export class JobsComponent implements OnInit {
   }
 
 	updateJobList(){
-		this.selectedIsoCode = this.languageService.findIsoCode(this.selectedLanguage);
+		this.selectedIsoCode = this.languageService.findIsoCodeFromLangDisplay(this.selectedLanguage);
 		this.filteredJobs = [];
-		const filtered = this.jobs.filter(job => job.sourceLanguage === this.selectedLanguage || job.targetLanguage === this.selectedLanguage);
+		const filtered = this.jobs.filter(job => job.sourceLanguageIsoCode === this.selectedIsoCode || job.targetLanguageIsoCode === this.selectedIsoCode);
 		this.filteredJobs = filtered;
 		//remove jobs that have already been applied to
 		this.filteredJobs.forEach((job, jobIndex)=>{

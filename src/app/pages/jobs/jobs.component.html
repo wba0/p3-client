@@ -12,10 +12,9 @@
 		<h3 class="text-center">Select a language below: </h3>
 		<span class="big-flag flag-icon flag-icon-{{selectedIsoCode}}"></span>
 		<select (change)="updateJobList()" class="form-control form-control-lg" [(ngModel)]="selectedLanguage">
-		  <option selected>choose a language...</option>
-		  <option *ngFor="let lang of langArr" [ngValue]="lang.language">{{lang.langDisplay}}</option>
+		  <option *ngFor="let lang of langArr" >{{lang.langDisplay}}</option>
 		</select>
-		<!-- *ngIf="{{job.sourceLanguage}} === {{selectedLanguage}}" -->
+		<!-- [ngValue]="lang.language" -->
 	</div>
 
 
@@ -27,6 +26,8 @@
 				<i class="fa fa-arrow-right" aria-hidden="true"></i>
 				<span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}"></span>
 				<h3>{{job.targetLanguage}}</h3>
+				<h3 class="text-center">Total Payout: ${{job.price}}</h3>
+
 				<div class="divider"></div>
 <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i>
 				<h5 class="text-center">{{job.content}}</h5>
