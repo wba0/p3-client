@@ -104,6 +104,9 @@ export class DashboardComponent implements OnInit {
 					(data) => {
 						console.log(data);
 						this.router.navigate(['/dashboard']);
+					},
+					(errorInfo) => {
+						console.log("Error accepting/rejecting: ", errorInfo)
 					}
 				);
 		}
@@ -113,6 +116,10 @@ export class DashboardComponent implements OnInit {
 					.subscribe(
 						(data) => {
 							console.log(data);
+							if(decision = "reject"){
+								console.log("Rejected: ", data);
+								this.router.navigate(['/dashboard']);
+							}
 						},
 						(errorInfo) => {
 							console.log("Error accepting or rejecting translation: ", errorInfo)

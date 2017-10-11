@@ -186,6 +186,9 @@
 
 							<div class="modal fade view-translation-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 								<div class="modal-dialog modal-lg translated-content-modal">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+								         </button>
 									<h3 class="text-center">Submitted Translation:</h3>
 
 									<span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>
@@ -196,8 +199,8 @@
 									<div class="modal-content">
 										{{job.translatedContent}}
 									</div>
-									<button class="btn btn-large btn-success" (click)="acceptOrRejectTranslation('accept')">Accept Translation and Pay</button>
-									<button class="btn btn-large btn-danger" (click)="acceptOrRejectTranslation('reject')">Reject Translation</button>
+									<button class="btn btn-large btn-success" (click)="acceptOrRejectTranslation(job._id, 'accept')">Accept Translation and Pay</button>
+									<button type="button"  data-dismiss="modal" class="btn btn-large btn-danger" (click)="acceptOrRejectTranslation(job._id, 'reject')">Reject Translation</button>
 								</div>
 							</div>
 
