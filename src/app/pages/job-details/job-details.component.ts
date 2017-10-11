@@ -62,7 +62,7 @@ export class JobDetailsComponent implements OnInit {
 				console.log("Get Login Status Error: ", errorInfo)
 			});
 
-		;
+		
 
 
   }

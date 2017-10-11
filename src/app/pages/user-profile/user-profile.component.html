@@ -1,3 +1,32 @@
-<p>
-  user-profile works!
-</p>
+<div class="container">
+
+	<h2>Profile</h2>
+	<img src="{{userDetails.avatarUrl}}" alt="">
+	<h4>{{userDetails.username}}</h4>
+	<h4>{{userDetails.rating}}</h4>
+	<h4>Mother Tongues:</h4>
+	<ul>
+		<li *ngFor="let tongue of userDetails.languageSkills">
+			{{tongue.language}} : {{tongue.proficiency}}
+		</li>
+	</ul>
+	<h4>Certifications:</h4>
+	<ul>
+		<li *ngFor="let cert of userDetails.certifications">
+			{{cert.name}}
+			{{cert.year}}
+		</li>
+	</ul>
+	<h4>Posted Jobs:</h4>
+	<ul>
+		<li *ngFor="let job of userDetails.postedJobs">
+			{{job._id}}
+		</li>
+	</ul>
+	<h4>Translated Jobs:</h4>
+	<ul>
+		<li *ngFor="let job of userDetails.translatedJobs">
+			{{job._id}}
+		</li>
+	</ul>
+</div>

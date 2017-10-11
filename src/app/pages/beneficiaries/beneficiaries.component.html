@@ -6,9 +6,10 @@
 	<li *ngFor="let benef of benefs">
 		<div class="benef-card col-md-4">
 			<img src="{{benef.logoUrl}}" alt="" class="mx-auto">
-		<h3>Name: {{benef.name}}</h3>
-		<h3>Type: {{benef.type}}</h3>
+		<h3>{{benef.name}}</h3>
 		<h3><a href="{{benef.website}}" target="_blank">Website</a> </h3>
+		<br>
+		<h4>Type: {{benef.type}}</h4>
 		<h4>City: {{benef.city}}</h4>
 		<h4>Country: {{benef.country}}</h4>
 	</div>
