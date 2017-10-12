@@ -28,7 +28,7 @@
 				<div class="tab-pane fade show active" id="created-posted-jobs" role="tabpanel" aria-labelledby="created-posted-jobs-tab">
 					<div class="row">
 						<div *ngFor="let job of ownedJobs" class="dashboard-job-list col-4">
-							<h3 class="job-card-title">Awaiting Applicants</h3>
+							<h3 class="job-card-title awaiting-applicants">Awaiting Applicants</h3>
 							<div>
 								<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
 
@@ -89,7 +89,7 @@
 				<div class="tab-pane fade" id="created-active-jobs" role="tabpanel" aria-labelledby="created-active-jobs-tab">
 					<div class="row">
 						<div *ngFor="let job of ownedActiveJobs" class="dashboard-job-list col-4">
-							<h3 class="job-card-title">Translation in Progress</h3>
+							<h3 class="job-card-title translation-in-progress">Translation in Progress</h3>
 
 							<div>
 								<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
@@ -141,7 +141,7 @@
 							<div *ngIf="userInfo._id === job.owner._id">
 
 
-							<h4 class="text-center job-card-button" data-toggle="modal" data-target=".view-translation-modal" (click)="setUpPaypal(job)">Review Translation</h4>
+							<h3 class="job-card-title job-card-button awaiting-payment" data-toggle="modal" data-target=".view-translation-modal" (click)="setUpPaypal(job)">Review Translation</h3>
 							<div>
 								<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
 
@@ -217,25 +217,7 @@
 					<div class="row">
 						<div *ngFor="let job of finishedJobs" class="dashboard-job-list col-4">
 							<div *ngIf="userInfo._id === job.owner._id">
-								<h3 class="job-card-title"></h3>
-
-
-
-
-
-
-
-														<h4 class="text-center job-card-button" data-toggle="modal" data-target=".view-finished-translation-modal">See Translation</h4>
-
-
-
-
-
-
-
-
-
-
+								<h3 class="text-center job-card-button created-finished" data-toggle="modal" data-target=".view-finished-translation-modal">See Translation</h3>
 
 								<div>
 									<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
@@ -284,7 +266,8 @@
 
 						<div class="row">
 							<div *ngFor="let job of workingJobs" class="dashboard-job-list col-4">
-								<h3 class="job-card-title">Awaiting Applicants</h3>
+								<h3 class="job-card-title working-active"><a [routerLink]="['/jobs', job._id]">Resume Work</a>
+								</h3>
 
 								<div>
 									<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
@@ -332,8 +315,8 @@
 						<div class="row">
 							<div *ngFor="let job of awaitingPaymentJobs" class="dashboard-job-list col-4">
 								<div *ngIf="job.worker._id === userInfo._id">
-									<div> Job ID: <a [routerLink]="['/jobs', job._id]">{{job._id}}</a>
-									</div>
+									<h3 class="job-card-title awaiting-approval"> Awaiting Approval
+									</h3>
 									<div>
 										<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
 
@@ -382,7 +365,7 @@
 							<div *ngFor="let job of finishedJobs" class="dashboard-job-list col-4">
 								<div *ngIf="userInfo._id === job.worker._id">
 									<div>
-														<h4 class="text-center job-card-button" data-toggle="modal" data-target=".view-finished-translation-modal">See Translation</h4>
+											<h4 class="job-card-title working-finished-job">{{job.price}} donated to {{job.beneficiaryId.name}}. Thank you!!</h4>
 										<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
 
 										<p> <span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>{{job.sourceLanguage}}

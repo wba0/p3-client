@@ -140,5 +140,41 @@ user-select: none;
 }
 
 .job-card-title{
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 8px;
+	margin: 0 auto;
+	text-align: center;
+}
 
+.job-card-title a{
+	color: #fff;
+	text-decoration: none;
+}
+
+.awaiting-approval{
+	background-color: indigo;
+}
+.working-active{
+	background-color: blue;
+}
+.working-finished-job{
+
+	background-color: lime;
+}
+.awaiting-applicants{
+	background-color: gold;
+	color: #000;
+}
+
+.translation-in-progress{
+	background-color: blueviolet;
+
+}
+.created-finished{
+	background-color: lime;
+}
+
+.awaiting-payment{
+	background-color: indigo;
 }
