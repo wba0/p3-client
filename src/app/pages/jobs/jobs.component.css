@@ -38,10 +38,6 @@ button{
 	top: 5px;
 }
 
-h3{
-	display: inline-block;
-	margin-bottom: 15px;
-}
 
 .job-card span,
 .job-card i{
@@ -64,10 +60,20 @@ button{
 
 .divider{
 	border-bottom: 1px dashed #eee;
-	padding-top: 25px;
-	padding-bottom: 20px;
+	padding-top: 15px;
+	padding-bottom: 10px;
 }
 
 .flag-icon{
 	margin-left: 15px;
+}
+
+.job-card-heading{
+	display: inline-block;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.select-heading{
+	margin-bottom: 25px;
 }

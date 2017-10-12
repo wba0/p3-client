@@ -45,7 +45,7 @@ margin: 10px;
 }
 
 .dashboard-job-list h4{
-	margin-bottom: 35px;
+	margin-bottom: 25px;
 }
 .dashboard-job-list h4 i{
 	font-size: 1.5em;
@@ -177,4 +177,11 @@ user-select: none;
 
 .awaiting-payment{
 	background-color: indigo;
+}
+
+.translation-flags{
+	padding: 10px;
+	border-radius: 8px;
+	background: #eee;
+
 }
