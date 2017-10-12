@@ -18,7 +18,7 @@
 	</div>
 	<h4>Which charity would you like the proceeds to be donated to?</h4>
 	<select id="beneficiary-select" #selectedBenef class="form-control form-control-lg" name="sourceLanguageInput" (change)="handleBenef(selectedBenef.value)" [(ngModel)]="selectedBenefName">
-		<option selected>choose a language...</option>
+		<option selected>choose a charity...</option>
 		<option *ngFor="let benef of benefs" [value]="benef._id">{{benef.name}}</option></select>
 
 
