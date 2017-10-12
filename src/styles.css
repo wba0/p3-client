@@ -22,6 +22,13 @@ body{
 h1, h2, h3, h4, h5, h6, nav, nav li a {
   font-family: 'Raleway', sans-serif;
 }
+.container, .container-fluid{
+	margin-top: 75px;
+}
+#navbar, #navbar li, #navbar li a{
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+}
 
 p, span, a {
   font-family: 'Open Sans', sans-serif;
@@ -49,4 +56,9 @@ h2{
 	background-color: crimson;
 	padding: 15px 30px;
 	border-radius: 8px;
+}
+
+.btn-primary{
+	background-color: #F26D6E;
+	border-color: #fff;
 }

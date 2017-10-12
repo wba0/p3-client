@@ -8,11 +8,15 @@
 	<form id="updateForm" (ngSubmit)="addLanguageSkill()">
 		<h4>Add Language Skills: </h4>
 <!-- <div *ngFor={} -->
+
+	<div class="row add-skill-input justify-content-center">
+
 		<label for="lang-select" class="form-label">Language:</label>
 		<select id="lang-select"class="form-control form-control-lg" [(ngModel)]="newLanguageSkill.language" name="languageSkillsInput">
 			<option *ngFor="let lang of langArr"><span class="flag-icon flag-icon-{{lang.isoCode}}"></span>{{lang.language}}</option>
 		</select>
-		<br>
+	</div>
+	<div class="row add-skill-input justify-content-center">
 		<label for="skill-select" class="form-label">Skill:</label>
 		<select id="skill-select" class="form-control form-control-lg" [(ngModel)]="newLanguageSkill.proficiency" name="languageSkillsInput">
 			<option>Elementary</option>
@@ -20,7 +24,7 @@
 			<option>Professional</option>
 			<option>Native</option>
 		</select>
-<br>
+	</div>
 		<button class="btn btn-large btn-primary">Add</button>
 	</form>
 </div>

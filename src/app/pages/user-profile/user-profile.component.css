@@ -18,6 +18,9 @@ form select{
 	margin-left: 10px;
 	width: 200px;
 }
+form div{
+	margin-top: 40px;
+}
 /*form h5{
 	float: left;
 }*/
@@ -45,4 +48,10 @@ h5, h6{
 .flag-icon, i{
 	font-size: 1.2em;
 	margin:0 15px;
+}
+
+
+/*bootstrap select height issue fix*/
+.input-group-lg>.input-group-btn>select.btn:not([size]):not([multiple]), .input-group-lg>select.form-control:not([size]):not([multiple]), .input-group-lg>select.input-group-addon:not([size]):not([multiple]), select.form-control-lg:not([size]):not([multiple]) {
+    height: calc(2.3125rem + 20px);
 }

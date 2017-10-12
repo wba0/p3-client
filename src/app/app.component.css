@@ -11,8 +11,20 @@ nav {
   font-size: 1.3em;
 }
 
+.navbar{
+	margin-bottom: 0px;
+}
+
 nav li {
   padding: 10px 20px;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #000;
+}
+#navbar-logo{
+	width: 120px;
+position: relative;
+bottom: 100%;
 }
 
 
@@ -29,6 +41,16 @@ footer i{
 	font-size: 1.3em;
 }
 
-.mb-fix{
+footer span{
+	margin: 0 30px;
+}
+
+.mb-mt-fix{
 	margin-bottom: 60px;
+}
+
+#navbar{
+	background-color: #FEED54 !important;
+	font-family: 'Montserrat', sans-serif;
+
 }

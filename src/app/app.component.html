@@ -1,7 +1,9 @@
 <header>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" routerLink="/">Logo</a>
+	<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" routerLink="/">
+			<img id="navbar-logo" src="https://s3.us-east-2.amazonaws.com/babelwish/logo.png" alt="">
+		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -46,13 +48,13 @@
 	</nav>
 </header>
 
-<div class="mb-fix">
+<div class="mb-mt-fix">
 
 <router-outlet></router-outlet>
 </div>
 
 <footer class="footer">
-	<div class="container-fluid">
+	<div>
 		<span class="float-left"><p>Made with meow</p></span>
 		<span class="float-right">View Project on <a target="_blank" href="https://github.com/wba0/"><i title="Github" class="fa fa-github" aria-hidden="true"></i>
 </a></span>
