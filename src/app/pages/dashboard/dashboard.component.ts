@@ -4,6 +4,9 @@ import { AuthApiService } from '../../services/auth-api.service';
 import { JobsApiService } from '../../services/jobs.service';
 import { LanguageService } from '../../services/language.service';
 import { payPalCheckout, sendJobInfo } from './paypal-checkout';
+import * as _ from "lodash";
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -30,13 +33,23 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-			payPalCheckout((finishedJob)=> {
-				//whatever to update the ui
-				this.finishedJobs.push(finishedJob);
-				//remove finishedjob from awaitingPaymentJobs
-				// this.awaitingPaymentJobs
-			});
-		}, 500);
+      payPalCheckout((finishedJob) => {
+        //whatever to update the ui
+        this.finishedJobs.push(finishedJob);
+        //remove finishedjob from awaitingPaymentJobs
+        this.awaitingPaymentJobs = _.filter(this.awaitingPaymentJobs, (o: any) => {
+          return o._id !== finishedJob._id;
+        });
+				//increment and decrement # of job indicators
+				this.jobCounts.finishedJobs++;
+				this.jobCounts.awaitingPaymentJobs--;
+
+        //not working
+        // $("#payment-modal").modal("hide");
+        this.router.navigate(['/']);
+
+      });
+    }, 500);
   }
   ngOnInit() {
 
@@ -113,8 +126,18 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   acceptOrRejectApplicant(jobId: string, applicantId: string, decision: string) {
     this.jobsApi.acceptOrRejectApplicant(jobId, applicantId, decision)
       .subscribe(
-      (data) => {
+      (data: any) => {
         console.log(data);
+        if (decision === "accept") {
+          this.ownedActiveJobs.push(data);
+          //remove accepted job from ownedJobs
+          this.ownedJobs = _.filter(this.ownedJobs, (o: any) => {
+            return o._id !== data._id;
+          });
+					//increment and decrement # of job indicators
+					this.jobCounts.ownedActiveJobs ++;
+					this.jobCounts.ownedJobs--;
+        }
         this.router.navigate(['/dashboard']);
       },
       (errorInfo) => {
@@ -151,7 +174,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       )
   }
 
-	setUpPaypal(job){
-		sendJobInfo(job);
-	}
+  setUpPaypal(job) {
+    sendJobInfo(job);
+  }
 }

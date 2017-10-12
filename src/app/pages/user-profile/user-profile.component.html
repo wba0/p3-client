@@ -1,33 +1,38 @@
-<div class="container">
+<div class="container mx-auto text-center">
 
 	<h2>Profile</h2>
 	<img src="{{userDetails.avatarUrl}}" alt="">
 	<h4>{{userDetails.username}}</h4>
 	<h4>{{userDetails.rating}}</h4>
-<div *ngIf="userInfo._id === userDetails._id">
+<div *ngIf="userInfo._id === userDetails._id" class="user-profile-section">
 	<form id="updateForm" (ngSubmit)="addLanguageSkill()">
-		<h4>Credentials: </h4>
+		<h4>Add Language Skills: </h4>
 <!-- <div *ngFor={} -->
-		<h5>Language:</h5>
-		<select class="form-control form-control-lg" [(ngModel)]="newLanguageSkill.language" name="languageSkillsInput">
+		<label for="lang-select" class="form-label">Language:</label>
+		<select id="lang-select"class="form-control form-control-lg" [(ngModel)]="newLanguageSkill.language" name="languageSkillsInput">
 			<option *ngFor="let lang of langArr"><span class="flag-icon flag-icon-{{lang.isoCode}}"></span>{{lang.language}}</option>
 		</select>
-		<h5>Skill:</h5>
-		<select class="form-control form-control-lg" [(ngModel)]="newLanguageSkill.proficiency" name="languageSkillsInput">
+		<br>
+		<label for="skill-select" class="form-label">Skill:</label>
+		<select id="skill-select" class="form-control form-control-lg" [(ngModel)]="newLanguageSkill.proficiency" name="languageSkillsInput">
 			<option>Elementary</option>
 			<option>Intermediate</option>
 			<option>Professional</option>
 			<option>Native</option>
 		</select>
-
-		<button>Add</button>
+<br>
+		<button class="btn btn-large btn-primary">Add</button>
 	</form>
 </div>
+	<div class="user-profile-section">
+<h3>Language Skills:</h3>
 	<ul>
 <li *ngFor="let tongue of userDetails.languageSkills">
-<span class="flag-icon flag-icon-{{tongue.isoCode}}"></span> {{tongue.language}} : {{tongue.proficiency}} X
+<span class="flag-icon flag-icon-{{tongue.isoCode}}"></span> <h5>{{tongue.language}} : {{tongue.proficiency}}</h5> <span *ngIf="userInfo._id === userDetails._id" (click)="deleteLanguageSkill(tongue)"><i class="fa fa-times delete-langskill-icon" aria-hidden="true"></i></span>
+
 </li>
 </ul>
+</div>
 
 	<!-- <h4>Certifications:</h4>
 <ul>
@@ -36,17 +41,23 @@
 		{{cert.year}}
 	</li>
 </ul> -->
+<div class="user-profile-section">
 
-	<h4>Posted Jobs:</h4>
+	<h3>Posted Jobs:</h3>
 	<ul>
 		<li *ngFor="let job of userDetails.postedJobs">
 			{{job._id}}
+			<h5>{{job.sourceLanguage}}</h5>
+			<h5>{{job.targetLanguage}}</h5>
 		</li>
 	</ul>
-	<h4>Translated Jobs:</h4>
+</div>
+<div class="user-profile-section">
+	<h3>Translated Jobs:</h3>
 	<ul>
 		<li *ngFor="let job of userDetails.translatedJobs">
 			{{job._id}}
 		</li>
 	</ul>
+</div>
 </div>

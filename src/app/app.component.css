@@ -28,3 +28,7 @@ nav li {
 footer i{
 	font-size: 1.3em;
 }
+
+.mb-fix{
+	margin-bottom: 60px;
+}

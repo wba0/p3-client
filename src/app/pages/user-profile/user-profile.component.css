@@ -1,0 +1,48 @@
+.container{
+	width: 500px
+}
+img{
+	max-width: 150px;
+}
+.delete-langskill-icon{
+	color: crimson;
+	font-size: 1.2em;
+}
+
+form{
+	width: 400px;
+	margin: 0 auto;
+}
+form select{
+	display: inline-block;
+	margin-left: 10px;
+	width: 200px;
+}
+/*form h5{
+	float: left;
+}*/
+
+ul{
+	list-style: none;
+}
+
+div, h2, h3, h4, h5, h6, button{
+	margin: 15px 0;
+}
+h5, h6{
+	display: inline-block;
+}
+
+.form-label{
+	display: inline-block
+}
+
+.user-profile-section{
+	border: 1px dashed #ddd;
+	margin: 10px 0;
+}
+
+.flag-icon, i{
+	font-size: 1.2em;
+	margin:0 15px;
+}

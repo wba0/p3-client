@@ -21,4 +21,10 @@ export class UsersService {
 		newLanguageSkill,
 	{ withCredentials: true }
 )};
+
+	deleteLanguageSkill(language: any){
+		console.log("lang obj: ", language)
+		return this.http.delete(`${this.baseUrl}/api/users/removeLanguageSkill/${language}`,
+	{ withCredentials: true }
+)};
 }
