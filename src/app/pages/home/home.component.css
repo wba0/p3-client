@@ -8,11 +8,12 @@
 }
 
 .down-arrow-container {
-  display: inline-block;
-  vertical-align: middle;
-  border-radius: 50%;
-  position: absolute;
-  top: 48%;
+	display: inline-block;
+	vertical-align: middle;
+	border-radius: 50%;
+	position: relative;
+	top: 620px;
+	right: 584px;
 }
 
 .down-arrow {
@@ -64,4 +65,26 @@
 
 .container-fluid.no-mt-fix {
   margin-top: 0px;
+}
+
+#spiel-container h2{
+	font-family: 'Montserrat', sans-serif;
+
+	text-transform: uppercase;
+    font-weight: 700;}
+
+#spiel-container{
+	margin-top: 150px;
+	background-color: #eee;
+}
+#spiel-img img{
+	max-height:350px;
+	margin-left: 100px;
+}
+
+#spiel-img{
+}
+
+#spiel-text{
+	padding: 50px 150px 50px 200px;
 }
