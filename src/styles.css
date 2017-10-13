@@ -67,6 +67,21 @@ h2{
     background-color: #eee;
     border-color: #000;
 }
+.btn-primary.active, .btn-primary:active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #eee;
+    border-color: #000;
+}
+.btn:hover {
+    color: #000;
+    background-color: #eee;
+    border-color: #000;
+}
+.btn.active, .btn:active, .open>.dropdown-toggle.btn {
+    color: #fff;
+    background-color: #eee;
+    border-color: #000;
+}
 
 
 .logo-complement{

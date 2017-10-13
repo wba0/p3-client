@@ -77,3 +77,15 @@ button{
 .select-heading{
 	margin-bottom: 25px;
 }
+
+.job-card-owner-info img{
+	width: 75px;
+	margin: 0 auto;
+}
+.job-card-owner-info{
+	border-bottom: 1px dashed #eee;
+}
+
+.job-card-language-info{
+	margin-top: 20px;
+}
