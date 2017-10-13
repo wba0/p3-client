@@ -1,8 +1,10 @@
 <div class="container-fluid mx-auto">
+	<div class="logo-complement"></div>
 
 	<div id="user-info" class="text-center mx-auto">
 		<img src="{{userInfo.avatarUrl}}" alt="">
-		<h2 class="text-center">Welcome, {{userInfo.username}}. <a [routerLink]="['/users', userInfo._id]">My Profile</a></h2>
+		<h4>Go to <a [routerLink]="['/users', userInfo._id]">My Profile</a></h4>
+		<h2 class="text-center">Welcome, {{userInfo.username}}</h2>
 
 	</div>
 
@@ -28,7 +30,11 @@
 				<div class="tab-pane fade show active" id="created-posted-jobs" role="tabpanel" aria-labelledby="created-posted-jobs-tab">
 					<div class="row">
 						<div *ngFor="let job of ownedJobs" class="dashboard-job-list col-4">
+							<div class="job-status">
+								<h4><i class="fa fa-heartbeat" aria-hidden="true"></i>
+Status:</h4>
 							<h3 class="job-card-title awaiting-applicants">Awaiting Applicants</h3>
+							</div>
 							<div>
 								<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
 
@@ -36,7 +42,7 @@
 									<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}" title="{{job.targetLanguage}}"></span>
 								</p>
 
-								<p> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
+								<p class="translation-content"> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
 								</p>
 							</div>
 							<div>
@@ -88,8 +94,10 @@
 
 				<div class="tab-pane fade" id="created-active-jobs" role="tabpanel" aria-labelledby="created-active-jobs-tab">
 					<div class="row">
-						<div *ngFor="let job of ownedActiveJobs" class="dashboard-job-list col-4">
-							<h3 class="job-card-title translation-in-progress">Translation in Progress</h3>
+						<div *ngFor="let job of ownedActiveJobs" class="dashboard-job-list col-4"><div class="job-status">
+							<h4><i class="fa fa-heartbeat" aria-hidden="true"></i>
+Status:</h4>
+							<h3 class="job-card-title translation-in-progress">Translation in Progress</h3></div>
 
 							<div>
 								<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
@@ -98,7 +106,7 @@
 									<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}" title="{{job.targetLanguage}}"></span>
 								</p>
 
-								<p> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
+								<p class="translation-content"> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
 								</p>
 							</div>
 							<div>
@@ -140,8 +148,11 @@
 							</div> -->
 							<div *ngIf="userInfo._id === job.owner._id">
 
-
+								<div class="job-status">
+									<h4><i class="fa fa-heartbeat" aria-hidden="true"></i>
+								Status:</h4>
 							<h3 class="job-card-title job-card-button awaiting-payment" data-toggle="modal" data-target=".view-translation-modal" (click)="setUpPaypal(job)">Review Translation</h3>
+						</div>
 							<div>
 								<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
 
@@ -149,7 +160,7 @@
 									<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}" title=" {{job.targetLanguage}}"></span>
 								</p>
 
-								<p> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
+								<p class="translation-content"> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
 								</p>
 							</div>
 							<div>
@@ -190,7 +201,7 @@
 										<span aria-hidden="true">&times;</span>
 								         </button>
 									<h3 class="text-center">Submitted Translation:</h3>
-	<span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>
+									<span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>
 									<h4>{{job.sourceLanguage}}</h4>
 									<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}"></span>
 									<h4>{{job.targetLanguage}}</h4>
@@ -216,7 +227,10 @@
 					<div class="row">
 						<div *ngFor="let job of finishedJobs" class="dashboard-job-list col-4">
 							<div *ngIf="userInfo._id === job.owner._id">
-								<h3 class="text-center job-card-button created-finished" data-toggle="modal" data-target=".view-finished-translation-modal">See Translation</h3>
+								<div class="job-status">
+									<h4><i class="fa fa-heartbeat" aria-hidden="true"></i>
+	Status:</h4>
+								<h3 class="text-center job-card-button created-finished" data-toggle="modal" data-target=".view-finished-translation-modal">See Translation</h3></div>
 
 								<div>
 									<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
@@ -225,7 +239,7 @@
 										<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}" title="{{job.targetLanguage}}"></span>
 									</p>
 
-									<p> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
+									<p class="translation-content"> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
 									</p>
 								</div>
 								<div>
@@ -266,7 +280,7 @@
 											<span aria-hidden="true">&times;</span>
 													 </button>
 										<h3 class="text-center">Accepted Translation:</h3>
-	<span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>
+										<span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>
 										<h4>{{job.sourceLanguage}}</h4>
 										<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}"></span>
 										<h4>{{job.targetLanguage}}</h4>
@@ -277,23 +291,6 @@
 											<h3>Thank you for donating to <a href="{{job.beneficiaryId.website}}">{{job.beneficiaryId.name}}</a></h3>
 									</div>
 								</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 							</div>
 						</div>
 					</div>
@@ -303,8 +300,12 @@
 
 						<div class="row">
 							<div *ngFor="let job of workingJobs" class="dashboard-job-list col-4">
+								<div class="job-status">
+									<h4><i class="fa fa-heartbeat" aria-hidden="true"></i>
+	Status:</h4>
 								<h3 class="job-card-title working-active"><a [routerLink]="['/jobs', job._id]">Resume Work</a>
 								</h3>
+							</div>
 
 								<div>
 									<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
@@ -313,7 +314,7 @@
 										<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}" title="{{job.targetLanguage}}"></span>
 									</p>
 
-									<p> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
+									<p class="translation-content"> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
 									</p>
 								</div>
 								<div>
@@ -351,9 +352,12 @@
 					<div class="tab-pane fade" id="working-translated-jobs" role="tabpanel" aria-labelledby="working-translated-jobs-tab">
 						<div class="row">
 							<div *ngFor="let job of awaitingPaymentJobs" class="dashboard-job-list col-4">
-								<div *ngIf="job.worker._id === userInfo._id">
+								<div *ngIf="job.worker._id === userInfo._id"><div class="job-status">
+									<h4><i class="fa fa-heartbeat" aria-hidden="true"></i>
+	Status:</h4>
 									<h3 class="job-card-title awaiting-approval"> Awaiting Approval
 									</h3>
+								</div>
 									<div>
 										<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
 
@@ -361,7 +365,7 @@
 											<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}" title="{{job.targetLanguage}}"></span>
 										</p>
 
-										<p> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
+										<p class="translation-content"> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
 										</p>
 									</div>
 									<div>
@@ -402,14 +406,18 @@
 							<div *ngFor="let job of finishedJobs" class="dashboard-job-list col-4">
 								<div *ngIf="userInfo._id === job.worker._id">
 									<div>
+										<div class="job-status">
+											<h4><i class="fa fa-heartbeat" aria-hidden="true"></i>
+			Status:</h4>
 											<h4 class="job-card-title working-finished-job">{{job.price}} donated to {{job.beneficiaryId.name}}. Thank you!!</h4>
+										</div>
 										<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
 
 										<p class="translation-flags"> <span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}" title="{{job.sourceLanguage}}"></span>
 											<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}" title="{{job.targetLanguage}}"></span>
 										</p>
 
-										<p> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
+										<p class="translation-content"> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
 										</p>
 									</div>
 									<div>
@@ -453,12 +461,12 @@
 				</div>
 			</div>
 		</div>
+</div>
 
-
-<div class="row buffer-div"></div>
+<!-- <div class="row buffer-div"></div>
 
 	</div>
-
+ -->
 
 <!-- Modal for view translation -->
 

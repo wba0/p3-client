@@ -62,3 +62,19 @@ h2{
 	background-color: #F26D6E;
 	border-color: #fff;
 }
+.btn-primary:hover {
+    color: #000;
+    background-color: #eee;
+    border-color: #000;
+}
+
+
+.logo-complement{
+	width: 290px;
+    height: 290px;
+    background-color: #FEED54;
+    border-radius: 50%;
+    position: absolute;
+    top: -5%;
+    left: -3%;
+    z-index: -1;}

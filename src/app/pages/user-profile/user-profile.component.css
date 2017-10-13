@@ -1,3 +1,5 @@
+/*@import "../../../../node_modules/angular-star-rating/assets/scss/star-rating.scss";*/
+
 .container{
 	width: 500px
 }
@@ -46,7 +48,7 @@ h5, h6{
 }
 
 .flag-icon, i{
-	font-size: 1.2em;
+	font-size: 1.5em;
 	margin:0 15px;
 }
 

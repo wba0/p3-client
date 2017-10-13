@@ -1,9 +1,12 @@
 <div class="container mx-auto text-center">
+	<div class="logo-complement"></div>
+	<!-- <star-rating-comp [starType]="'svg'" [rating]="2.63"></star-rating-comp> -->
 
 	<h2>Profile</h2>
 	<img src="{{userDetails.avatarUrl}}" alt="">
 	<h4>{{userDetails.username}}</h4>
-	<h4>{{userDetails.rating}}</h4>
+	<!-- implement star rating here -->
+	<!-- <h4>{{userDetails.rating}}</h4> -->
 <div *ngIf="userInfo._id === userDetails._id" class="user-profile-section">
 	<form id="updateForm" (ngSubmit)="addLanguageSkill()">
 		<h4>Add Language Skills: </h4>

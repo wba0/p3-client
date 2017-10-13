@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AlertModule } from 'ngx-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
+import { StarRatingModule } from 'angular-star-rating';
 
 import { AuthApiService } from './services/auth-api.service';
 import { NeedsLoginGuardService } from './guards/needs-login-guard.service';
@@ -23,6 +24,7 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { JobDetailsComponent } from './pages/job-details/job-details.component';
 import { HomeComponent } from './pages/home/home.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,8 @@ import { HomeComponent } from './pages/home/home.component';
     AppRoutingModule,
 		HttpClientModule,
 		FormsModule,
-		AlertModule.forRoot()
+		AlertModule.forRoot(),
+		StarRatingModule
   ],
   providers: [
 		AuthApiService,

@@ -53,7 +53,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
   ngOnInit() {
 
-
+		console.log("my owned active jobs: ", this.ownedActiveJobs);
     this.authenticator.getLoginStatus()
       .subscribe(
       (loggedInInfo: any) => {
@@ -138,6 +138,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 					this.jobCounts.ownedActiveJobs ++;
 					this.jobCounts.ownedJobs--;
         }
+				if(decision === "reject"){
+					const whichJob = this.ownedJobs.find(o => o._id === jobId);
+				//remove from view
+				whichJob.applicants = _.filter(whichJob.applicants, (o: any) => {
+					return o._id !== applicantId;
+				});
+				}
         this.router.navigate(['/dashboard']);
       },
       (errorInfo) => {
@@ -161,6 +168,26 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       }
       );
   }
+
+	completeJob(jobId: string){
+		this.jobsApi.finishPaidJob(jobId)
+			.subscribe(
+				(data: any) => {
+					console.log(data);
+					this.finishedJobs.push(data);
+					//remove finished job from awaiting payment jobs
+					this.awaitingPaymentJobs = _.filter(this.awaitingPaymentJobs, (o: any) => {
+						return o._id !== data._id;
+					});
+					//increment and decrement # of job indicators
+					this.jobCounts.finishedJobs ++;
+					this.jobCounts.awaitingPaymentJobs--;
+				},
+				(errorInfo) => {
+					console.log("Error finsihing job: ", errorInfo)
+				}
+			);
+	}
 
   deleteJob(jobId: string) {
     this.jobsApi.deleteJob(jobId)

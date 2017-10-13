@@ -61,6 +61,11 @@ export class JobsApiService {
       { withCredentials: true });
   };
 
+finishPaidJob(jobId: string){
+	return this.http.patch(`${this.baseUrl}/api/payandcompletejob/${jobId}`,
+		{},
+		{ withCredentials: true });
+};
   applyToJob(jobId: string) {
     return this.http.post(`${this.baseUrl}/api/jobs/apply/${jobId}`,
 			{},
