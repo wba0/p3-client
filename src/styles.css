@@ -88,6 +88,11 @@ h2{
 	background-color: #eee;
 	border-color: #000;
 }
+.btn-primary.focus, .btn-primary:focus {
+	color: #fff;
+	background-color: #eee;
+	border-color: #000;
+}
 
 .logo-complement{
 	width: 290px;
