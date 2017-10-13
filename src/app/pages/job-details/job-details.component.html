@@ -10,8 +10,7 @@
 	</div>
 
 
-<!-- <div *ngIf="userInfo._id === oneJob.worker._id"> -->
-<div *ngIf="workerHere">
+<div *ngIf="oneJob.worker._id === userInfo._id">
 
 	<form (ngSubmit)="translateJob()" class="mx-auto text-center">
 	<div class="form-group col-md-12">
@@ -30,7 +29,7 @@
 
 
 <!-- <div *ngIf="userInfo._id === oneJob.owner._id"> -->
-<div *ngIf="!workerHere">
+<div *ngIf="userInfo._id === oneJob.owner._id">
 
 	<h3>This job is currently being translated by {{oneJob.worker.username}}</h3>
 </div>

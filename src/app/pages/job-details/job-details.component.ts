@@ -11,12 +11,14 @@ import { LanguageService } from '../../services/language.service';
   styleUrls: ['./job-details.component.css']
 })
 export class JobDetailsComponent implements OnInit {
-  oneJob: any = {};
+  oneJob: any = {
+		worker: {},
+		owner: {}
+	};
   userInfo: any;
 	benefs: any = [];
 	chosenBenef: any = {};
 	errorMessage: string;
-	workerHere: boolean = false;
 
 
   constructor(
@@ -54,15 +56,12 @@ export class JobDetailsComponent implements OnInit {
       (loggedInInfo: any) => {
         this.userInfo = loggedInInfo.userInfo;
 				console.log("logged in info", this.userInfo._id);
-				if(this.userInfo._id === this.oneJob.worker._id){
-					this.workerHere = true;
-				}
       },
 			(errorInfo) => {
 				console.log("Get Login Status Error: ", errorInfo)
 			});
 
-		
+
 
 
   }
