@@ -36,7 +36,9 @@ bottom: 100%;
 	text-align: center;
 }
 
-
+footer .dedication-link{
+		color: #F26D6E
+}
 footer i{
 	font-size: 1.5em;
 	color: #F26D6E

@@ -1,27 +1,15 @@
-# Client
+Babelwish
+------
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.
 
-## Development server
+##### Purpose:
+This app was built as a proof of concept to demonstrate what a "freelance translation for animal welfare" website would resemble. Users can post a short translation job to which translators can apply and work on. When a job is submitted for approval, the translator specifies the animal welfare organization of their choice that will be paid directly for their work.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+#### Considerations:
 
-## Code scaffolding
+The PayPal integration is for demonstration purposes only, as I only have a regular PayPal for Developers account which does not provide live credentials.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+What is the best way for animal welfare organizations to receive donations that can also be integrated into such an app as this one? There may exist better solutions than PayPal which requires an email address that is not always available on these organizations' websites.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Created using [Angular2](https://angular.io), [Node.js](https://nodejs.org), [Express](https://expressjs.com/) and [MongoDB](https://www.mongodb.com/).
