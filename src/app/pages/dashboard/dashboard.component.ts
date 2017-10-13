@@ -100,8 +100,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         this.awaitingPaymentJobs = awaitingPaymentJobs;
         this.languageService.addIsoCode(this.awaitingPaymentJobs);
 
-        this.jobCounts.workingTranslatedJobs = awaitingPaymentJobs.filter(o => o.worker._id === this.userInfo._id).length;
-        this.jobCounts.ownedTranslatedJobs = awaitingPaymentJobs.filter(o => o.owner._id === this.userInfo._id).length;
+        this.jobCounts.workingTranslatedJobs = (awaitingPaymentJobs.filter(o => o.worker._id === this.userInfo._id)).length;
+        this.jobCounts.ownedTranslatedJobs = (awaitingPaymentJobs.filter(o => o.owner._id === this.userInfo._id)).length;
 
 				console.log("working awaiting payment length: ", awaitingPaymentJobs.filter(o => o.worker._id === this.userInfo._id).length)
 				console.log("owned awaiting payment length: ", awaitingPaymentJobs.filter(o => o.owner._id === this.userInfo._id).length)
