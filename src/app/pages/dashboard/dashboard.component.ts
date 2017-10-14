@@ -17,6 +17,7 @@ import * as $ from 'jquery';
 export class DashboardComponent implements OnInit, AfterViewInit {
   userInfo: any = {};
   getUserError: string;
+	relevantJobs: any = [];
   ownedJobs: any = [];
   ownedActiveJobs: any;
   workingJobs: any;
@@ -53,7 +54,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
   ngOnInit() {
 
-		console.log("my owned active jobs: ", this.ownedActiveJobs);
     this.authenticator.getLoginStatus()
       .subscribe(
       (loggedInInfo: any) => {
@@ -63,6 +63,19 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         }
       }
       );
+
+			this.jobsApi.getRelevantJobs()
+				.subscribe(
+					(relevantJobs: any) => {
+						this.relevantJobs = relevantJobs;
+						this.languageService.addIsoCode(this.relevantJobs);
+						console.log("relevant jobs: ", this.relevantJobs)
+					},
+					(errorInfo) => {
+						console.log("error getting relevant jobs: ", errorInfo)
+					}
+				)
+
 
     this.jobsApi.getMyOwnedJobs()
       .subscribe(

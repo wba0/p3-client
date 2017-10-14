@@ -16,6 +16,10 @@ export class JobsApiService {
     return this.http.get(`${this.baseUrl}/api/jobs`);
   };
 
+	getRelevantJobs(){
+		return this.http.get(`${this.baseUrl}/api/relevantjobs}`);
+	};
+
   getJobDetails(jobId: string) {
     return this.http.get(`${this.baseUrl}/api/jobs/${jobId}`);
   };
