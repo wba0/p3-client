@@ -20,8 +20,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 	relevantJobs: any = [];
   ownedJobs: any = [];
   ownedActiveJobs: any;
-  workingJobs: any;
-  awaitingPaymentJobs: any;
+  workingActiveJobs: any;
+	ownedTranslatedJobs: any;
+	workedTranslatedJobs: any;
+	ownedFinishedJobs: any;
+	workedFinishedJobs: any;
+
+
+	awaitingPaymentJobs: any;
   finishedJobs: any;
   langArr: any[] = this.languageService.languages;
   jobCounts: any = [];
@@ -78,22 +84,27 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 							return o.owner._id === this.userInfo._id && o.undergoingWork === true;
 						});
 
-						console.log("reelvant jobs: ", this.relevantJobs)
-						console.log("owned jobs: ", this.ownedJobs)
+						this.ownedTranslatedJobs = _.filter(this.relevantJobs, (o: any) => {
+							return o.owner._id === this.userInfo._id && o.finishedNotPaid === true;
+						});
+
+						this.ownedFinishedJobs = _.filter(this.relevantJobs, (o: any) => {
+							return o.owner._id === this.userInfo._id && o.finishedAndPaid === true;
+						});
+
+						this.workingActiveJobs = _.filter(this.relevantJobs, (o: any) => {
+							return o.worker._id === this.userInfo._id && o.undergoingWork === true;
+						});
+
+						this.workedTranslatedJobs = _.filter(this.relevantJobs, (o: any) => {
+							return o.worker._id === this.userInfo._id && o.finishedNotPaid === true;
+						});
+
+						this.workedFinishedJobs = _.filter(this.relevantJobs, (o: any) => {
+							return o.worker._id === this.userInfo._id && o.finishedAndPaid === true;
+						});
 
 						this.popJobArrLengths();
-
-						//
-						//
-						// ownedJobs: any = [];
-					  // ownedActiveJobs: any;
-					  // workingJobs: any;
-					  // awaitingPaymentJobs: any;
-					  // finishedJobs: any;
-						//
-
-
-
 
 					},
 					(errorInfo) => {
@@ -101,66 +112,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 					}
 				)
 
-		//
-    // this.jobsApi.getMyOwnedJobs()
-    //   .subscribe(
-    //   (ownedJobs: any) => {
-    //     this.ownedJobs = ownedJobs;
-    //     this.languageService.addIsoCode(this.ownedJobs);
-    //     this.jobCounts.ownedJobs = this.ownedJobs.length;
-		//
-    //   }
-    //   );
-
-    this.jobsApi.getMyOwnedActiveJobs()
-      .subscribe(
-      (ownedActiveJobs: any) => {
-        this.ownedActiveJobs = ownedActiveJobs;
-        this.languageService.addIsoCode(this.ownedActiveJobs);
-        this.jobCounts.ownedActiveJobs = this.ownedActiveJobs.length;
-
-      }
-      );
-
-
-    this.jobsApi.getMyWorkingJobs()
-      .subscribe(
-      (workingJobs: any) => {
-        this.workingJobs = workingJobs;
-        this.languageService.addIsoCode(this.workingJobs);
-        this.jobCounts.workingJobs = this.workingJobs.length;
-        console.log(this.jobCounts.workingJobs)
-      }
-      );
-    this.jobsApi.getMyAwaitingPaymentJobs()
-      .subscribe(
-      (awaitingPaymentJobs: any) => {
-        this.awaitingPaymentJobs = awaitingPaymentJobs;
-        this.languageService.addIsoCode(this.awaitingPaymentJobs);
-
-        this.jobCounts.workingTranslatedJobs = (awaitingPaymentJobs.filter(o => o.worker._id === this.userInfo._id)).length;
-        this.jobCounts.ownedTranslatedJobs = (awaitingPaymentJobs.filter(o => o.owner._id === this.userInfo._id)).length;
-
-				console.log("working awaiting payment length: ", awaitingPaymentJobs.filter(o => o.worker._id === this.userInfo._id).length)
-				console.log("owned awaiting payment length: ", awaitingPaymentJobs.filter(o => o.owner._id === this.userInfo._id).length)
-
-      },
-      (errorInfo) => {
-        console.log("Error getting awaiting payment jobs: ", errorInfo)
-      }
-      );
-    this.jobsApi.getMyFinishedJobs()
-      .subscribe(
-      (finishedJobs: any) => {
-        this.finishedJobs = finishedJobs;
-        this.languageService.addIsoCode(this.finishedJobs);
-        this.jobCounts.workingFinishedJobs = finishedJobs.filter(o => o.worker._id === this.userInfo._id).length;
-        this.jobCounts.ownedFinishedJobs = (finishedJobs.filter(o => o.owner._id === this.userInfo._id)).length;
-      },
-      (errorInfo) => {
-        console.log("Error getting finished jobs: ", errorInfo);
-      }
-      );
   }
 
 
@@ -245,8 +196,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 	popJobArrLengths(){
 		    this.jobCounts.ownedJobs = this.ownedJobs.length;
 		    this.jobCounts.ownedActiveJobs = this.ownedActiveJobs.length;
-
-
+		    this.jobCounts.ownedTranslatedJobs = this.ownedTranslatedJobs.length;
+		    this.jobCounts.ownedFinishedJobs = this.ownedFinishedJobs.length;
+		    this.jobCounts.workingActiveJobs = this.workingActiveJobs.length;
+		    this.jobCounts.workedTranslatedJobs = this.workedTranslatedJobs.length;
+		    this.jobCounts.workedFinishedJobs = this.workedFinishedJobs.length;
 	}
 
   setUpPaypal(job) {
