@@ -13,11 +13,11 @@ export class JobsApiService {
   ) { }
 
   getJobs() {
-    return this.http.get(`${this.baseUrl}/api/jobs`);
+		return this.http.get(`${this.baseUrl}/api/jobs/relevantjobs`);
   };
 
-	getRelevantJobs(){
-		return this.http.get(`${this.baseUrl}/api/relevantjobs}`);
+	getRelevantJobs() {
+		return this.http.get(`${this.baseUrl}/api/jobs`);
 	};
 
   getJobDetails(jobId: string) {

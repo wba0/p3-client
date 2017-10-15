@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
         //not working
         // $("#payment-modal").modal("hide");
-        this.router.navigate(['/']);
+        this.router.navigate(['/dashboard']);
 
       });
     }, 500);
@@ -69,23 +69,48 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 					(relevantJobs: any) => {
 						this.relevantJobs = relevantJobs;
 						this.languageService.addIsoCode(this.relevantJobs);
-						console.log("relevant jobs: ", this.relevantJobs)
+
+						this.ownedJobs = _.filter(this.relevantJobs, (o: any) => {
+							return o.owner._id === this.userInfo._id && o.undergoingWork === false;
+						});
+
+						this.ownedActiveJobs = _.filter(this.relevantJobs, (o: any) => {
+							return o.owner._id === this.userInfo._id && o.undergoingWork === true;
+						});
+
+						console.log("reelvant jobs: ", this.relevantJobs)
+						console.log("owned jobs: ", this.ownedJobs)
+
+						this.popJobArrLengths();
+
+						//
+						//
+						// ownedJobs: any = [];
+					  // ownedActiveJobs: any;
+					  // workingJobs: any;
+					  // awaitingPaymentJobs: any;
+					  // finishedJobs: any;
+						//
+
+
+
+
 					},
 					(errorInfo) => {
 						console.log("error getting relevant jobs: ", errorInfo)
 					}
 				)
 
-
-    this.jobsApi.getMyOwnedJobs()
-      .subscribe(
-      (ownedJobs: any) => {
-        this.ownedJobs = ownedJobs;
-        this.languageService.addIsoCode(this.ownedJobs);
-        this.jobCounts.ownedJobs = this.ownedJobs.length;
-
-      }
-      );
+		//
+    // this.jobsApi.getMyOwnedJobs()
+    //   .subscribe(
+    //   (ownedJobs: any) => {
+    //     this.ownedJobs = ownedJobs;
+    //     this.languageService.addIsoCode(this.ownedJobs);
+    //     this.jobCounts.ownedJobs = this.ownedJobs.length;
+		//
+    //   }
+    //   );
 
     this.jobsApi.getMyOwnedActiveJobs()
       .subscribe(
@@ -216,6 +241,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       }
       )
   }
+
+	popJobArrLengths(){
+		    this.jobCounts.ownedJobs = this.ownedJobs.length;
+		    this.jobCounts.ownedActiveJobs = this.ownedActiveJobs.length;
+
+
+	}
 
   setUpPaypal(job) {
     sendJobInfo(job);
