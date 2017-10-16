@@ -186,6 +186,9 @@ user-select: none;
     background-color: #F26D6E;
 }
 
+.nav-link{
+	cursor: pointer;
+}
 
 .translation-content{
 	text-align: center;
