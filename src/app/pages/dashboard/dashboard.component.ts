@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 	workedFinishedJobs: any = [];
 
 	jobsToShow: any = [];
-	selectedTab: number;
+	selectedTab: number = 1;
 
 	awaitingPaymentJobs: any;
   finishedJobs: any;
@@ -130,22 +130,26 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 	switchToOwnedActiveJobs (tabNumber: number) {
 		this.jobsToShow = this.ownedActiveJobs;
 		this.selectedTab === tabNumber ? this.selectedTab = 0 : this.selectedTab = tabNumber;
-
 	};
-	switchToOwnedTranslatedJobs () {
+	switchToOwnedTranslatedJobs (tabNumber: number) {
 		this.jobsToShow = this.ownedTranslatedJobs;
+		this.selectedTab === tabNumber ? this.selectedTab = 0 : this.selectedTab = tabNumber;
 	};
-	switchToOwnedFinishedJobs () {
+	switchToOwnedFinishedJobs (tabNumber: number) {
 		this.jobsToShow = this.ownedFinishedJobs;
+		this.selectedTab === tabNumber ? this.selectedTab = 0 : this.selectedTab = tabNumber;
 	};
-	switchToWorkingActiveJobs () {
+	switchToWorkingActiveJobs (tabNumber: number) {
 		this.jobsToShow = this.workingActiveJobs;
+		this.selectedTab === tabNumber ? this.selectedTab = 0 : this.selectedTab = tabNumber;
 	};
-	switchToWorkedTranslatedJobs () {
+	switchToWorkedTranslatedJobs (tabNumber: number) {
 		this.jobsToShow = this.workedTranslatedJobs;
+		this.selectedTab === tabNumber ? this.selectedTab = 0 : this.selectedTab = tabNumber;
 	};
-	switchToWorkedFinishedJobs () {
+	switchToWorkedFinishedJobs (tabNumber: number) {
 		this.jobsToShow = this.workedFinishedJobs;
+		this.selectedTab === tabNumber ? this.selectedTab = 0 : this.selectedTab = tabNumber;
 	};
 
 
