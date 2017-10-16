@@ -116,6 +116,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 						this.popJobArrLengths();
 						this.jobsToShow = this.ownedJobs;
 						console.log("jobs to show", this.jobsToShow)
+
 					},
 					(errorInfo) => {
 						console.log("error getting relevant jobs: ", errorInfo)

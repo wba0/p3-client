@@ -20,9 +20,9 @@
 				<hr>
 				<h4>Jobs you are translating</h4>
 
-				<a class="nav-link" [ngClass]="{'active': selectedTab === 5}" (click)="switchToWorkingActiveJobs(5)">Active Jobs<div class="job-count"*ngIf="jobCounts.workingJobs"><span>{{jobCounts.workingJobs}}</span></div></a>
-				<a class="nav-link" [ngClass]="{'active': selectedTab === 6}" (click)="switchToWorkedTranslatedJobs(6)">Translated Jobs<div class="job-count"*ngIf="jobCounts.workingTranslatedJobs"><span>{{jobCounts.workingTranslatedJobs}}</span></div></a>
-				<a class="nav-link" [ngClass]="{'active': selectedTab === 7}" (click)="switchToWorkedFinishedJobs(7)">Finished Jobs<div class="job-count"*ngIf="jobCounts.workingFinishedJobs"><span>{{jobCounts.workingFinishedJobs}}</span></div></a>
+				<a class="nav-link" [ngClass]="{'active': selectedTab === 5}" (click)="switchToWorkingActiveJobs(5)">Active Jobs<div class="job-count"*ngIf="jobCounts.workingActiveJobs"><span>{{jobCounts.workingActiveJobs}}</span></div></a>
+				<a class="nav-link" [ngClass]="{'active': selectedTab === 6}" (click)="switchToWorkedTranslatedJobs(6)">Translated Jobs<div class="job-count"*ngIf="jobCounts.workedTranslatedJobs"><span>{{jobCounts.workedTranslatedJobs}}</span></div></a>
+				<a class="nav-link" [ngClass]="{'active': selectedTab === 7}" (click)="switchToWorkedFinishedJobs(7)">Finished Jobs<div class="job-count"*ngIf="jobCounts.workedFinishedJobs"><span>{{jobCounts.workedFinishedJobs}}</span></div></a>
 			</div>
 		</div>
 		<div class="col-8">
