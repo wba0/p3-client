@@ -19,13 +19,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   getUserError: string;
 	relevantJobs: any = [];
   ownedJobs: any = [];
-  ownedActiveJobs: any;
-  workingActiveJobs: any;
-	ownedTranslatedJobs: any;
-	workedTranslatedJobs: any;
-	ownedFinishedJobs: any;
-	workedFinishedJobs: any;
+  ownedActiveJobs: any = [];
+  workingActiveJobs: any = [];
+	ownedTranslatedJobs: any = [];
+	workedTranslatedJobs: any = [];
+	ownedFinishedJobs: any = [];
+	workedFinishedJobs: any = [];
 
+	jobsByCategory: any = {};
 
 	awaitingPaymentJobs: any;
   finishedJobs: any;
@@ -76,36 +77,43 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 						this.relevantJobs = relevantJobs;
 						this.languageService.addIsoCode(this.relevantJobs);
 
-						this.ownedJobs = _.filter(this.relevantJobs, (o: any) => {
-							return o.owner._id === this.userInfo._id && o.undergoingWork === false;
+						this.jobsByCategory.ownedJobs = _.filter(this.relevantJobs, (o: any) => {
+							if(!o.owner){return;} else{
+							return o.owner._id === this.userInfo._id && o.undergoingWork === false;}
 						});
 
-						this.ownedActiveJobs = _.filter(this.relevantJobs, (o: any) => {
-							return o.owner._id === this.userInfo._id && o.undergoingWork === true;
+						this.jobsByCategory.ownedActiveJobs = _.filter(this.relevantJobs, (o: any) => {
+							if(!o.owner){return;} else{
+							return o.owner._id === this.userInfo._id && o.undergoingWork === true;}
 						});
 
-						this.ownedTranslatedJobs = _.filter(this.relevantJobs, (o: any) => {
-							return o.owner._id === this.userInfo._id && o.finishedNotPaid === true;
+						this.jobsByCategory.ownedTranslatedJobs = _.filter(this.relevantJobs, (o: any) => {
+							if(!o.owner){return;} else{
+							return o.owner._id === this.userInfo._id && o.finishedNotPaid === true;}
 						});
 
-						this.ownedFinishedJobs = _.filter(this.relevantJobs, (o: any) => {
-							return o.owner._id === this.userInfo._id && o.finishedAndPaid === true;
+						this.jobsByCategory.ownedFinishedJobs = _.filter(this.relevantJobs, (o: any) => {
+							if(!o.owner){return;} else{
+							return o.owner._id === this.userInfo._id && o.finishedAndPaid === true;}
 						});
 
-						this.workingActiveJobs = _.filter(this.relevantJobs, (o: any) => {
-							return o.worker._id === this.userInfo._id && o.undergoingWork === true;
+						this.jobsByCategory.workingActiveJobs = _.filter(this.relevantJobs, (o: any) => {
+							if(!o.worker){return;} else{
+							return o.worker._id === this.userInfo._id && o.undergoingWork === true;}
 						});
 
-						this.workedTranslatedJobs = _.filter(this.relevantJobs, (o: any) => {
-							return o.worker._id === this.userInfo._id && o.finishedNotPaid === true;
+						this.jobsByCategory.workedTranslatedJobs = _.filter(this.relevantJobs, (o: any) => {
+							if(!o.worker){return;} else{
+							return o.worker._id === this.userInfo._id && o.finishedNotPaid === true;}
 						});
 
-						this.workedFinishedJobs = _.filter(this.relevantJobs, (o: any) => {
-							return o.worker._id === this.userInfo._id && o.finishedAndPaid === true;
+						this.jobsByCategory.workedFinishedJobs = _.filter(this.relevantJobs, (o: any) => {
+							if(!o.worker){return;} else{
+							return o.worker._id === this.userInfo._id && o.finishedAndPaid === true;}
 						});
 
 						this.popJobArrLengths();
-
+						console.log(this.jobsByCategory)
 					},
 					(errorInfo) => {
 						console.log("error getting relevant jobs: ", errorInfo)
@@ -194,13 +202,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
 	popJobArrLengths(){
-		    this.jobCounts.ownedJobs = this.ownedJobs.length;
-		    this.jobCounts.ownedActiveJobs = this.ownedActiveJobs.length;
-		    this.jobCounts.ownedTranslatedJobs = this.ownedTranslatedJobs.length;
-		    this.jobCounts.ownedFinishedJobs = this.ownedFinishedJobs.length;
-		    this.jobCounts.workingActiveJobs = this.workingActiveJobs.length;
-		    this.jobCounts.workedTranslatedJobs = this.workedTranslatedJobs.length;
-		    this.jobCounts.workedFinishedJobs = this.workedFinishedJobs.length;
+		    this.jobCounts.ownedJobs = this.jobsByCategory.ownedJobs.length;
+		    this.jobCounts.ownedActiveJobs = this.jobsByCategory.ownedActiveJobs.length;
+		    this.jobCounts.ownedTranslatedJobs = this.jobsByCategory.ownedTranslatedJobs.length;
+		    this.jobCounts.ownedFinishedJobs = this.jobsByCategory.ownedFinishedJobs.length;
+		    this.jobCounts.workingActiveJobs = this.jobsByCategory.workingActiveJobs.length;
+		    this.jobCounts.workedTranslatedJobs = this.jobsByCategory.workedTranslatedJobs.length;
+		    this.jobCounts.workedFinishedJobs = this.jobsByCategory.workedFinishedJobs.length;
+				console.log("working act: " , this.workingActiveJobs)
 	}
 
   setUpPaypal(job) {
