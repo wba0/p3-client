@@ -110,7 +110,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 					(errorInfo) => {
 						console.log("error getting relevant jobs: ", errorInfo)
 					}
-				)
+				);
 
   }
 

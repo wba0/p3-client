@@ -15,9 +15,10 @@ export class JobsApiService {
     return this.http.get(`${this.baseUrl}/api/jobs`);
   };
 
-	getRelevantJobs() {
-		return this.http.get(`${this.baseUrl}/api/jobs/relevantjobs`);
-	};
+  getRelevantJobs() {
+    return this.http.get(`${this.baseUrl}/api/jobs/relevantjobs`,
+		{ withCredentials: true });
+  };
 
   getJobDetails(jobId: string) {
     return this.http.get(`${this.baseUrl}/api/jobs/${jobId}`);
@@ -60,30 +61,30 @@ export class JobsApiService {
 
   submitJob(jobId: string, jobFields) {
     return this.http.patch(`${this.baseUrl}/api/submitJob/${jobId}`,
-			jobFields,
+      jobFields,
       { withCredentials: true });
   };
 
-finishPaidJob(jobId: string){
-	return this.http.patch(`${this.baseUrl}/api/payandcompletejob/${jobId}`,
-		{},
-		{ withCredentials: true });
-};
+  finishPaidJob(jobId: string) {
+    return this.http.patch(`${this.baseUrl}/api/payandcompletejob/${jobId}`,
+      {},
+      { withCredentials: true });
+  };
   applyToJob(jobId: string) {
     return this.http.post(`${this.baseUrl}/api/jobs/apply/${jobId}`,
-			{},
+      {},
       { withCredentials: true });
   };
 
-	acceptOrRejectApplicant(jobId: string, applicantId: string, decision: string){
-		return this.http.patch(` ${this.baseUrl}/api/jobs/${jobId}/${applicantId}/${decision}`,
-		{},
-		{ withCredentials: true });
-	};
+  acceptOrRejectApplicant(jobId: string, applicantId: string, decision: string) {
+    return this.http.patch(` ${this.baseUrl}/api/jobs/${jobId}/${applicantId}/${decision}`,
+      {},
+      { withCredentials: true });
+  };
 
-	acceptOrRejectTranslation(jobId: string, decision: string){
-		return this.http.patch(`${this.baseUrl}/api/submittedJob/${jobId}/${decision}`,
-		{},
-		{ withCredentials: true });
-	}
+  acceptOrRejectTranslation(jobId: string, decision: string) {
+    return this.http.patch(`${this.baseUrl}/api/submittedJob/${jobId}/${decision}`,
+      {},
+      { withCredentials: true });
+  }
 }
