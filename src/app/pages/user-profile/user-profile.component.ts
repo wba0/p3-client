@@ -81,6 +81,10 @@ export class UserProfileComponent implements OnInit {
 					console.log("Post successful: ", updatedLanguageSkills);
 					this.errorMessage = "",
 					this.userDetails.languageSkills = updatedLanguageSkills;
+					this.userDetails.languageSkills.forEach((lang) => {
+						lang.isoCode = this.langArr.find((o) => {
+							return o.language === lang.language;
+						}).isoCode;
 				},
 				(errorInfo) => {
 					console.log("Post unsuccessful: ", errorInfo);
@@ -91,7 +95,8 @@ export class UserProfileComponent implements OnInit {
 					}
 				}
 			);
-	}
+	});
+}
 
 	deleteLanguageSkill(langToDelete: any){
 		//in view

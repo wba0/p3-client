@@ -43,97 +43,97 @@
 								<h4 *ngIf="jobsToShow === workedFinishedJobs " class="job-card-title working-finished-job">{{job.price}} donated to {{job.beneficiaryId.name}}. Thank you!!</h4>
 							</div>
 
-						<div>
-							<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
+							<div>
+								<h4><i class="fa fa-language" aria-hidden="true" title="Translation"></i>Translation</h4>
 
-							<p class="translation-flags"> <span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}" title="{{job.sourceLanguage}}"></span>
-								<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}" title="{{job.targetLanguage}}"></span>
-							</p>
+								<p class="translation-flags"> <span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}" title="{{job.sourceLanguage}}"></span>
+									<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}" title="{{job.targetLanguage}}"></span>
+								</p>
 
-							<p class="translation-content"> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
-							</p>
-						</div>
-						<div>
-							<h4><i class="fa fa-pencil-square-o" aria-hidden="true" title="Details"></i>Details</h4>
+								<p class="translation-content"> <i class="fa fa-quote-left" aria-hidden="true" title="Content"></i> {{job.content}} ...
+								</p>
+							</div>
+							<div>
+								<h4><i class="fa fa-pencil-square-o" aria-hidden="true" title="Details"></i>Details</h4>
 
-							<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Worker"></i> {{job.worker.username}}
-							</p>
-							<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId.name}}
-							</p>
-							<p> <i class="fa fa-calculator" aria-hidden="true" Title="Word/Character Count"></i> {{job.wordCount}} words/characters
-							</p>
-							<p> <i class="fa fa-usd" aria-hidden="true" title="Price"></i> {{job.price}}
-							</p>
-						</div>
-						<div>
-							<h4>
+								<p *ngIf="job.worker"><i class="fa fa-handshake-o" aria-hidden="true" title="Worker"></i> {{job.worker.username}}
+								</p>
+								<p *ngIf="job.beneficiaryId"><i class="fa fa-heart" aria-hidden="true" title="Beneficiary"></i> {{job.beneficiaryId.name}}
+								</p>
+								<p> <i class="fa fa-calculator" aria-hidden="true" Title="Word/Character Count"></i> {{job.wordCount}} words/characters
+								</p>
+								<p> <i class="fa fa-usd" aria-hidden="true" title="Price"></i> {{job.price}}
+								</p>
+							</div>
+							<div>
+								<h4>
 							<i class="fa fa-retweet" aria-hidden="true" title="Flow"></i>Flow</h4>
-							<p>Undergoing work:
-								<span *ngIf="job.undergoingWork" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
-								<span *ngIf="!job.undergoingWork" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
-							</p>
-							<p>Awaiting payment:
-								<span *ngIf="job.finishedNotPaid" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
-								<span *ngIf="!job.finishedNotPaid" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
-							</p>
-							<p>Finished and Paid:
-								<span *ngIf="job.finishedAndPaid" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
-								<span *ngIf="!job.finishedAndPaid" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
-							</p>
-						</div>
+								<p>Undergoing work:
+									<span *ngIf="job.undergoingWork" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+									<span *ngIf="!job.undergoingWork" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+								</p>
+								<p>Awaiting payment:
+									<span *ngIf="job.finishedNotPaid" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+									<span *ngIf="!job.finishedNotPaid" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+								</p>
+								<p>Finished and Paid:
+									<span *ngIf="job.finishedAndPaid" style="color: green"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+									<span *ngIf="!job.finishedAndPaid" style="color: crimson"><i class="fa fa-times-circle-o" aria-hidden="true"></i></span>
+								</p>
+							</div>
 
-														<div *ngIf="jobsToShow === ownedTranslatedJobs" id="payment-modal" class="modal fade view-translation-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-															<div class="modal-dialog modal-lg translated-content-modal">
-																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<div *ngIf="jobsToShow === ownedTranslatedJobs" id="payment-modal" class="modal fade view-translation-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-lg translated-content-modal">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 																<span aria-hidden="true">&times;</span>
 														         </button>
-																<h3 class="text-center">Submitted Translation:</h3>
-																<span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>
-																<h4>{{job.sourceLanguage}}</h4>
-																<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}"></span>
-																<h4>{{job.targetLanguage}}</h4>
+									<h3 class="text-center">Submitted Translation:</h3>
+									<span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>
+									<h4>{{job.sourceLanguage}}</h4>
+									<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}"></span>
+									<h4>{{job.targetLanguage}}</h4>
 
-																<div *ngIf="jobsToShow === ownedFinishedJobs" class="modal-content no-copy">
-																	{{job.translatedContent}}
-																</div>
-																<button class="btn btn-large btn-success" (click)="acceptOrRejectTranslation(job._id, 'accept')">Accept Translation and Pay</button>
-																<div id="paypal-button-container"></div>
+									<div *ngIf="jobsToShow === ownedFinishedJobs" class="modal-content no-copy">
+										{{job.translatedContent}}
+									</div>
+									<button class="btn btn-large btn-success" (click)="acceptOrRejectTranslation(job._id, 'accept')">Accept Translation and Pay</button>
+									<div id="paypal-button-container"></div>
 
-																<button type="button" data-dismiss="modal" class="btn btn-large btn-danger" (click)="acceptOrRejectTranslation(job._id, 'reject')">Reject Translation</button>
-															</div>
-														</div>
+									<button type="button" data-dismiss="modal" class="btn btn-large btn-danger" (click)="acceptOrRejectTranslation(job._id, 'reject')">Reject Translation</button>
+								</div>
+							</div>
 
 
-																						<div id="finished-modal" class="modal fade view-finished-translation-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-																							<div class="modal-dialog modal-lg translated-content-modal">
-																								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<div id="finished-modal" class="modal fade view-finished-translation-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-lg translated-content-modal">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 																									<span aria-hidden="true">&times;</span>
 																											 </button>
-																								<h3 class="text-center">Accepted Translation:</h3>
-																								<span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>
-																								<h4>{{job.sourceLanguage}}</h4>
-																								<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}"></span>
-																								<h4>{{job.targetLanguage}}</h4>
+									<h3 class="text-center">Accepted Translation:</h3>
+									<span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>
+									<h4>{{job.sourceLanguage}}</h4>
+									<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}"></span>
+									<h4>{{job.targetLanguage}}</h4>
 
-																								<div class="modal-content">
-																									{{job.translatedContent}}
-																								</div>
-																								<h3 *ngIf="job.beneficiaryId">Thank you for donating to <a href="{{job.beneficiaryId.website}}">{{job.beneficiaryId.name}}</a></h3>
-																							</div>
-																						</div>
+									<div class="modal-content">
+										{{job.translatedContent}}
+									</div>
+									<h3 *ngIf="job.beneficiaryId">Thank you for donating to <a href="{{job.beneficiaryId.website}}">{{job.beneficiaryId.name}}</a></h3>
+								</div>
+							</div>
 
-						<div *ngIf="job.applicants.length < 0">
-							<h4><i class="fa fa-users" aria-hidden="true"></i>Applicants:</h4>
-							<ul>
-								<li class="applicant-list" *ngFor="let applicant of job.applicants">
-									<h4><a [routerLink]="['/users', applicant._id]">{{applicant.username}}</a></h4>
-									<i class="fa fa-check accept-icon" aria-hidden="true" title="Accept Applicant" (click)="acceptOrRejectApplicant(job._id, applicant._id, 'accept')"></i><i class="fa fa-times reject-icon" aria-hidden="true" title="Reject Applicant" (click)="acceptOrRejectApplicant(job._id, applicant._id, 'reject')"></i>
-								</li>
-							</ul>
+							<div *ngIf="job.applicants.length < 0">
+								<h4><i class="fa fa-users" aria-hidden="true"></i>Applicants:</h4>
+								<ul>
+									<li class="applicant-list" *ngFor="let applicant of job.applicants">
+										<h4><a [routerLink]="['/users', applicant._id]">{{applicant.username}}</a></h4>
+										<i class="fa fa-check accept-icon" aria-hidden="true" title="Accept Applicant" (click)="acceptOrRejectApplicant(job._id, applicant._id, 'accept')"></i><i class="fa fa-times reject-icon" aria-hidden="true" title="Reject Applicant" (click)="acceptOrRejectApplicant(job._id, applicant._id, 'reject')"></i>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
