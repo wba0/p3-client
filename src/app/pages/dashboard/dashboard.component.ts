@@ -126,31 +126,24 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 	switchToOwnedJobs (tabNumber: number) {
 		this.jobsToShow = this.ownedJobs;
-		this.selectedTab === tabNumber ? this.selectedTab = 0 : this.selectedTab = tabNumber;
 	};
 	switchToOwnedActiveJobs (tabNumber: number) {
 		this.jobsToShow = this.ownedActiveJobs;
-		this.selectedTab === tabNumber ? this.selectedTab = 0 : this.selectedTab = tabNumber;
 	};
 	switchToOwnedTranslatedJobs (tabNumber: number) {
 		this.jobsToShow = this.ownedTranslatedJobs;
-		this.selectedTab === tabNumber ? this.selectedTab = 0 : this.selectedTab = tabNumber;
 	};
 	switchToOwnedFinishedJobs (tabNumber: number) {
 		this.jobsToShow = this.ownedFinishedJobs;
-		this.selectedTab === tabNumber ? this.selectedTab = 0 : this.selectedTab = tabNumber;
 	};
 	switchToWorkingActiveJobs (tabNumber: number) {
 		this.jobsToShow = this.workingActiveJobs;
-		this.selectedTab === tabNumber ? this.selectedTab = 0 : this.selectedTab = tabNumber;
 	};
 	switchToWorkedTranslatedJobs (tabNumber: number) {
 		this.jobsToShow = this.workedTranslatedJobs;
-		this.selectedTab === tabNumber ? this.selectedTab = 0 : this.selectedTab = tabNumber;
 	};
 	switchToWorkedFinishedJobs (tabNumber: number) {
 		this.jobsToShow = this.workedFinishedJobs;
-		this.selectedTab === tabNumber ? this.selectedTab = 0 : this.selectedTab = tabNumber;
 	};
 
 
