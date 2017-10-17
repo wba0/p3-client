@@ -23,6 +23,7 @@ export class UserProfileComponent implements OnInit {
 	langArr: any = this.languageService.languages;
 	errorMessage: string;
 	newLanguageSkill: any = {};
+	averageRating: number = 0;
 
   constructor(
 		private router: Router,
@@ -69,6 +70,9 @@ export class UserProfileComponent implements OnInit {
 			);
 
 		});
+
+
+
 
 
 

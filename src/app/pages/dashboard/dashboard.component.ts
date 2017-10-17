@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
 	jobsToShow: any = [];
 	selectedTab: number = 1;
+	givenRating: number;
 
 	awaitingPaymentJobs: any;
   finishedJobs: any;
@@ -179,12 +180,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       );
   }
 
-  acceptOrRejectTranslation(jobId: string, decision: string) {
-    this.jobsApi.acceptOrRejectTranslation(jobId, decision)
+  acceptOrRejectTranslation(jobId: string, decision: string, rating: number) {
+    this.jobsApi.acceptOrRejectTranslation(jobId, decision, rating)
       .subscribe(
       (data) => {
         console.log(data);
-        if (decision = "reject") {
+        if (decision === "reject") {
           console.log("Rejected: ", data);
           this.router.navigate(['/dashboard']);
         }

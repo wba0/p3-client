@@ -35,29 +35,29 @@ export class JobsApiService {
       { withCredentials: true });
   };
 
-  getMyOwnedJobs() {
-    return this.http.get(`${this.baseUrl}/api/myownedjobs`,
-      { withCredentials: true });
-  };
-
-  getMyOwnedActiveJobs() {
-    return this.http.get(`${this.baseUrl}/api/myownedactivejobs`,
-      { withCredentials: true });
-  };
-
-  getMyWorkingJobs() {
-    return this.http.get(`${this.baseUrl}/api/myworkingjobs`,
-      { withCredentials: true });
-  };
-
-  getMyAwaitingPaymentJobs() {
-    return this.http.get(`${this.baseUrl}/api/myawaitingpaymentjobs`,
-      { withCredentials: true });
-  };
-  getMyFinishedJobs() {
-    return this.http.get(`${this.baseUrl}/api/myfinishedandpaidjobs`,
-      { withCredentials: true });
-  };
+  // getMyOwnedJobs() {
+  //   return this.http.get(`${this.baseUrl}/api/myownedjobs`,
+  //     { withCredentials: true });
+  // };
+	//
+  // getMyOwnedActiveJobs() {
+  //   return this.http.get(`${this.baseUrl}/api/myownedactivejobs`,
+  //     { withCredentials: true });
+  // };
+	//
+  // getMyWorkingJobs() {
+  //   return this.http.get(`${this.baseUrl}/api/myworkingjobs`,
+  //     { withCredentials: true });
+  // };
+	//
+  // getMyAwaitingPaymentJobs() {
+  //   return this.http.get(`${this.baseUrl}/api/myawaitingpaymentjobs`,
+  //     { withCredentials: true });
+  // };
+  // getMyFinishedJobs() {
+  //   return this.http.get(`${this.baseUrl}/api/myfinishedandpaidjobs`,
+  //     { withCredentials: true });
+  // };
 
   submitJob(jobId: string, jobFields) {
     return this.http.patch(`${this.baseUrl}/api/submitJob/${jobId}`,
@@ -82,8 +82,8 @@ export class JobsApiService {
       { withCredentials: true });
   };
 
-  acceptOrRejectTranslation(jobId: string, decision: string) {
-    return this.http.patch(`${this.baseUrl}/api/submittedJob/${jobId}/${decision}`,
+  acceptOrRejectTranslation(jobId: string, decision: string, rating: number) {
+    return this.http.patch(`${this.baseUrl}/api/submittedJob/${jobId}/${decision}/${rating}`,
       {},
       { withCredentials: true });
   }
