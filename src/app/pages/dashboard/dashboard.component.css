@@ -208,3 +208,13 @@ margin: 10px;
 .logo-complement{
 	top: -5%;
 }
+
+#rating-select{
+	margin: 10px auto;
+	width: 80px;
+}
+
+/*bootstrap select height issue fix*/
+select.form-control:not([size]):not([multiple]) {
+    height: calc(3rem + 2px);
+}

@@ -125,25 +125,25 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 				);
 
   }
-	switchToOwnedJobs (tabNumber: number) {
+	switchToOwnedJobs () {
 		this.jobsToShow = this.ownedJobs;
 	};
-	switchToOwnedActiveJobs (tabNumber: number) {
+	switchToOwnedActiveJobs () {
 		this.jobsToShow = this.ownedActiveJobs;
 	};
-	switchToOwnedTranslatedJobs (tabNumber: number) {
+	switchToOwnedTranslatedJobs () {
 		this.jobsToShow = this.ownedTranslatedJobs;
 	};
-	switchToOwnedFinishedJobs (tabNumber: number) {
+	switchToOwnedFinishedJobs () {
 		this.jobsToShow = this.ownedFinishedJobs;
 	};
-	switchToWorkingActiveJobs (tabNumber: number) {
+	switchToWorkingActiveJobs () {
 		this.jobsToShow = this.workingActiveJobs;
 	};
-	switchToWorkedTranslatedJobs (tabNumber: number) {
+	switchToWorkedTranslatedJobs () {
 		this.jobsToShow = this.workedTranslatedJobs;
 	};
-	switchToWorkedFinishedJobs (tabNumber: number) {
+	switchToWorkedFinishedJobs () {
 		this.jobsToShow = this.workedFinishedJobs;
 	};
 
@@ -183,12 +183,38 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   acceptOrRejectTranslation(jobId: string, decision: string, rating: number) {
     this.jobsApi.acceptOrRejectTranslation(jobId, decision, rating)
       .subscribe(
-      (data) => {
+      (data: any) => {
         console.log(data);
         if (decision === "reject") {
           console.log("Rejected: ", data);
           this.router.navigate(['/dashboard']);
         }
+
+				//this block is here temporarily until paypal issue can be resolved
+				//see https://github.com/paypal/paypal-checkout/issues/149
+
+				if(decision === "accept"){
+					//whatever to update the ui
+					this.ownedFinishedJobs.push(data);
+					//remove finishedjob from ownedTranslatedJobs
+					this.ownedTranslatedJobs = _.filter(this.ownedTranslatedJobs, (o: any) => {
+						return o._id !== data._id;
+					});
+					//increment and decrement # of job indicators
+					this.jobCounts.ownedFinishedJobs++;
+					this.jobCounts.ownedTranslatedJobs--;
+
+					//not working
+					// $("#payment-modal").modal("hide");
+					this.router.navigate(['/dashboard']);
+					//page is frozen if following is not used
+					window.location.reload();
+
+				}
+
+
+				//end temporary code block
+
       },
       (errorInfo) => {
         console.log("Error accepting or rejecting translation: ", errorInfo)
