@@ -219,7 +219,13 @@ select.form-control:not([size]):not([multiple]) {
     height: calc(3rem + 2px);
 }
 
-.delete-job-icon{
+.delete-job-icon:hover{
 	color: crimson;
+}
+.delete-job-icon{
+	color: #000;
 	position: relative;
+left: 93%;
+position: relative;
+cursor: pointer;
 }

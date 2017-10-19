@@ -5,6 +5,7 @@
 		<img src="{{userInfo.avatarUrl}}" alt="">
 		<h4>Go to <a [routerLink]="['/users', userInfo._id]">My Profile</a></h4>
 		<h2 class="text-center">Welcome, {{userInfo.username}}</h2>
+		<h3 class="status-message">{{statusMessage}}</h3>
 
 	</div>
 

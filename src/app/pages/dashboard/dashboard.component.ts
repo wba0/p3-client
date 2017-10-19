@@ -15,6 +15,7 @@ import * as $ from 'jquery';
 })
 
 export class DashboardComponent implements OnInit, AfterViewInit {
+	statusMessage: string = "";
   userInfo: any = {};
   getUserError: string;
 	relevantJobs: any = [];
@@ -32,6 +33,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
 	awaitingPaymentJobs: any;
   finishedJobs: any;
+
   langArr: any[] = this.languageService.languages;
   jobCounts: any = [];
   constructor(
@@ -247,6 +249,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       .subscribe(
       (data) => {
         console.log(data);
+				this.statusMessage = "Job deleted!";
       },
       (errorInfo) => {
         console.log("Error deleting ")
