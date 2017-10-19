@@ -31,7 +31,8 @@
 					<div class="row">
 						<div *ngFor="let job of jobsToShow" class="dashboard-job-list col-4">
 							<div class="job-status">
-								<h3 *ngIf="job.undergoingWork === false && jobsToShow === ownedJobs" (click)="deleteJob(job._id)">Delete Job</h3>
+								<span *ngIf="job.undergoingWork === false && jobsToShow === ownedJobs" (click)="deleteJob(job._id)" class="delete-job-icon"><i class="fa fa-trash-o" aria-hidden="true"></i>
+</span>
 								<h4><i class="fa fa-heartbeat" aria-hidden="true"></i>Status:</h4>
 								<h3 *ngIf="jobsToShow === ownedJobs" class="job-card-title awaiting-applicants">Awaiting Applicants</h3>
 								<h3 *ngIf="jobsToShow === ownedActiveJobs" class="job-card-title translation-in-progress">Translation in Progress</h3>

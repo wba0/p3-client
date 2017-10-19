@@ -218,3 +218,8 @@ margin: 10px;
 select.form-control:not([size]):not([multiple]) {
     height: calc(3rem + 2px);
 }
+
+.delete-job-icon{
+	color: crimson;
+	position: relative;
+}
