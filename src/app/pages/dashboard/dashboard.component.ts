@@ -222,25 +222,25 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       );
   }
 
-	completeJob(jobId: string){
-		this.jobsApi.finishPaidJob(jobId)
-			.subscribe(
-				(data: any) => {
-					console.log(data);
-					this.finishedJobs.push(data);
-					//remove finished job from awaiting payment jobs
-					this.awaitingPaymentJobs = _.filter(this.awaitingPaymentJobs, (o: any) => {
-						return o._id !== data._id;
-					});
-					//increment and decrement # of job indicators
-					this.jobCounts.finishedJobs ++;
-					this.jobCounts.awaitingPaymentJobs--;
-				},
-				(errorInfo) => {
-					console.log("Error finsihing job: ", errorInfo)
-				}
-			);
-	}
+	// completeJob(jobId: string){
+	// 	this.jobsApi.finishPaidJob(jobId)
+	// 		.subscribe(
+	// 			(data: any) => {
+	// 				console.log(data);
+	// 				this.finishedJobs.push(data);
+	// 				//remove finished job from awaiting payment jobs
+	// 				this.awaitingPaymentJobs = _.filter(this.awaitingPaymentJobs, (o: any) => {
+	// 					return o._id !== data._id;
+	// 				});
+	// 				//increment and decrement # of job indicators
+	// 				this.jobCounts.finishedJobs ++;
+	// 				this.jobCounts.awaitingPaymentJobs--;
+	// 			},
+	// 			(errorInfo) => {
+	// 				console.log("Error finsihing job: ", errorInfo)
+	// 			}
+	// 		);
+	// }
 
   deleteJob(jobId: string) {
     this.jobsApi.deleteJob(jobId)
