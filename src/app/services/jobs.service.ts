@@ -86,5 +86,5 @@ export class JobsApiService {
     return this.http.patch(`${this.baseUrl}/api/submittedJob/${jobId}/${decision}/${workerId}/${rating}`,
       {},
       { withCredentials: true });
-  }
+  };
 }

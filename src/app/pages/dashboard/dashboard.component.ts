@@ -191,7 +191,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
           console.log("Rejected: ", data);
           this.router.navigate(['/dashboard']);
         }
-
+				console.log("accept/reject translation data: ", data);
 				//this block is here temporarily until paypal issue can be resolved
 				//see https://github.com/paypal/paypal-checkout/issues/149
 
