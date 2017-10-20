@@ -182,8 +182,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       );
   }
 
-  acceptOrRejectTranslation(jobId: string, decision: string, rating: number) {
-    this.jobsApi.acceptOrRejectTranslation(jobId, decision, rating)
+  acceptOrRejectTranslation(jobId: string, decision: string, workerId: string, rating: number) {
+    this.jobsApi.acceptOrRejectTranslation(jobId, decision, workerId, rating)
       .subscribe(
       (data: any) => {
         console.log(data);
@@ -211,12 +211,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 					this.router.navigate(['/dashboard']);
 					//page is frozen if following is not used
 					window.location.reload();
-
 				}
-
-
 				//end temporary code block
-
       },
       (errorInfo) => {
         console.log("Error accepting or rejecting translation: ", errorInfo)
