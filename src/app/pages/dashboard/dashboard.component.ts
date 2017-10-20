@@ -263,7 +263,7 @@ export class DashboardComponent implements OnInit {
 		    this.jobCounts.workedFinishedJobs = this.workedFinishedJobs.length;
 	}
 
-  setUpPaypal(job) {
-    sendJobInfo(job);
-  }
+  // setUpPaypal(job) {
+  //   sendJobInfo(job);
+  // }
 }
