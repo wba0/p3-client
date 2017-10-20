@@ -14,16 +14,16 @@
 		<div class="col-2">
 			<div class="nav flex-column nav-pills" id="tabs" role="tablist">
 				<h4>Jobs you have created</h4>
-				<a class="nav-link" [ngClass]="{'active': jobsToShow === ownedJobs}" (click)="switchToOwnedJobs(1)">Posted Jobs<div class="job-count"*ngIf="jobCounts.ownedJobs"><span>{{jobCounts.ownedJobs}}</span></div></a>
-				<a class="nav-link" [ngClass]="{'active': jobsToShow === ownedActiveJobs}" (click)="switchToOwnedActiveJobs(2)">Active Jobs<div class="job-count"*ngIf="jobCounts.ownedActiveJobs"><span>{{jobCounts.ownedActiveJobs}}</span></div></a>
-				<a class="nav-link" [ngClass]="{'active': jobsToShow === ownedTranslatedJobs}" (click)="switchToOwnedTranslatedJobs(3)">Translated Jobs<div class="job-count" *ngIf="jobCounts.ownedTranslatedJobs"><span>{{jobCounts.ownedTranslatedJobs}}</span></div></a>
-				<a class="nav-link" [ngClass]="{'active': jobsToShow === ownedFinishedJobs}" (click)="switchToOwnedFinishedJobs(4)">Finished Jobs<div class="job-count" *ngIf="jobCounts.ownedFinishedJobs"><span>{{jobCounts.ownedFinishedJobs}}</span></div></a>
+				<a class="nav-link" [ngClass]="{'active': jobsToShow === ownedJobs}" (click)="switchToOwnedJobs()">Posted Jobs<div class="job-count"*ngIf="jobCounts.ownedJobs"><span>{{jobCounts.ownedJobs}}</span></div></a>
+				<a class="nav-link" [ngClass]="{'active': jobsToShow === ownedActiveJobs}" (click)="switchToOwnedActiveJobs()">Active Jobs<div class="job-count"*ngIf="jobCounts.ownedActiveJobs"><span>{{jobCounts.ownedActiveJobs}}</span></div></a>
+				<a class="nav-link" [ngClass]="{'active': jobsToShow === ownedTranslatedJobs}" (click)="switchToOwnedTranslatedJobs()">Translated Jobs<div class="job-count" *ngIf="jobCounts.ownedTranslatedJobs"><span>{{jobCounts.ownedTranslatedJobs}}</span></div></a>
+				<a class="nav-link" [ngClass]="{'active': jobsToShow === ownedFinishedJobs}" (click)="switchToOwnedFinishedJobs()">Finished Jobs<div class="job-count" *ngIf="jobCounts.ownedFinishedJobs"><span>{{jobCounts.ownedFinishedJobs}}</span></div></a>
 				<hr>
 				<h4>Jobs you are translating</h4>
 
-				<a class="nav-link" [ngClass]="{'active': jobsToShow === workingActiveJobs}" (click)="switchToWorkingActiveJobs(5)">Active Jobs<div class="job-count"*ngIf="jobCounts.workingActiveJobs"><span>{{jobCounts.workingActiveJobs}}</span></div></a>
-				<a class="nav-link" [ngClass]="{'active': jobsToShow === workedTranslatedJobs}" (click)="switchToWorkedTranslatedJobs(6)">Translated Jobs<div class="job-count"*ngIf="jobCounts.workedTranslatedJobs"><span>{{jobCounts.workedTranslatedJobs}}</span></div></a>
-				<a class="nav-link" [ngClass]="{'active': jobsToShow === workedFinishedJobs}" (click)="switchToWorkedFinishedJobs(7)">Finished Jobs<div class="job-count"*ngIf="jobCounts.workedFinishedJobs"><span>{{jobCounts.workedFinishedJobs}}</span></div></a>
+				<a class="nav-link" [ngClass]="{'active': jobsToShow === workingActiveJobs}" (click)="switchToWorkingActiveJobs()">Active Jobs<div class="job-count"*ngIf="jobCounts.workingActiveJobs"><span>{{jobCounts.workingActiveJobs}}</span></div></a>
+				<a class="nav-link" [ngClass]="{'active': jobsToShow === workedTranslatedJobs}" (click)="switchToWorkedTranslatedJobs()">Translated Jobs<div class="job-count"*ngIf="jobCounts.workedTranslatedJobs"><span>{{jobCounts.workedTranslatedJobs}}</span></div></a>
+				<a class="nav-link" [ngClass]="{'active': jobsToShow === workedFinishedJobs}" (click)="switchToWorkedFinishedJobs()">Finished Jobs<div class="job-count"*ngIf="jobCounts.workedFinishedJobs"><span>{{jobCounts.workedFinishedJobs}}</span></div></a>
 			</div>
 		</div>
 		<div class="col-8">
