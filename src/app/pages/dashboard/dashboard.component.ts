@@ -14,7 +14,7 @@ import * as $ from 'jquery';
   styleUrls: ['./dashboard.component.css']
 })
 
-export class DashboardComponent implements OnInit, AfterViewInit {
+export class DashboardComponent implements OnInit {
 	statusMessage: string = "";
   userInfo: any = {};
   getUserError: string;
@@ -43,26 +43,26 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private router: Router
   ) { }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      payPalCheckout((finishedJob) => {
-        //whatever to update the ui
-        this.finishedJobs.push(finishedJob);
-        //remove finishedjob from awaitingPaymentJobs
-        this.awaitingPaymentJobs = _.filter(this.awaitingPaymentJobs, (o: any) => {
-          return o._id !== finishedJob._id;
-        });
-				//increment and decrement # of job indicators
-				this.jobCounts.finishedJobs++;
-				this.jobCounts.awaitingPaymentJobs--;
-
-        //not working
-        // $("#payment-modal").modal("hide");
-        this.router.navigate(['/dashboard']);
-
-      });
-    }, 500);
-  }
+  // ngAfterViewInit() {
+  //   setTimeout(() => {
+  //     payPalCheckout((finishedJob) => {
+  //       //whatever to update the ui
+  //       this.finishedJobs.push(finishedJob);
+  //       //remove finishedjob from awaitingPaymentJobs
+  //       this.awaitingPaymentJobs = _.filter(this.awaitingPaymentJobs, (o: any) => {
+  //         return o._id !== finishedJob._id;
+  //       });
+	// 			//increment and decrement # of job indicators
+	// 			this.jobCounts.finishedJobs++;
+	// 			this.jobCounts.awaitingPaymentJobs--;
+	//
+  //       //not working
+  //       // $("#payment-modal").modal("hide");
+  //       this.router.navigate(['/dashboard']);
+	//
+  //     });
+  //   }, 500);
+  // }
   ngOnInit() {
 
     this.authenticator.getLoginStatus()
