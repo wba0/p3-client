@@ -43,6 +43,7 @@ export class UserProfileComponent implements OnInit {
 		        if (loggedInInfo.isLoggedIn) {
 		          console.log("logged in info: ", loggedInInfo)
 		          this.userInfo = loggedInInfo.userInfo;
+							this.averageRating = _.round(_.mean(this.userInfo.rating), 1);
 		        }
 		      }
 		      );
@@ -74,9 +75,11 @@ export class UserProfileComponent implements OnInit {
 
 
 
-
+		console.log(this.userInfo.rating)
 
   }
+
+
 
 	addLanguageSkill(){
 		this.userApi.addLanguageSkill(this.newLanguageSkill)
