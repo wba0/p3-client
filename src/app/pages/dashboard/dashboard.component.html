@@ -37,7 +37,10 @@
 								<h4><i class="fa fa-heartbeat" aria-hidden="true"></i>Status:</h4>
 								<h3 *ngIf="jobsToShow === ownedJobs" class="job-card-title awaiting-applicants">Awaiting Applicants</h3>
 								<h3 *ngIf="jobsToShow === ownedActiveJobs" class="job-card-title translation-in-progress">Translation in Progress</h3>
-								<h3 *ngIf="jobsToShow === ownedTranslatedJobs " class="job-card-title job-card-button awaiting-payment" data-toggle="modal" data-target=".view-translation-modal" (click)="setUpPaypal(job)">Review Translation</h3>
+								<h3 *ngIf="jobsToShow === ownedTranslatedJobs " class="job-card-title job-card-button awaiting-payment" data-toggle="modal" data-target=".view-translation-modal">Review Translation</h3>
+								<!-- set up paypal verion here -->
+								<!-- <h3 *ngIf="jobsToShow === ownedTranslatedJobs " class="job-card-title job-card-button awaiting-payment" data-toggle="modal" data-target=".view-translation-modal" (click)="setUpPaypal(job)">Review Translation</h3> -->
+								<!-- end set up paypal version -->
 								<h3 *ngIf="jobsToShow === ownedFinishedJobs " class="text-center job-card-button created-finished" data-toggle="modal" data-target=".view-finished-translation-modal">See Translation</h3>
 								<h3 *ngIf="jobsToShow === workingActiveJobs " class="job-card-title working-active"><a [routerLink]="['/jobs', job._id]">Resume Work</a>
 								</h3>

@@ -83,7 +83,7 @@ export class DashboardComponent implements OnInit {
 
 						this.ownedJobs = _.filter(this.relevantJobs, (o: any) => {
 							if(!o.owner){return;} else{
-							return o.owner._id === this.userInfo._id && o.undergoingWork === false;}
+							return o.owner._id === this.userInfo._id && o.undergoingWork === false && o.finishedNotPaid === false && o.finishedAndPaid === false;}
 						});
 
 						this.ownedActiveJobs = _.filter(this.relevantJobs, (o: any) => {
