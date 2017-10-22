@@ -32,8 +32,7 @@
 					<div class="row">
 						<div *ngFor="let job of jobsToShow" class="dashboard-job-list col-4">
 							<div class="job-status">
-								<span *ngIf="job.undergoingWork === false && jobsToShow === ownedJobs" (click)="deleteJob(job._id)" class="delete-job-icon"><i class="fa fa-trash-o" aria-hidden="true"></i>
-</span>
+								<span *ngIf="job.undergoingWork === false && jobsToShow === ownedJobs" (click)="deleteJob(job._id)" class="delete-job-icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
 								<h4><i class="fa fa-heartbeat" aria-hidden="true"></i>Status:</h4>
 								<h3 *ngIf="jobsToShow === ownedJobs" class="job-card-title awaiting-applicants">Awaiting Applicants</h3>
 								<h3 *ngIf="jobsToShow === ownedActiveJobs" class="job-card-title translation-in-progress">Translation in Progress</h3>
@@ -90,20 +89,20 @@
 
 
 
-														<div *ngIf="job.applicants.length > 0">
-															<h4><i class="fa fa-users" aria-hidden="true"></i>Applicants:</h4>
-															<ul>
-																<li class="applicant-list" *ngFor="let applicant of job.applicants">
-																	<h4><a [routerLink]="['/users', applicant._id]">{{applicant.username}}</a></h4>
-																	<i class="fa fa-check accept-icon" aria-hidden="true" title="Accept Applicant" (click)="acceptOrRejectApplicant(job._id, applicant._id, 'accept')"></i><i class="fa fa-times reject-icon" aria-hidden="true" title="Reject Applicant" (click)="acceptOrRejectApplicant(job._id, applicant._id, 'reject')"></i>
-																</li>
-															</ul>
-														</div>
+							<div *ngIf="job.applicants.length > 0">
+								<h4><i class="fa fa-users" aria-hidden="true"></i>Applicants:</h4>
+								<ul>
+									<li class="applicant-list" *ngFor="let applicant of job.applicants">
+										<h4><a [routerLink]="['/users', applicant._id]">{{applicant.username}}</a></h4>
+										<i class="fa fa-check accept-icon" aria-hidden="true" title="Accept Applicant" (click)="acceptOrRejectApplicant(job._id, applicant._id, 'accept')"></i><i class="fa fa-times reject-icon" aria-hidden="true" title="Reject Applicant" (click)="acceptOrRejectApplicant(job._id, applicant._id, 'reject')"></i>
+									</li>
+								</ul>
+							</div>
 
 							<div *ngIf="jobsToShow === ownedTranslatedJobs" id="payment-modal" class="modal fade view-translation-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 								<div class="modal-dialog modal-lg translated-content-modal">
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																<span aria-hidden="true">&times;</span>
+									<span aria-hidden="true">&times;</span>
 														         </button>
 									<h3 class="text-center">Submitted Translation:</h3>
 									<span class="flag-icon flag-icon-{{job.sourceLanguageIsoCode}}"></span>
@@ -111,9 +110,9 @@
 									<i class="fa fa-arrow-right" aria-hidden="true"></i><span class="flag-icon flag-icon-{{job.targetLanguageIsoCode}}"></span>
 									<h4>{{job.targetLanguage}}</h4>
 
-									<div *ngIf="jobsToShow === ownedFinishedJobs" class="modal-content no-copy">
+									<span class="modal-content no-copy">
 										{{job.translatedContent}}
-									</div>
+									</span>
 									<br>
 									<h4>Rating: </h4><select class="form-control" name="" id="rating-select" [(ngModel)]="givenRating">
 										<option value="1">1</option>
@@ -124,7 +123,7 @@
 									</select>
 									<br>
 									<button type="button" class="btn btn-large btn-success" (click)="acceptOrRejectTranslation(job._id, 'accept', job.worker._id, givenRating)">Accept Translation and Pay</button>
-									<div id="paypal-button-container"></div>
+									<!-- <div id="paypal-button-container"></div> -->
 
 									<button type="button" data-dismiss="modal" class="btn btn-large btn-danger" (click)="acceptOrRejectTranslation(job._id, 'reject', job.worker._id, null)">Reject Translation</button>
 								</div>
