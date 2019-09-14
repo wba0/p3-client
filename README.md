@@ -26,4 +26,6 @@ What is the best way for animal welfare organizations to receive donations that 
 
 ### [Live link](http://babelwish.herokuapp.com/)
 
+### Demo Credentials: rdescartes@ithinkthereforeiam.net / pass
+
 ### MIT License
