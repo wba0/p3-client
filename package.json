@@ -29,7 +29,7 @@
     "core-js": "^2.4.1",
     "flag-icon-css": "^2.8.0",
     "jquery": "^3.2.1",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.19",
     "ngx-bootstrap": "^1.9.3",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
